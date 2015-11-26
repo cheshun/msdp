@@ -1,8 +1,9 @@
 package cheng.pipp.access.model;
 
-import com.application.module.jdbc.model.NewSuperModel;
 
-public class UserModel extends NewSuperModel {
+import arch.util.lang.SuperModel;
+
+public class UserModel extends SuperModel {
 
 	private static final long serialVersionUID = -2549770144649770858L;
 	private String pk_role ;

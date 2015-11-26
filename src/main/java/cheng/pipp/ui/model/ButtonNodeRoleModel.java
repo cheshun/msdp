@@ -1,9 +1,9 @@
 package cheng.pipp.ui.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class ButtonNodeRoleModel extends NewSuperModel {
+public class ButtonNodeRoleModel extends SuperModel {
 
 	private String pk_buttonnoderole ;
 	private String pk_button ;

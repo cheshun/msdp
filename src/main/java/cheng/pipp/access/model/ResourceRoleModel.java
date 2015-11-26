@@ -1,8 +1,9 @@
 package cheng.pipp.access.model;
 
-import com.application.module.jdbc.model.NewSuperModel;
 
-public class ResourceRoleModel extends NewSuperModel {
+import arch.util.lang.SuperModel;
+
+public class ResourceRoleModel extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 

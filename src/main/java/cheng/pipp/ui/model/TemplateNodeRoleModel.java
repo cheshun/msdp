@@ -1,9 +1,9 @@
 package cheng.pipp.ui.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class TemplateNodeRoleModel  extends NewSuperModel {
+public class TemplateNodeRoleModel  extends SuperModel {
 	private static final long serialVersionUID = 1L;
 	private String pk_temple_node_role ;
 	private String pk_temple ;

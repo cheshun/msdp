@@ -4,8 +4,8 @@ import cheng.lib.lang.IDataType;
 import cheng.pipp.ui.model.QueryConditionTemplateModel;
 import cheng.pipp.ui.model.ReportItemTemplateModel;
 import cheng.pipp.ui.vo.querytemplate.QueryParamVO;
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.lang.UFDate;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.UFDate;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;

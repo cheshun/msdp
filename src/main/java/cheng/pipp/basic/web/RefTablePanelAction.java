@@ -11,9 +11,9 @@ import cheng.pipp.basic.vo.RefVO;
 import cheng.pipp.framework.config.MsdpUserSessionVO;
 import cheng.pipp.framework.context.ApplicationContextHelper;
 import cheng.pipp.framework.web.BusinessCommonAction;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 import com.application.module.jdbc.processor.BeanListProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,17 +47,17 @@ public class RefTablePanelAction  extends BusinessCommonAction {
 		//根据参照类型 获取参照模型
 		List<RefModel> list = (List<RefModel>) queryservice.queryByClause(RefModel.class, RefModel.RefType+"='"+refmodel.getReftype()+"'");
 		RefModel ref = list.get(0);
-		NewSuperModel refm = (NewSuperModel) ClassUtil.initClass(ref.getModelclass());
-		List<NewSuperModel> refdata = null ;
+		SuperModel refm = (SuperModel) ClassUtil.initClass(ref.getModelclass());
+		List<SuperModel> refdata = null ;
 		//获取用户的角色id 用户的id
 		String pk_user = u.getPk_user() ;
 		String pk_role = u.getPk_role() ;
 		//判断该参照是否启用数据权限
 		if(ref.getIsaccesscontrol().booleanValue()){
 			String sql = getSql(refm.getTableName(),refm.getPKFieldName(),ref,pk_role,pk_user);
-			refdata = (List<NewSuperModel>) queryservice.queryBySql(sql, new BeanListProcessor(refm.getClass()));
+			refdata = (List<SuperModel>) queryservice.queryBySql(sql, new BeanListProcessor(refm.getClass()));
 		}else{
-			refdata = (List<NewSuperModel>) queryservice.queryAll(refm.getClass());
+			refdata = (List<SuperModel>) queryservice.queryAll(refm.getClass());
 		}
 		//根据参照的模型 获取参照的数据
 		
@@ -84,10 +84,10 @@ public class RefTablePanelAction  extends BusinessCommonAction {
 	 * @param ref
 	 * @return
 	 */
-	private List<RefDataVO> initdate(List<JsonData> refheadlist, List<NewSuperModel> refdata,RefModel ref) {
+	private List<RefDataVO> initdate(List<JsonData> refheadlist, List<SuperModel> refdata,RefModel ref) {
 		List<RefDataVO> refvaluelist = new ArrayList<RefDataVO>();
 		for(int i =0;i<refdata.size();i++){
-			NewSuperModel supervo = (NewSuperModel) refdata.get(i);
+			SuperModel supervo = (SuperModel) refdata.get(i);
 			RefDataVO refdatavo = initdata(supervo,refheadlist,ref);
 			refvaluelist.add(refdatavo);
 		}
@@ -101,7 +101,7 @@ public class RefTablePanelAction  extends BusinessCommonAction {
 	 * @param ref
 	 * @return
 	 */
-	private RefDataVO initdata(NewSuperModel supervo, List<JsonData> refheadlist,
+	private RefDataVO initdata(SuperModel supervo, List<JsonData> refheadlist,
 			RefModel ref) {
 		RefDataVO fefDataVO = new RefDataVO();
 		List<JsonData> bringlist = new ArrayList<JsonData>();

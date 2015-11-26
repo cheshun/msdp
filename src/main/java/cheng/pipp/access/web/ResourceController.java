@@ -8,10 +8,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import arch.util.lang.ClassUtil;
+import arch.util.lang.SuperModel;
 import cheng.lib.util.Reflect;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,9 +48,9 @@ public class ResourceController extends BusinessCommonAction {
 		//通过pk_data(参照的主键)获取信息
 		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
 		RefModel ref = (RefModel)queryservice.queryByPK(RefModel.class, vo.getPk_data());
-		NewSuperModel refm = (NewSuperModel) ClassUtil.initClass(ref.getModelclass());
+		SuperModel refm = (SuperModel) ClassUtil.initClass(ref.getModelclass());
 		//获取用户的角色id 用户的id
-		List<NewSuperModel> refdata = (List<NewSuperModel>) queryservice.queryAll(refm.getClass());
+		List<SuperModel> refdata = (List<SuperModel>) queryservice.queryAll(refm.getClass());
 		//根据参照的模型 获取参照的数据
 		
 		//初始化表头
@@ -76,7 +76,7 @@ public class ResourceController extends BusinessCommonAction {
 		List<ResourceRoleModel> roleresourcelist = (List<ResourceRoleModel>)queryservice.queryByClause(ResourceRoleModel.class, " pk_resource='"+paramvo.getPk_data()+"' and dr=0 ");
 		
 		//构造树
-		List<TreeNodeVO>  nodelist = TreeDataUtil.getIntance().initTreeList(roleslist.toArray(new NewSuperModel[0]), "pk_role", "pk_parent_role", "role_name",null,paramvo);
+		List<TreeNodeVO>  nodelist = TreeDataUtil.getIntance().initTreeList(roleslist.toArray(new SuperModel[0]), "pk_role", "pk_parent_role", "role_name",null,paramvo);
 		TreeVO tree = new TreeVO();
 		tree.setNodelist(nodelist);
 		tree.setTreetype(TreeVO.Tree_Type_treeCheck);
@@ -134,10 +134,10 @@ public class ResourceController extends BusinessCommonAction {
 	 * @param ref
 	 * @return
 	 */
-	private List<RefDataVO> initdate(List<JsonData> refheadlist, List<NewSuperModel> refdata,RefModel ref) {
+	private List<RefDataVO> initdate(List<JsonData> refheadlist, List<SuperModel> refdata,RefModel ref) {
 		List<RefDataVO> refvaluelist = new ArrayList<RefDataVO>();
 		for(int i =0;i<refdata.size();i++){
-			NewSuperModel supervo = (NewSuperModel) refdata.get(i);
+			SuperModel supervo = (SuperModel) refdata.get(i);
 			RefDataVO refdatavo = initdata(supervo,refheadlist,ref);
 			refvaluelist.add(refdatavo);
 		}
@@ -151,7 +151,7 @@ public class ResourceController extends BusinessCommonAction {
 	 * @param ref
 	 * @return
 	 */
-	private RefDataVO initdata(NewSuperModel supervo, List<JsonData> refheadlist,
+	private RefDataVO initdata(SuperModel supervo, List<JsonData> refheadlist,
 			RefModel ref) {
 		RefDataVO fefDataVO = new RefDataVO();
 		List<JsonData> bringlist = new ArrayList<JsonData>();

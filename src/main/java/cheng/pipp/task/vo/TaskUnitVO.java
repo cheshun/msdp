@@ -1,7 +1,7 @@
 package cheng.pipp.task.vo;
 
 
-import com.application.module.jdbc.lang.UFBoolean;
+import arch.util.lang.UFBoolean;
 
 import java.util.HashMap;
 import java.util.Map;

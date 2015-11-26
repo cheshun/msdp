@@ -1,10 +1,10 @@
 package cheng.pipp.basic.model;
 
 
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
+import arch.util.lang.UFBoolean;
 
-public class RefModel extends NewSuperModel {
+public class RefModel extends SuperModel {
 
 	private static final long serialVersionUID = -9182923634536100598L;
 	public static final String RefType ="reftype" ;

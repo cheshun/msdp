@@ -9,12 +9,12 @@ import java.util.Map.Entry;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import arch.util.lang.BeanHelper;
 import arch.util.lang.ClassUtil;
 import arch.util.lang.PageVO;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.BeanHelper;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +58,7 @@ public class SingletableController extends BusinessCommonAction {
 		paramvo.setTemplateid(paramvo.getTemplateid().split(",")[0]);
 		String pk_role = getUserinfo(request).getPk_role();
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, paramvo.getTemplateid());
-		NewSuperModel supervo = (NewSuperModel) ClassUtil.initClass(node.getModelclass());
+		SuperModel supervo = (SuperModel) ClassUtil.initClass(node.getModelclass());
 		
 		/**
 		 * 通过节点id 用户id或者角色 得到用户的模板
@@ -79,7 +79,7 @@ public class SingletableController extends BusinessCommonAction {
 		initPageCondition(pagevo,condition);
 		pagevo = queryservice.queryByPage(supervo.getClass(), pagevo);
 		
-		tabletemplatevo = DataTableUtil.initTableData(pagevo, itemlist, (List<NewSuperModel>)pagevo.getData(), button);
+		tabletemplatevo = DataTableUtil.initTableData(pagevo, itemlist, (List<SuperModel>)pagevo.getData(), button);
 		
 		model.addAttribute("tabletemplatevo", tabletemplatevo);
 		paramvo.setPk_data("{"+supervo.getPKFieldName()+"}");
@@ -106,7 +106,7 @@ public class SingletableController extends BusinessCommonAction {
 
 
 
-	private String getCondition(TemplateParamVO paramvo, NewSuperModel supervo,
+	private String getCondition(TemplateParamVO paramvo, SuperModel supervo,
 			HttpServletRequest request) throws BusinessException {
 		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationContextHelper.getService(IQueryTemplate.class);
 		
@@ -140,7 +140,7 @@ public class SingletableController extends BusinessCommonAction {
 		
 		String pk_node = paramvo.getTemplateid();
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
-		NewSuperModel supervo = (NewSuperModel) ClassUtil.initClass(node.getModelclass());
+		SuperModel supervo = (SuperModel) ClassUtil.initClass(node.getModelclass());
 		queryservice.deleteByPK(supervo.getClass(), paramvo.getPk_data());
 		
 		return ajaxDoneSuccess("删除成功");
@@ -156,7 +156,7 @@ public class SingletableController extends BusinessCommonAction {
 		paramvo.setTemplateid(pk_node);
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
 		//接收到节点的pk 解析 模型 反射得到值
-		NewSuperModel supervo = (NewSuperModel) ClassUtil.initClass(node.getModelclass());
+		SuperModel supervo = (SuperModel) ClassUtil.initClass(node.getModelclass());
 		//接收到所有字段和值
 		Map<String, Object> values = getParamFromReq(request);
 
@@ -201,7 +201,7 @@ public class SingletableController extends BusinessCommonAction {
 		
 	}
 	
-	private NewSuperModel initBean(NewSuperModel supervo, Map<String, Object> values) {
+	private SuperModel initBean(SuperModel supervo, Map<String, Object> values) {
 		Iterator<Entry<String, Object>> lt = values.entrySet().iterator();
 		while(lt.hasNext()){
 			Entry<String, Object> entry = lt.next();

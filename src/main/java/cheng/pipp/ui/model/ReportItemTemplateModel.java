@@ -1,10 +1,10 @@
 package cheng.pipp.ui.model;
 
 
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.SuperModel;
 
-public class ReportItemTemplateModel extends NewSuperModel {
+public class ReportItemTemplateModel extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 	private String pk_reportitemtemplate ;

@@ -12,9 +12,9 @@ import cheng.pipp.ui.vo.TreeNodeVO;
 import cheng.pipp.ui.vo.TreeVO;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +45,7 @@ public class TreeController  extends BusinessCommonAction {
 			}else{
 				paramvo.setActiontype("view");
 			}
-			NewSuperModel[] treenodearray = idtree.getTreeVO();
+			SuperModel[] treenodearray = idtree.getTreeVO();
 			if(treenodearray==null || treenodearray.length==0){
 				isshowadd = true ;
 			}

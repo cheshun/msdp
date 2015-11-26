@@ -1,6 +1,6 @@
 package cheng.pipp.framework.web;
 
-import com.application.module.jdbc.lang.UFDateTime;
+import arch.util.lang.UFDateTime;
 import org.springframework.util.StringUtils;
 
 import java.beans.PropertyEditorSupport;

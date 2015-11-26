@@ -5,10 +5,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.SuperModel;
 import org.apache.commons.lang3.StringUtils;
 
 import cheng.pipp.framework.context.ApplicationContextHelper;
@@ -26,13 +26,13 @@ public class TreeDataUtil {
 		}
 		return treeutil;
 	}
-	public List<TreeNodeVO> initMenuTree(NewSuperModel[] treeVO, String idFieldName,
+	public List<TreeNodeVO> initMenuTree(SuperModel[] treeVO, String idFieldName,
 			String parentIDFieldName, String showFieldName) {
 		List<TreeNodeVO> nodelist = new ArrayList<TreeNodeVO>();
 		TreeNodeVO[] treenodes = new TreeNodeVO[treeVO.length];
 		for (int i = 0; i < treeVO.length; i++) {
 			TreeNodeVO treenode = new TreeNodeVO();
-			NewSuperModel node = treeVO[i];
+			SuperModel node = treeVO[i];
 			treenode.setShowvalue(node.getAttributeValue(showFieldName));
 			treenode.setPk_node(node.getAttributeValue(idFieldName));
 			treenode.setPk_parentnode(node.getAttributeValue(parentIDFieldName));
@@ -121,14 +121,14 @@ public class TreeDataUtil {
 	 * @param paramvo
 	 * @return
 	 */
-	public List<TreeNodeVO> initTreeList(NewSuperModel[] treeVO, String idFieldName,
+	public List<TreeNodeVO> initTreeList(SuperModel[] treeVO, String idFieldName,
 			String parentIDFieldName, String showFieldName,
 			String treeNodeUIType, TemplateParamVO paramvo) {
 		List<TreeNodeVO> nodelist = new ArrayList<TreeNodeVO>();
 		TreeNodeVO[] treenodes = new TreeNodeVO[treeVO.length];
 		for (int i = 0; i < treeVO.length; i++) {
 			TreeNodeVO treenode = new TreeNodeVO();
-			NewSuperModel node = treeVO[i];
+			SuperModel node = treeVO[i];
 			treenode.setShowvalue(node.getAttributeValue(showFieldName));
 			treenode.setPk_node(node.getAttributeValue(idFieldName));
 			treenode.setPk_parentnode(node.getAttributeValue(parentIDFieldName));

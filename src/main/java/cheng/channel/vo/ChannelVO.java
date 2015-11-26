@@ -1,12 +1,12 @@
 package cheng.channel.vo;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 /**
  * Created by cheng on 2015/3/16.
  */
-public class ChannelVO extends NewSuperModel {
+public class ChannelVO extends SuperModel {
 	private int index ;
 	private int channel ;
     private int totaluser ;

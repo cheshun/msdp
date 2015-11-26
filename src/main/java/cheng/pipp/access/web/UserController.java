@@ -5,7 +5,7 @@ import cheng.pipp.access.model.UserModel;
 import cheng.pipp.framework.context.ApplicationContextHelper;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.funtion.encrypt.DesUtil;
 import com.application.module.jdbc.itf.IDataBaseService;
 import com.application.module.jdbc.processor.BeanListProcessor;

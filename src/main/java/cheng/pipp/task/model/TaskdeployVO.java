@@ -1,13 +1,13 @@
 package cheng.pipp.task.model;
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.SuperModel;
 
 /**
  * 任务部署信息  一个任务插件可以部署多次 。会产生多少部署信息
  * @author cheng
  *
  */
-public class TaskdeployVO extends NewSuperModel {
+public class TaskdeployVO extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 	private String pk_taskdeploy ;

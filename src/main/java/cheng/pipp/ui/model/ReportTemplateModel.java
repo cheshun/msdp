@@ -1,9 +1,9 @@
 package cheng.pipp.ui.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class ReportTemplateModel extends NewSuperModel {
+public class ReportTemplateModel extends SuperModel {
 
 	private String pk_reporttemplate ;
 	private String pk_node ;

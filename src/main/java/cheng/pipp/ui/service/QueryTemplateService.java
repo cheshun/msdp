@@ -2,7 +2,7 @@ package cheng.pipp.ui.service;
 
 import java.util.List;
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import com.application.module.jdbc.processor.BeanListProcessor;
 import org.apache.commons.lang3.StringUtils;

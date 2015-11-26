@@ -3,12 +3,11 @@ package cheng.pipp.access.conf;
 import java.util.List;
 
 import cheng.pipp.basic.model.RefModel;
-import cheng.pipp.framework.context.ApplicationContextHelper;
 import cheng.pipp.ui.itf.IVOTreeDataByID;
 import com.application.common.context.ApplicationServiceLocator;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 import com.application.module.jdbc.processor.BeanListProcessor;
 
 public class ResourceTreeDataManager implements IVOTreeDataByID{
@@ -26,7 +25,7 @@ public class ResourceTreeDataManager implements IVOTreeDataByID{
 	}
 
 	
-	public NewSuperModel[] getTreeVO() throws BusinessException {
+	public SuperModel[] getTreeVO() throws BusinessException {
 		IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getBean(IDataBaseService.class);
 		StringBuffer sb = new StringBuffer();
 		sb.append(" SELECT r.pk_module ,r.pk_ref  ,r.refname refname FROM sm_ref r ");
@@ -34,7 +33,7 @@ public class ResourceTreeDataManager implements IVOTreeDataByID{
 		sb.append(" UNION ");
 		sb.append(" SELECT '' pk_module , m.pk_module pk_ref,m.module_name refname FROM sys_module m ");
 		List<RefModel> list = (List<RefModel>)queryservice.queryBySql(sb.toString(), new BeanListProcessor(RefModel.class));
-		return list.toArray(new NewSuperModel[0]);
+		return list.toArray(new SuperModel[0]);
 		 
 	}
 

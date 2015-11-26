@@ -1,13 +1,13 @@
 package cheng.pipp.task.model;
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 /**
  * 任务插件信息 
  * @author cheng
  *
  */
-public class TaskPluginVO extends NewSuperModel {
+public class TaskPluginVO extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 	private String pk_taskplugin ;//主键

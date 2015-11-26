@@ -13,9 +13,9 @@ import cheng.pipp.ui.vo.param.AddActionParamVO;
 import cheng.pipp.ui.vo.param.EditActionParamVO;
 import cheng.pipp.ui.vo.uitemplate.CardTemplateVO;
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +37,7 @@ public class CardController extends BusinessCommonAction {
 		String pk_node = paramvo.getTemplateid();
 		String pk_role = getUserinfo(request).getPk_role();
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
-		NewSuperModel supervo =(NewSuperModel)  ClassUtil.initClass(node.getModelclass());
+		SuperModel supervo =(SuperModel)  ClassUtil.initClass(node.getModelclass());
 		
 		//通过节点id 用户id或者角色 得到用户的模板
 		/**
@@ -69,8 +69,8 @@ public class CardController extends BusinessCommonAction {
 		
 		String pk_node = paramvo.getTemplateid();
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
-		NewSuperModel supervo =(NewSuperModel)  ClassUtil.initClass(node.getModelclass());
-		supervo = (NewSuperModel)queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
+		SuperModel supervo =(SuperModel)  ClassUtil.initClass(node.getModelclass());
+		supervo = (SuperModel)queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
 		//通过节点id 用户id或者角色 得到用户的模板
 		ITemplateService itemplateService =(ITemplateService)ApplicationContextHelper.getService(ITemplateService.class);
 		IButtonService ibuttonService =(IButtonService)ApplicationContextHelper.getService(IButtonService.class);
@@ -97,8 +97,8 @@ public class CardController extends BusinessCommonAction {
 		
 		String pk_node = paramvo.getTemplateid();
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
-		NewSuperModel supervo = (NewSuperModel) ClassUtil.initClass(node.getModelclass());
-		supervo = (NewSuperModel)queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
+		SuperModel supervo = (SuperModel) ClassUtil.initClass(node.getModelclass());
+		supervo = (SuperModel)queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
 		//通过节点id 用户id或者角色 得到用户的模板
 		String pk_role = getUserinfo(request).getPk_role();
 		List<UIItemTempletModel> itemlist = itemplateService.getUserCardTemplet(null,pk_role, pk_node,null);

@@ -1,13 +1,13 @@
 package cheng.pipp.ui.itf;
 
+import arch.util.lang.SuperModel;
 import cheng.pipp.ui.vo.param.SaveActionParamVO;
-import com.application.common.exception.BusinessException;
-import com.application.module.jdbc.model.NewSuperModel;
+import com.application.exception.BusinessException;
 
 import javax.servlet.http.HttpServletRequest;
 
 public interface IButtonAction {
 
-	public NewSuperModel beforeSaveAction(NewSuperModel supervo,SaveActionParamVO paramvo,HttpServletRequest request) throws BusinessException;
-	public NewSuperModel afterSaveAction(NewSuperModel supervo,SaveActionParamVO paramvo,HttpServletRequest request) throws BusinessException;
+	public SuperModel beforeSaveAction(SuperModel supervo,SaveActionParamVO paramvo,HttpServletRequest request) throws BusinessException;
+	public SuperModel afterSaveAction(SuperModel supervo,SaveActionParamVO paramvo,HttpServletRequest request) throws BusinessException;
 }

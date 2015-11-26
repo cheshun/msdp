@@ -3,8 +3,10 @@
 <!--级别排序为： TRACE < DEBUG < INFO < WARN < ERROR -->
 <configuration scan="true" scanPeriod="60 seconds">
 
+	<contextName>msdp</contextName>
+
 	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
-	<property name="LOG_HOME" value="/logs" />
+	<!--<property name="LOG_HOME" value="/logs" />-->
 
 	<!-- 输入到控制台 -->
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -13,14 +15,13 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] \(%class.java:%line\) %msg%n</pattern>
 		</encoder>
 	</appender>
-	<appender name="cheng" class="cheng.pipp.log.ChengLog">
-	</appender>
-	<!-- ERROR级别 -->
+	<appender name="cheng" class="cheng.pipp.log.ChengLog"></appender>
+	 ERROR级别
 	<appender name="E" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 是否追加内容 -->
 		<Append>true</Append>
 		<!-- 指定file -->
-		<File>${LOG_HOME}/cheng_error.log</File>
+		<File>cheng_error.log</File>
 		<encoder>
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] \(%class.java:%line\) %msg%n</pattern>
 		</encoder>
@@ -32,7 +33,7 @@
 		<!-- 当文件记录满1024k时，将记录到第二个log文件 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<maxIndex>10</maxIndex>
-			<FileNamePattern>${LOG_HOME}/cheng_error.%d{yyyy-MM-dd}.log.%i</FileNamePattern>
+			<FileNamePattern>cheng_error.%d{yyyy-MM-dd}.log.%i</FileNamePattern>
 		</rollingPolicy>
 
 		<triggeringPolicy
@@ -47,7 +48,7 @@
 	<root level="INFO">
 		<appender-ref ref="stdout" />
 		<!--<appender-ref ref="E" />-->
-	</root>
+	</root>／
 
 	<!-- 日志输出级别为WARN，生产环境 -->
 	<!-- <root level="WARN"> <appender-ref ref="stdout"/> <appender-ref ref="E"/> 

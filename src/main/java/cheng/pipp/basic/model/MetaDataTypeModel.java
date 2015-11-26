@@ -1,8 +1,8 @@
 package cheng.pipp.basic.model;
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class MetaDataTypeModel extends NewSuperModel {
+public class MetaDataTypeModel extends SuperModel {
 
 	
 	private static final long serialVersionUID = 1L;

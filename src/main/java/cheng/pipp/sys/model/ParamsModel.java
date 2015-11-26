@@ -1,8 +1,8 @@
 package cheng.pipp.sys.model;
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class ParamsModel extends NewSuperModel {
+public class ParamsModel extends SuperModel {
 /**
  *主键
  */

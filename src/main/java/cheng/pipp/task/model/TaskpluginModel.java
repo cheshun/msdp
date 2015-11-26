@@ -1,9 +1,9 @@
 package cheng.pipp.task.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class TaskpluginModel extends NewSuperModel {
+public class TaskpluginModel extends SuperModel {
 	private static final long serialVersionUID = 1L;
 	private String pk_taskplugin;
 	private String pluginname;

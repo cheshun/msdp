@@ -1,10 +1,10 @@
 package cheng.pipp.sys.model;
 
 
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.SuperModel;
 
-public class CacheTableModel extends NewSuperModel {
+public class CacheTableModel extends SuperModel {
 
 	/**
 	 * 

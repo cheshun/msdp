@@ -5,9 +5,9 @@ import cheng.pipp.framework.context.ApplicationContextHelper;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.itf.IButtonAction;
 import cheng.pipp.ui.vo.param.SaveActionParamVO;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class NodeSaveAction implements IButtonAction {
 
 	
-	public NewSuperModel beforeSaveAction(NewSuperModel supervo, SaveActionParamVO paramvo,
+	public SuperModel beforeSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request) throws BusinessException {
 		 IDataBaseService queryservice = (IDataBaseService) ApplicationContextHelper.getService(IDataBaseService.class);
 			
@@ -41,7 +41,7 @@ public class NodeSaveAction implements IButtonAction {
 	}
 
 	
-	public NewSuperModel afterSaveAction(NewSuperModel supervo, SaveActionParamVO paramvo,
+	public SuperModel afterSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request) {
 		return null;
 	}

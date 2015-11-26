@@ -1,12 +1,12 @@
 package cheng.pipp.ui.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 /**
  * 界面模板信息 一个模板会有多个页签（包括表头和表体）
  */
-public class UITempletModel extends NewSuperModel {
+public class UITempletModel extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 	private String pk_node;//节点

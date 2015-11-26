@@ -1,8 +1,9 @@
 package cheng.wechat.model;
 
-import com.application.module.jdbc.model.NewSuperModel;
 
-public class MenuModel extends NewSuperModel {
+import arch.util.lang.SuperModel;
+
+public class MenuModel extends SuperModel {
 /**
  *自定义项1null
  */

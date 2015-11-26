@@ -17,7 +17,7 @@ import cheng.channel.vo.RegisterSourceVO;
 import cheng.pipp.framework.context.ApplicationContextHelper;
 import com.application.common.context.ApplicationServiceLocator;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 /**
  * Created by cheng on 2015/3/16.
@@ -37,7 +37,7 @@ public class ChannelReportConf extends AbstractReportConf {
     }
 
     @Override
-    public List<NewSuperModel> getData(String[] sql, PageVO pagevo, List<NewSuperModel> channelvolist) {
+    public List<SuperModel> getData(String[] sql, PageVO pagevo, List<SuperModel> channelvolist) {
     	DataSource querydataSource =  ApplicationContextHelper.getDataSource("querydataSource");
 		Connection conn =null;
 		try {

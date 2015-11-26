@@ -1,5 +1,6 @@
 package cheng.pipp.basic.util;
 
+import arch.util.lang.BeanHelper;
 import arch.util.lang.ClassUtil;
 import arch.util.lang.PageVO;
 import cheng.lib.lang.IDataType;
@@ -12,11 +13,10 @@ import cheng.pipp.ui.model.UIItemTempletModel;
 import cheng.pipp.ui.vo.ComboxData;
 import cheng.pipp.ui.vo.uitemplate.TableInfo;
 import cheng.pipp.ui.vo.uitemplate.TableTemplateVO;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.JdbcPersistenceManager;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.BeanHelper;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class DataTableUtil {
 	 * @return
 	 */
 	public static TableTemplateVO initTableData(PageVO pagevo ,List<UIItemTempletModel> itemlist,
-			List<NewSuperModel> listdata, List<ButtonModel> button) {
+			List<SuperModel> listdata, List<ButtonModel> button) {
 		TableTemplateVO tabletemplatevo =new TableTemplateVO();
 		//初始化表格头
 		String[] fields = getFiledsCodes(itemlist);
@@ -104,11 +104,11 @@ public class DataTableUtil {
 	 * @param refdata 表体数据 
 	 * @return 
 	 */
-	public static List<TableDataVO> initdate(List<UIItemTempletModel> itemlist, List<JsonData> head,List<NewSuperModel> refdata){
+	public static List<TableDataVO> initdate(List<UIItemTempletModel> itemlist, List<JsonData> head,List<SuperModel> refdata){
 		List<TableDataVO> refvaluelist = new ArrayList<TableDataVO>();
 		Map<String,UIItemTempletModel> map = createMap(itemlist);
 		for(int i =0;i<refdata.size();i++){
-			NewSuperModel supervo = (NewSuperModel) refdata.get(i);
+			SuperModel supervo = (SuperModel) refdata.get(i);
 			TableDataVO TableDataVO = initdata(map,supervo,head);
 			List<JsonData> bringlist = initBring(supervo);
 			TableDataVO.setBringlist(bringlist);
@@ -138,7 +138,7 @@ public class DataTableUtil {
 	 * @param supervo
 	 * @return
 	 */
-	private static List<JsonData> initBring(NewSuperModel supervo) {
+	private static List<JsonData> initBring(SuperModel supervo) {
 		List<JsonData> bring = new ArrayList<JsonData>();
 		JsonData j1 = new JsonData();
 		j1.setCode("target");
@@ -157,7 +157,7 @@ public class DataTableUtil {
 	 * @param refheadlist
 	 * @return
 	 */
-	private static TableDataVO initdata(Map<String,UIItemTempletModel> map , NewSuperModel supervo, List<JsonData> refheadlist) {
+	private static TableDataVO initdata(Map<String,UIItemTempletModel> map , SuperModel supervo, List<JsonData> refheadlist) {
 		TableDataVO fefDataVO = new TableDataVO();
 		List<String> datastr = new ArrayList<String>();
 		for(int i=0;i<refheadlist.size();i++){
@@ -179,7 +179,7 @@ public class DataTableUtil {
 	 * @param item
 	 * @return
 	 */
-	private static String createValue(NewSuperModel supervo, JsonData json,
+	private static String createValue(SuperModel supervo, JsonData json,
 			UIItemTempletModel item) {
 		if(item.getDatatype().equals(IDataType.SELECT)){
 			return createSelectValue(supervo, json,item);
@@ -197,7 +197,7 @@ public class DataTableUtil {
 	 * @param item
 	 * @return
 	 */
-	private static String createRefValue(NewSuperModel supervo, JsonData json,
+	private static String createRefValue(SuperModel supervo, JsonData json,
 			UIItemTempletModel item) {
 		Object obj = BeanHelper.getProperty(supervo, json.getCode());
 		//参照类型 通过该类型查找参照信息 需要指出数据库操作
@@ -208,8 +208,8 @@ public class DataTableUtil {
 			List<RefModel> reflist = (List<RefModel>)query.queryByClause(RefModel.class, RefModel.RefType+"='"+reftype+"'");
 			RefModel ref = reflist.get(0);
 			String modelclass = ref.getModelclass();
-			NewSuperModel model = (NewSuperModel) ClassUtil.initClass(modelclass);
-			NewSuperModel tarsupervo = (NewSuperModel)query.queryByPK(model.getClass(), obj.toString());
+			SuperModel model = (SuperModel) ClassUtil.initClass(modelclass);
+			SuperModel tarsupervo = (SuperModel)query.queryByPK(model.getClass(), obj.toString());
 			Object o = tarsupervo.getAttributeValue(ref.getShowfield());
 			if(o!=null){
 				return o.toString();
@@ -231,7 +231,7 @@ public class DataTableUtil {
 	 * @param item
 	 * @return
 	 */
-	private static String createSelectValue(NewSuperModel supervo, JsonData json,
+	private static String createSelectValue(SuperModel supervo, JsonData json,
 			UIItemTempletModel item) {
 		Object obj = BeanHelper.getProperty(supervo, json.getCode());
 		String itemvalue ="";

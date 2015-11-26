@@ -1,9 +1,9 @@
 package cheng.pipp.sys.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class ModuleModel  extends NewSuperModel {
+public class ModuleModel  extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 	private String pk_module ;

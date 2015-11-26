@@ -10,7 +10,7 @@ import cheng.pipp.ui.util.TreeDataUtil;
 import cheng.pipp.ui.util.TreeUtil;
 import cheng.pipp.ui.vo.TreeNodeVO;
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

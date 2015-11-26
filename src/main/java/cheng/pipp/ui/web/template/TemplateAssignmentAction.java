@@ -10,10 +10,10 @@ import cheng.pipp.ui.util.TreeUtil;
 import cheng.pipp.ui.vo.TreeNodeVO;
 import cheng.pipp.ui.vo.TreeVO;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.SuperModel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,20 +85,20 @@ public class TemplateAssignmentAction  extends BusinessCommonAction {
 		List<RoleModel> rlist = (List<RoleModel>)queryservice.queryByClause(RoleModel.class, " dr=0 ");
 		TreeVO tree = null;
 		if(paramvo.getTemplatetype().equals(Bill)){
-			Collection<NewSuperModel>  listu =  queryservice.queryByClause(TemplateNodeRoleModel.class, " pk_temple='"+paramvo.getPk_data()+"' and pk_node='"+paramvo.getPk_parent()+"' and dr=0 ");
-			tree = createTreeVO(rlist,listu.toArray(new NewSuperModel[0]),paramvo);
+			List<TemplateNodeRoleModel> listu =  queryservice.queryByClause(TemplateNodeRoleModel.class, " pk_temple='" + paramvo.getPk_data() + "' and pk_node='" + paramvo.getPk_parent() + "' and dr=0 ");
+			tree = createTreeVO(rlist,listu.toArray(new SuperModel[0]),paramvo);
 		}
 		if(paramvo.getTemplatetype().equals(Query)){
-			Collection<NewSuperModel>  listu =  queryservice.queryByClause(QueryTemplateNodeRoleModel.class, " pk_querytemplate='"+paramvo.getPk_data()+"' and pk_node='"+paramvo.getPk_parent()+"' and dr=0 ");
-			tree = createTreeVO(rlist,listu.toArray(new NewSuperModel[0]),paramvo);
+			List<QueryTemplateNodeRoleModel> listu =  queryservice.queryByClause(QueryTemplateNodeRoleModel.class, " pk_querytemplate='" + paramvo.getPk_data() + "' and pk_node='" + paramvo.getPk_parent() + "' and dr=0 ");
+			tree = createTreeVO(rlist,listu.toArray(new SuperModel[0]),paramvo);
 		}
 		if(paramvo.getTemplatetype().equals(Report)){
-			Collection<NewSuperModel>  listu =  queryservice.queryByClause(TemplateNodeRoleModel.class, " pk_temple='"+paramvo.getPk_data()+"' and pk_node='"+paramvo.getPk_parent()+"' and dr=0 ");
-			tree = createTreeVO(rlist,listu.toArray(new NewSuperModel[0]),paramvo);
+			List<TemplateNodeRoleModel> listu =  queryservice.queryByClause(TemplateNodeRoleModel.class, " pk_temple='" + paramvo.getPk_data() + "' and pk_node='" + paramvo.getPk_parent() + "' and dr=0 ");
+			tree = createTreeVO(rlist,listu.toArray(new SuperModel[0]),paramvo);
 		}
 		if(paramvo.getTemplatetype().equals(Button)){
-			Collection<NewSuperModel>  listu =  queryservice.queryByClause(ButtonNodeRoleModel.class, " pk_button='"+paramvo.getPk_data()+"' and pk_node='"+paramvo.getPk_parent()+"' and dr=0 ");
-			tree = createTreeVO(rlist,listu.toArray(new NewSuperModel[0]),paramvo);
+			List<ButtonNodeRoleModel> listu =  queryservice.queryByClause(ButtonNodeRoleModel.class, " pk_button='" + paramvo.getPk_data() + "' and pk_node='" + paramvo.getPk_parent() + "' and dr=0 ");
+			tree = createTreeVO(rlist,listu.toArray(new SuperModel[0]),paramvo);
 		}
 		TreeUtil.getIntance().createTreeNodeTemplate(getFile(request,filename),"accessassignment",tree,paramvo);
 		model.addAttribute("paramvo", paramvo);
@@ -107,9 +107,9 @@ public class TemplateAssignmentAction  extends BusinessCommonAction {
 		
 	}
 	private TreeVO createTreeVO(List<RoleModel> rlist,
-			NewSuperModel[] listu, TemplateParamVO paramvo) {
+			SuperModel[] listu, TemplateParamVO paramvo) {
 		TreeVO tree = new TreeVO();
-		List<TreeNodeVO>  nodelist = TreeDataUtil.getIntance().initTreeList(rlist.toArray(new NewSuperModel[0]), "pk_role", "pk_parent_role", "role_name",null,paramvo);
+		List<TreeNodeVO>  nodelist = TreeDataUtil.getIntance().initTreeList(rlist.toArray(new SuperModel[0]), "pk_role", "pk_parent_role", "role_name",null,paramvo);
 		initRoleTree(nodelist,listu);
 		tree.setNodelist(nodelist);
 		tree.setTreetype(TreeVO.Tree_Type_treeCheck);
@@ -120,7 +120,7 @@ public class TemplateAssignmentAction  extends BusinessCommonAction {
 	 * @param nodelist
 	 * @param listu
 	 */
-	private void initRoleTree(List<TreeNodeVO> nodelist, NewSuperModel[]  listu) {
+	private void initRoleTree(List<TreeNodeVO> nodelist, SuperModel[]  listu) {
 		 for(int i=0;i<nodelist.size();i++){
 			 TreeNodeVO vo = nodelist.get(i);
 			 setRole(vo,listu);
@@ -135,7 +135,7 @@ public class TemplateAssignmentAction  extends BusinessCommonAction {
 	 * @param vo 角色树的数据
 	 * @param listu 已经分配角色的模板信息
 	 */
-	private void setRole(TreeNodeVO vo, NewSuperModel[] listu) {
+	private void setRole(TreeNodeVO vo, SuperModel[] listu) {
 		 for(int j=0;j<listu.length;j++){
 			 if(vo.getValue().equals(listu[j].getAttributeValue("pk_role"))){
 				 vo.setIscheck(UFBoolean.TRUE);

@@ -1,10 +1,10 @@
 package cheng.pipp.sys.model;
 
 
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.SuperModel;
 
-public class DataDictModel extends NewSuperModel {
+public class DataDictModel extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 	private String pk_module ;

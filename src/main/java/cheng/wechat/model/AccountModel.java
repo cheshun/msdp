@@ -1,11 +1,11 @@
 package cheng.wechat.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 import javax.enterprise.inject.New;
 
-public class AccountModel extends NewSuperModel {
+public class AccountModel extends SuperModel {
 	/**
 	 * 自定义项1null
 	 */

@@ -1,5 +1,6 @@
 package cheng.pipp.ui.util;
 
+import arch.util.lang.BeanHelper;
 import arch.util.lang.PageVO;
 import cheng.pipp.basic.util.DataTableUtil;
 import cheng.pipp.basic.vo.JsonData;
@@ -7,8 +8,7 @@ import cheng.pipp.basic.vo.TableDataVO;
 import cheng.pipp.ui.model.ReportItemTemplateModel;
 import cheng.pipp.ui.vo.uitemplate.TableInfo;
 import cheng.pipp.ui.vo.uitemplate.TableTemplateVO;
-import com.application.module.jdbc.model.BeanHelper;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class ReportTableUtil {
 
 	public static TableTemplateVO initdata(
-			List<ReportItemTemplateModel> querylist, List<NewSuperModel> reportdata, PageVO pagevo) {
+			List<ReportItemTemplateModel> querylist, List<SuperModel> reportdata, PageVO pagevo) {
 		TableTemplateVO tabletemplatevo =new TableTemplateVO();
 		//初始化表格头
 		String[] fields = getFiledsCodes(querylist);
@@ -52,11 +52,11 @@ public class ReportTableUtil {
 	 * @param refdata 表体数据 
 	 * @return 
 	 */
-	public static List<TableDataVO> initdate(List<ReportItemTemplateModel> itemlist, List<JsonData> head,List<NewSuperModel> refdata){
+	public static List<TableDataVO> initdate(List<ReportItemTemplateModel> itemlist, List<JsonData> head,List<SuperModel> refdata){
 		List<TableDataVO> refvaluelist = new ArrayList<TableDataVO>();
 		Map<String,ReportItemTemplateModel> map = createMap(itemlist);
 		for(int i =0;i<refdata.size();i++){
-			NewSuperModel supervo = (NewSuperModel) refdata.get(i);
+			SuperModel supervo = (SuperModel) refdata.get(i);
 			TableDataVO TableDataVO = initdata(map,supervo,head);
 			refvaluelist.add(TableDataVO);
 		}
@@ -81,7 +81,7 @@ public class ReportTableUtil {
 	 * @param refheadlist
 	 * @return
 	 */
-	private static TableDataVO initdata(Map<String,ReportItemTemplateModel> map , NewSuperModel supervo, List<JsonData> refheadlist) {
+	private static TableDataVO initdata(Map<String,ReportItemTemplateModel> map , SuperModel supervo, List<JsonData> refheadlist) {
 		TableDataVO fefDataVO = new TableDataVO();
 		List<String> datastr = new ArrayList<String>();
 		for(int i=0;i<refheadlist.size();i++){
@@ -100,7 +100,7 @@ public class ReportTableUtil {
 	 * @param item
 	 * @return
 	 */
-	private static String createValue(NewSuperModel supervo, JsonData json,
+	private static String createValue(SuperModel supervo, JsonData json,
 			ReportItemTemplateModel item) {
 		return createValue(item, BeanHelper.getProperty(supervo, json.getCode())) ;
 	}

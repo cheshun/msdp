@@ -1,7 +1,7 @@
 package cheng.pipp.access.service;
 
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.itf.IService;
 
 public interface IAccessAssignment extends IService {

@@ -3,9 +3,9 @@ package cheng.pipp.basic.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.application.common.exception.BusinessException;
+import arch.util.lang.UFBoolean;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.lang.UFBoolean;
 import org.springframework.stereotype.Component;
 
 import cheng.pipp.basic.model.RefModel;
@@ -56,7 +56,7 @@ public class RefService implements IRefService {
 		refmodel.setDatatablename(datadict.getDatatablecode());
 		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
 		refmodel.setReftype(module.getModule_code()+"_"+datadict.getDatatablecode()+"_ref");
-		List<RefModel>  tdata = (ArrayList)dataBaseService.queryByClause(RefModel.class, "reftype='" + module.getModule_code() + "_" + datadict.getDatatablecode() + "_ref" + "'");
+		List<RefModel>  tdata =dataBaseService.queryByClause(RefModel.class, "reftype='" + module.getModule_code() + "_" + datadict.getDatatablecode() + "_ref" + "'");
 		if(tdata==null || tdata.size()==0 ){
 			dataBaseService.insertVO(refmodel);
 			return refmodel.getReftype();

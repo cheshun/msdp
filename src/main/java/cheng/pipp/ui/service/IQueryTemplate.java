@@ -3,7 +3,7 @@ package cheng.pipp.ui.service;
 import cheng.pipp.ui.model.QueryConditionTemplateModel;
 import cheng.pipp.ui.model.QueryTemplateModel;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.itf.IService;
 
 import java.util.List;

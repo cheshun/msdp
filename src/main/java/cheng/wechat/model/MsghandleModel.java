@@ -1,8 +1,9 @@
 package cheng.wechat.model;
 
-import com.application.module.jdbc.model.NewSuperModel;
 
-public class MsghandleModel extends NewSuperModel {
+import arch.util.lang.SuperModel;
+
+public class MsghandleModel extends SuperModel {
 /**
  *tsnull
  */

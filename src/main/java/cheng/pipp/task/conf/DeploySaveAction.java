@@ -2,15 +2,15 @@ package cheng.pipp.task.conf;
 
 import cheng.pipp.ui.itf.IButtonAction;
 import cheng.pipp.ui.vo.param.SaveActionParamVO;
-import com.application.common.exception.BusinessException;
-import com.application.module.jdbc.model.NewSuperModel;
+import com.application.exception.BusinessException;
+import arch.util.lang.SuperModel;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class DeploySaveAction implements IButtonAction {
 
 	
-	public NewSuperModel beforeSaveAction(NewSuperModel supervo, SaveActionParamVO paramvo,
+	public SuperModel beforeSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request)
 			throws BusinessException {
 		
@@ -18,7 +18,7 @@ public class DeploySaveAction implements IButtonAction {
 	}
 
 	
-	public NewSuperModel afterSaveAction(NewSuperModel supervo, SaveActionParamVO paramvo,
+	public SuperModel afterSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request)
 			throws BusinessException {
 		return supervo;

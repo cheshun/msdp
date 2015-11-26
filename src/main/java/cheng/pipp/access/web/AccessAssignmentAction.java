@@ -1,5 +1,7 @@
 package cheng.pipp.access.web;
 
+import arch.util.lang.SuperModel;
+import arch.util.lang.UFBoolean;
 import cheng.pipp.access.model.RoleModel;
 import cheng.pipp.access.model.RoleNodeModel;
 import cheng.pipp.access.model.UserRoleModel;
@@ -13,10 +15,8 @@ import cheng.pipp.ui.vo.TreeNodeVO;
 import cheng.pipp.ui.vo.TreeVO;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 import com.application.common.context.ApplicationServiceLocator;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,11 +36,11 @@ public class AccessAssignmentAction  extends BusinessCommonAction {
 		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
 			
 		String filename="/management/_dev/authenticate/accessassignment_"+paramvo.getPk_data() ;
-		List<RoleModel> rlist = (List<RoleModel>)queryservice.queryByClause(RoleModel.class, " dr=0 ");
+		List<RoleModel> rlist = queryservice.queryByClause(RoleModel.class, " dr=0 ");
 		List<UserRoleModel> listu = (List<UserRoleModel>)queryservice.queryByClause(UserRoleModel.class, " pk_user='"+paramvo.getPk_data()+"' and dr=0 ");
 		
 		//构造树
-		List<TreeNodeVO>  nodelist = TreeDataUtil.getIntance().initTreeList(rlist.toArray(new NewSuperModel[0]), "pk_role", "pk_parent_role", "role_name",null,paramvo);
+		List<TreeNodeVO>  nodelist = TreeDataUtil.getIntance().initTreeList(rlist.toArray(new SuperModel[0]), "pk_role", "pk_parent_role", "role_name",null,paramvo);
 		TreeVO tree = new TreeVO();
 		tree.setNodelist(nodelist);
 		tree.setTreetype(TreeVO.Tree_Type_treeCheck);
@@ -104,7 +104,7 @@ public class AccessAssignmentAction  extends BusinessCommonAction {
 		List<RoleNodeModel> listu = (List<RoleNodeModel>)queryservice.queryByClause(RoleNodeModel.class, " pk_role='"+paramvo.getPk_data()+"' and dr=0 ");
 		
 		//构造树
-		List<TreeNodeVO>  nodelist = TreeDataUtil.getIntance().initTreeList(rlist.toArray(new NewSuperModel[0]), "pk_node", "pk_parent_node", "fun_name",null,paramvo);
+		List<TreeNodeVO>  nodelist = TreeDataUtil.getIntance().initTreeList(rlist.toArray(new SuperModel[0]), "pk_node", "pk_parent_node", "fun_name",null,paramvo);
 		TreeVO tree = new TreeVO();
 		tree.setNodelist(nodelist);
 		tree.setTreetype(TreeVO.Tree_Type_treeCheck);

@@ -1,8 +1,8 @@
 package cheng.channel.vo;
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class RechareInfoVO extends NewSuperModel {
+public class RechareInfoVO extends SuperModel {
 	private int index ;
 	private String username ;
 	private String recharemoney ;

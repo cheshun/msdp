@@ -6,7 +6,7 @@ import cheng.pipp.sys.model.DataDictItemModel;
 import cheng.pipp.sys.model.DataDictModel;
 import cheng.pipp.sys.model.ModuleModel;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.lang.UFBoolean;
+import arch.util.lang.UFBoolean;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package cheng.pipp.framework.context;
 
 import cheng.pipp.sys.model.CacheTableModel;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 
 import java.util.List;

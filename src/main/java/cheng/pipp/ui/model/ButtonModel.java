@@ -1,9 +1,9 @@
 package cheng.pipp.ui.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class ButtonModel extends NewSuperModel {
+public class ButtonModel extends SuperModel {
 	
 	public static final String BUTTON_TYPE_BUSI_Y = "Y" ;
 	public static final String BUTTON_TYPE_BUSI_N = "N" ;

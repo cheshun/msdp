@@ -1,7 +1,8 @@
 package cheng.wechat.model;
-import com.application.module.jdbc.model.NewSuperModel;
 
-public class EventhandleModel extends NewSuperModel {
+import arch.util.lang.SuperModel;
+
+public class EventhandleModel extends SuperModel {
 /**
  *tsnull
  */

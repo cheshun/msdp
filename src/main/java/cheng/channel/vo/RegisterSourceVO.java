@@ -1,9 +1,9 @@
 package cheng.channel.vo;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class RegisterSourceVO extends NewSuperModel {
+public class RegisterSourceVO extends SuperModel {
 
 	/**
 	 * 

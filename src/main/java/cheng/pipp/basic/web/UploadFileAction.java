@@ -1,7 +1,7 @@
 package cheng.pipp.basic.web;
 
 import cheng.pipp.framework.web.BusinessCommonAction;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

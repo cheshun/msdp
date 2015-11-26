@@ -6,9 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.application.common.exception.BusinessException;
+import arch.util.lang.SuperModel;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -62,7 +62,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 			for(int j=0;j<listuserrole.size();j++){
 				listuserrole.get(j).setDr(1);
 			}
-			dataBaseService.updateVOArray(listuserrole.toArray(new NewSuperModel[0]),new String[]{"dr"} );
+			dataBaseService.updateVOArray(listuserrole.toArray(new SuperModel[0]),new String[]{"dr"} );
 			return true;
 		}
 		UserModel user = (UserModel) dataBaseService.queryByPK(UserModel.class, pk_user);
@@ -101,7 +101,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 			dataBaseService.insertVOList(insert);
 		}
 		if(update.size()>0){
-			dataBaseService.updateVOArray(update.toArray(new NewSuperModel[0]),new String[]{"dr"} );
+			dataBaseService.updateVOArray(update.toArray(new SuperModel[0]),new String[]{"dr"} );
 		}
 		
 		return true;
@@ -188,7 +188,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 				for(int j=0;j<listrolenode.size();j++){
 					listrolenode.get(j).setDr(1);
 				}
-				dataBaseService.updateVOArray(listrolenode.toArray(new NewSuperModel[0]),new String[]{"dr"} );
+				dataBaseService.updateVOArray(listrolenode.toArray(new SuperModel[0]),new String[]{"dr"} );
 				return true;
 		}else{
 			for(int j=0;j<pk_nodes.length;j++){
@@ -200,7 +200,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 			dataBaseService.insertVOList(insert);
 		}
 		if(update.size()>0){
-			dataBaseService.updateVOArray(update.toArray(new NewSuperModel[0]),new String[]{"dr","ts"} );
+			dataBaseService.updateVOArray(update.toArray(new SuperModel[0]),new String[]{"dr","ts"} );
 		}
 		 
 		return false;
@@ -274,7 +274,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 				for(int j=0;j<list.size();j++){
 					list.get(j).setDr(1);
 				}
-				dataBaseService.updateVOArray(list.toArray(new NewSuperModel[0]),new String[]{"dr"} );
+				dataBaseService.updateVOArray(list.toArray(new SuperModel[0]),new String[]{"dr"} );
 				return true;
 		}else{
 			for(int j=0;j<pk_role.length;j++){

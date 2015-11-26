@@ -17,9 +17,9 @@ import cheng.pipp.ui.vo.param.TemplateParamVO;
 import cheng.pipp.ui.vo.querytemplate.QueryParamVO;
 import cheng.pipp.ui.vo.uitemplate.TableTemplateVO;
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,7 +59,7 @@ public class ReportController extends BusinessCommonAction {
 		if(!(StringUtils.isBlank(newcondition) && StringUtils.isNotBlank(pagevo.getCondition()))){
 			pagevo.setCondition(newcondition);
 		}
-		List<NewSuperModel> reportdata = contr.getReportData(queryparam,pagevo);
+		List<SuperModel> reportdata = contr.getReportData(queryparam,pagevo);
 		
 		tabletemplatevo = ReportTableUtil.initdata(querylist,reportdata,pagevo);
 		

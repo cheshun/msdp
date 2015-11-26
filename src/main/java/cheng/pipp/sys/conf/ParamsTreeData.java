@@ -5,9 +5,9 @@ import java.util.Collection;
 import cheng.pipp.framework.context.ApplicationContextHelper;
 import cheng.pipp.sys.model.ModuleModel;
 import cheng.pipp.ui.itf.IVOTreeDataByID;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 public class ParamsTreeData  implements IVOTreeDataByID{
 
@@ -23,11 +23,11 @@ public class ParamsTreeData  implements IVOTreeDataByID{
 	}
 
 	
-	public NewSuperModel[] getTreeVO(   ) throws BusinessException {
+	public SuperModel[] getTreeVO(   ) throws BusinessException {
 		try {
 			IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
 			Collection list = queryservice.queryByClause(ModuleModel.class, " dr=0 ");
-			return (NewSuperModel[]) list.toArray(new NewSuperModel[0]);
+			return (SuperModel[]) list.toArray(new SuperModel[0]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

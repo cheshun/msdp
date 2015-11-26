@@ -1,8 +1,8 @@
 package cheng.wechat.model;
-import com.application.module.jdbc.lang.UFDate;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
+import arch.util.lang.UFDate;
 
-public class UserbehaviorModel extends NewSuperModel {
+public class UserbehaviorModel extends SuperModel {
 /**
  *tsnull
  */

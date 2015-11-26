@@ -1,9 +1,9 @@
 package cheng.pipp.ui.model;
 
 
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
-public class QueryTemplateModel  extends NewSuperModel {
+public class QueryTemplateModel  extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 	private String pk_querytemplate;

@@ -1,9 +1,9 @@
 package cheng.wechat.model;
 
-import com.application.module.jdbc.lang.UFDateTime;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
+import arch.util.lang.UFDateTime;
 
-public class UserModel extends NewSuperModel {
+public class UserModel extends SuperModel {
 	/**
 	 * 自定义项1null
 	 */

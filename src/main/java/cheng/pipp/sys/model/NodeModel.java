@@ -1,12 +1,12 @@
 package cheng.pipp.sys.model;
 
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.SuperModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeModel  extends NewSuperModel {
+public class NodeModel  extends SuperModel {
 
 	public static final String NodeType_Node ="node" ;
 	public static final String NodeType_Report ="report" ;

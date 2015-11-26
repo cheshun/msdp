@@ -13,14 +13,14 @@ import cheng.pipp.sys.util.TableUtil;
 import cheng.pipp.ui.itf.IButtonAction;
 import cheng.pipp.ui.vo.param.AddActionParamVO;
 import cheng.pipp.ui.vo.param.SaveActionParamVO;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 
 public class DataDictSaveAction implements IButtonAction{
 
 	
-	public NewSuperModel beforeSaveAction(NewSuperModel supervo, SaveActionParamVO paramvo,
+	public SuperModel beforeSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request)  throws BusinessException{
 		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
 		DataDictModel datadict = (DataDictModel)supervo;
@@ -33,7 +33,7 @@ public class DataDictSaveAction implements IButtonAction{
 	}
 
 	
-	public NewSuperModel afterSaveAction(NewSuperModel supervo, SaveActionParamVO paramvo,
+	public SuperModel afterSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request) throws BusinessException {
 		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
 		

@@ -1,5 +1,6 @@
 package cheng.pipp.ui.util;
 
+import arch.util.lang.BeanHelper;
 import arch.util.lang.ClassUtil;
 import arch.util.lang.SuperModel;
 import cheng.lib.lang.IDataType;
@@ -7,18 +8,16 @@ import cheng.pipp.basic.model.RefModel;
 import cheng.pipp.framework.context.ApplicationContextHelper;
 import cheng.pipp.ui.model.UIItemTempletModel;
 import cheng.pipp.ui.vo.ComboxData;
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.BeanHelper;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CardTemplateUtil {
 
-	public static List<UIItemTempletModel> initCardUI(String actiontype, NewSuperModel supervo, List<UIItemTempletModel> itemlist){
+	public static List<UIItemTempletModel> initCardUI(String actiontype, SuperModel supervo, List<UIItemTempletModel> itemlist){
 		//初始化下拉
 		initCombox(itemlist);
 		//设置卡片界面数据
@@ -38,7 +37,7 @@ public class CardTemplateUtil {
 
 	}
 
-	private static List<UIItemTempletModel> initCardDefaultvalue(NewSuperModel supervo,
+	private static List<UIItemTempletModel> initCardDefaultvalue(SuperModel supervo,
 			List<UIItemTempletModel> itemlist) {
 		//反射得到字段和值得map
 		//匹配相应的字段
@@ -71,8 +70,8 @@ public class CardTemplateUtil {
 			List<RefModel> reflist = (List<RefModel>)queryBS.queryByClause(RefModel.class, RefModel.RefType+"='"+reftype+"'");
 			RefModel ref = reflist.get(0);
 			String modelclass = ref.getModelclass();
-			NewSuperModel model =(NewSuperModel) ClassUtil.initClass(modelclass);
-			NewSuperModel tarsupervo = (NewSuperModel)queryBS.queryByPK(model.getClass(), oStrArr);
+			SuperModel model =(SuperModel) ClassUtil.initClass(modelclass);
+			SuperModel tarsupervo = (SuperModel)queryBS.queryByPK(model.getClass(), oStrArr);
 			Object o = tarsupervo.getAttributeValue(ref.getShowfield());
 			if(o!=null){
 				List<ComboxData> temp = new ArrayList<ComboxData>(1);

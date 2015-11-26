@@ -1,7 +1,9 @@
 package cheng.pipp.ui.vo;
 
 
-import com.application.module.jdbc.lang.UFBoolean;
+import arch.util.lang.SuperModel;
+import arch.util.lang.UFBoolean;
+import cheng.pipp.sys.util.SuperVOUtil;
 import com.application.module.jdbc.vo.CircularlyAccessibleValueObject;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class TreeNodeVO {
 	private UFBoolean ischeck ;
 	private UFBoolean isicon ;
 	
-	private CircularlyAccessibleValueObject TreeData ;
+	private SuperModel TreeData ;
 	
 	private List<TreeNodeVO> children  =new ArrayList<TreeNodeVO>();
 	
@@ -46,10 +48,10 @@ public class TreeNodeVO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public CircularlyAccessibleValueObject getTreeData() {
+	public SuperModel getTreeData() {
 		return TreeData;
 	}
-	public void setTreeData(CircularlyAccessibleValueObject treeData) {
+	public void setTreeData(SuperModel treeData) {
 		TreeData = treeData;
 	}
 	public Object getShowvalue() {

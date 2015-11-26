@@ -1,8 +1,8 @@
 package cheng.pipp.ui.model;
 
 import cheng.pipp.ui.vo.ComboxData;
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.SuperModel;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @author cheng
  *
  */
-public class UIItemTempletModel  extends NewSuperModel {
+public class UIItemTempletModel  extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 

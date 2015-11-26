@@ -1,11 +1,11 @@
 package cheng.pipp.task.model;
 
 
-import com.application.module.jdbc.lang.UFBoolean;
-import com.application.module.jdbc.lang.UFDateTime;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.UFBoolean;
+import arch.util.lang.UFDateTime;
+import arch.util.lang.SuperModel;
 
-public class TaskLogModel extends NewSuperModel {
+public class TaskLogModel extends SuperModel {
 
 	private static final long serialVersionUID = 1L;
 	private String pk_task_tasklog ;

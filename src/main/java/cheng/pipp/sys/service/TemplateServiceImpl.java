@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.module.jdbc.lang.UFBoolean;
+import arch.util.lang.UFBoolean;
 import org.springframework.stereotype.Component;
 
 import cheng.pipp.sys.itf.ISysTemplateService;

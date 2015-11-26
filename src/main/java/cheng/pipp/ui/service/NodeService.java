@@ -3,7 +3,7 @@ package cheng.pipp.ui.service;
 import cheng.pipp.framework.context.ApplicationContextHelper;
 import cheng.pipp.sys.model.NodeModel;
 
-import com.application.common.exception.BusinessException;
+import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import com.application.module.jdbc.processor.BeanListProcessor;
 import org.springframework.stereotype.Component;

@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 import arch.util.lang.BeanUtil;
 import arch.util.lang.PageVO;
 import com.application.common.context.ApplicationServiceLocator;
-import com.application.module.jdbc.model.NewSuperModel;
+import arch.util.lang.SuperModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,8 +24,8 @@ public class UserReportConf extends AbstractReportConf  {
 
 
 
-	public List<NewSuperModel> getData(String[] sql, PageVO pagevo,
-			List<NewSuperModel> userlist) {
+	public List<SuperModel> getData(String[] sql, PageVO pagevo,
+			List<SuperModel> userlist) {
 		DataSource querydataSource =  ApplicationContextHelper.getDataSource("querydataSource");
 		Connection conn =null;
 		try {
