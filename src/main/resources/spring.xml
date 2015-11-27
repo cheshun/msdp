@@ -43,19 +43,5 @@
 	</aop:aspect>
 	</aop:config> -->
 	
-	<bean id="messageAdapter"
-	class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-	<property name="messageConverters">
-		<list>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
-			<!-- bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/> 
-				<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/> 
-				<bean class="org.springframework.http.converter.FormHttpMessageConverter"/ -->
-			<!-- Below the offending resource causing error while initializing spring 
-				context -->
-			<bean
-				class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
-		</list>
-	</property>
-</bean>
+
 </beans>  
