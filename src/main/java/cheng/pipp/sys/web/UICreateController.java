@@ -16,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.sys.itf.ISysTemplateService;
 import cheng.pipp.sys.itf.ITableService;
@@ -50,7 +50,7 @@ public class UICreateController  extends BusinessCommonAction {
 	 */
 	@RequestMapping(value="ui/compselect")
 	public String compselect(HttpServletRequest request, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		//数据表主键
 		String pk_datadict = paramvo.getPk_data();
 		DataDictModel datadictModel = (DataDictModel)queryservice.queryByPK(DataDictModel.class, pk_datadict);
@@ -101,7 +101,7 @@ public class UICreateController  extends BusinessCommonAction {
 			}
 		}
 		if("Y".equals(obj.get("isref"))){
-			IRefService ref = (IRefService)ApplicationContextHelper.getService(IRefService.class);
+			IRefService ref = (IRefService)ApplicationServiceLocator.getService(IRefService.class);
 			ref.createRef(modules, datadict, list);
 		}
 		if("Y".equals(obj.get("iscache"))){

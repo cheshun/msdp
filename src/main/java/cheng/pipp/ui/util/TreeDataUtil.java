@@ -11,7 +11,7 @@ import arch.util.lang.UFBoolean;
 import arch.util.lang.SuperModel;
 import org.apache.commons.lang3.StringUtils;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.vo.TreeNodeVO;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
@@ -99,7 +99,7 @@ public class TreeDataUtil {
 	
 	
 	private List<NodeModel> getChildnodes(String pk_node) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		List<NodeModel> chilren = (List<NodeModel>) queryservice.queryByClause(NodeModel.class, " pk_parent_node ='"+pk_node+"' ");
 		if(chilren!=null && !chilren.isEmpty()){
 			for(int i =0;i<chilren.size();i++){

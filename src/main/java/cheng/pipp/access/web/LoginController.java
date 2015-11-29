@@ -3,7 +3,7 @@ package cheng.pipp.access.web;
 
 import cheng.pipp.access.model.UserModel;
 import cheng.pipp.framework.config.MsdpUserSessionVO;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.context.ClientThreadData;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import com.application.common.util.HttpRequestUtil;
@@ -28,7 +28,7 @@ public class LoginController extends BusinessCommonAction {
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,HttpServletResponse response,Model model) throws BusinessException {
 		
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String action = getAction("page", request);
 		if("page".equals(action)){

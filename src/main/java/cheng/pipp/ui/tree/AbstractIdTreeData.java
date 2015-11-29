@@ -1,6 +1,6 @@
 package cheng.pipp.ui.tree;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.ui.itf.IVOTreeDataByID;
 import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
@@ -20,7 +20,7 @@ public abstract class AbstractIdTreeData implements IVOTreeDataByID {
         return null ;
     }
     public SuperModel[]  getTreeVO() throws BusinessException {
-        IDataBaseService queryservice =  ApplicationContextHelper.getService(IDataBaseService.class);
+        IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
         List<SuperModel> list = (List<SuperModel>) queryservice.queryByClause(getTreeModel(),getCondition());
         return list.toArray(new SuperModel[0]);
     }

@@ -7,7 +7,7 @@ import cheng.lib.lang.IDataType;
 import cheng.pipp.basic.model.RefModel;
 import cheng.pipp.basic.vo.JsonData;
 import cheng.pipp.basic.vo.TableDataVO;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.ui.model.ButtonModel;
 import cheng.pipp.ui.model.UIItemTempletModel;
 import cheng.pipp.ui.vo.ComboxData;
@@ -201,7 +201,7 @@ public class DataTableUtil {
 			UIItemTempletModel item) {
 		Object obj = BeanHelper.getProperty(supervo, json.getCode());
 		//参照类型 通过该类型查找参照信息 需要指出数据库操作
-		IDataBaseService query = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService query = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		JdbcPersistenceManager b = new JdbcPersistenceManager();
 		String reftype = item.getReftype();
 		try {

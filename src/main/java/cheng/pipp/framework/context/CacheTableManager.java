@@ -1,6 +1,7 @@
 package cheng.pipp.framework.context;
 
 import cheng.pipp.sys.model.CacheTableModel;
+import com.application.common.context.ApplicationServiceLocator;
 import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 
@@ -21,7 +22,7 @@ public class CacheTableManager {
 	}
 
 	private void init() throws BusinessException{
-		IDataBaseService query = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService query = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
 		List<CacheTableModel> cachedata = (List<CacheTableModel>)query.queryByClause(CacheTableModel.class, CacheTableModel.IsCache+"='Y' and dr=0 ");
 		//
 		if(cachedata==null || cachedata.size()==0){

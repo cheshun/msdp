@@ -1,7 +1,7 @@
 package cheng.pipp.sys.conf;
 
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.itf.IButtonAction;
 import cheng.pipp.ui.vo.param.SaveActionParamVO;
@@ -17,7 +17,7 @@ public class NodeSaveAction implements IButtonAction {
 	
 	public SuperModel beforeSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService) ApplicationContextHelper.getService(IDataBaseService.class);
+		 IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		NodeModel node = (NodeModel)supervo;
 		if(StringUtils.isNotEmpty(node.getPk_parent_node())){

@@ -5,7 +5,7 @@ import arch.util.lang.ClassUtil;
 import arch.util.lang.SuperModel;
 import cheng.lib.lang.IDataType;
 import cheng.pipp.basic.model.RefModel;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.ui.model.UIItemTempletModel;
 import cheng.pipp.ui.vo.ComboxData;
 import com.application.exception.BusinessException;
@@ -64,7 +64,7 @@ public class CardTemplateUtil {
 	 * @param oStrArr
 	 */
 	private static void setRefValue(UIItemTempletModel item, String oStrArr) {
-		IDataBaseService queryBS = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryBS = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		String reftype = item.getReftype();
 		try {
 			List<RefModel> reflist = (List<RefModel>)queryBS.queryByClause(RefModel.class, RefModel.RefType+"='"+reftype+"'");

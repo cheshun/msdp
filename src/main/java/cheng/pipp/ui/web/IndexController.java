@@ -2,7 +2,7 @@ package cheng.pipp.ui.web;
 
 
 import cheng.pipp.access.model.UserModel;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.service.INodeService;
@@ -32,7 +32,7 @@ public class IndexController extends BusinessCommonAction {
 	
 	@RequestMapping("/management")
 	public String index(HttpServletRequest request,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		//通过用户的id或者用户的角色 得到 用户的所有节点 
 		UserModel user= getUserinfo(request);
@@ -42,7 +42,7 @@ public class IndexController extends BusinessCommonAction {
 		if("00000000000000000000".equals(user.getPk_role())){
 			listnode = (List<NodeModel>) queryservice.queryByClause(NodeModel.class, " dr=0 and fun_type!='tab' ");// and fun_type='node'
 		}else{
-			INodeService inodeservice =(INodeService)ApplicationContextHelper.getService(INodeService.class);
+			INodeService inodeservice =(INodeService)ApplicationServiceLocator.getService(INodeService.class);
 			listnode = inodeservice.getNodesByRole(user.getPk_role());
 		}
 		List<TreeNodeVO> node = TreeDataUtil.getIntance().initMenuTree(listnode.toArray(new NodeModel[0]), "pk_node", "pk_parent_node", "fun_name");

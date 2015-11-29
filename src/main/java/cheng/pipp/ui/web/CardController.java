@@ -1,7 +1,7 @@
 package cheng.pipp.ui.web;
 
 import arch.util.lang.ClassUtil;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.model.ButtonModel;
@@ -32,7 +32,7 @@ public class CardController extends BusinessCommonAction {
 		paramvo.setActiontype(AddActionParamVO.actiontype_add);
 		//获取节点pk  得到模板 
 		//获取按钮pk  得到actionurl
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = paramvo.getTemplateid();
 		String pk_role = getUserinfo(request).getPk_role();
@@ -43,8 +43,8 @@ public class CardController extends BusinessCommonAction {
 		/**
 		 * 得到节点的默认模板 如果该用户该节点已经分配了模板则用分配的 否则用默认的
 		 */
-		ITemplateService itemplateService =(ITemplateService)ApplicationContextHelper.getService(ITemplateService.class);
-		IButtonService ibuttonService =(IButtonService)ApplicationContextHelper.getService(IButtonService.class);
+		ITemplateService itemplateService =(ITemplateService)ApplicationServiceLocator.getService(ITemplateService.class);
+		IButtonService ibuttonService =(IButtonService)ApplicationServiceLocator.getService(IButtonService.class);
 		
 		List<UIItemTempletModel> itemlist = itemplateService.getUserCardTemplet(null,pk_role, pk_node,null);
 		List<ButtonModel> buttons = ibuttonService.getTempletButton(pk_role, pk_node);
@@ -65,15 +65,15 @@ public class CardController extends BusinessCommonAction {
 	public String edit(HttpServletRequest request, EditActionParamVO paramvo ,Model model) throws BusinessException {
 		paramvo.setActiontype(EditActionParamVO.actiontype_edit);
 		
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = paramvo.getTemplateid();
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
 		SuperModel supervo =(SuperModel)  ClassUtil.initClass(node.getModelclass());
 		supervo = (SuperModel)queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
 		//通过节点id 用户id或者角色 得到用户的模板
-		ITemplateService itemplateService =(ITemplateService)ApplicationContextHelper.getService(ITemplateService.class);
-		IButtonService ibuttonService =(IButtonService)ApplicationContextHelper.getService(IButtonService.class);
+		ITemplateService itemplateService =(ITemplateService)ApplicationServiceLocator.getService(ITemplateService.class);
+		IButtonService ibuttonService =(IButtonService)ApplicationServiceLocator.getService(IButtonService.class);
 		
 		String pk_role = getUserinfo(request).getPk_role();
 		List<UIItemTempletModel> itemlist = itemplateService.getUserCardTemplet(null,pk_role, pk_node,null);
@@ -91,9 +91,9 @@ public class CardController extends BusinessCommonAction {
 	}
 	@RequestMapping("/management/ui/card/detail")
 	public String detail(HttpServletRequest request, EditActionParamVO paramvo ,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
-		ITemplateService itemplateService =(ITemplateService)ApplicationContextHelper.getService(ITemplateService.class);
-		IButtonService ibuttonService =(IButtonService)ApplicationContextHelper.getService(IButtonService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		ITemplateService itemplateService =(ITemplateService)ApplicationServiceLocator.getService(ITemplateService.class);
+		IButtonService ibuttonService =(IButtonService)ApplicationServiceLocator.getService(IButtonService.class);
 		
 		String pk_node = paramvo.getTemplateid();
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);

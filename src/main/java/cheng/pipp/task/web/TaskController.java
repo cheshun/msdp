@@ -2,7 +2,7 @@ package cheng.pipp.task.web;
 
 import arch.util.lang.PageVO;
 import arch.util.lang.TimeToolkit;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.task.model.TaskPluginVO;
 import cheng.pipp.task.model.TaskdeployVO;
@@ -41,7 +41,7 @@ public class TaskController extends BusinessCommonAction {
 	 */
 	@RequestMapping("list")
 	public String list(HttpServletRequest request, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		//////////////////////////////////////////
 		PageVO pagevo = new PageVO();
@@ -72,7 +72,7 @@ public class TaskController extends BusinessCommonAction {
 	}
 	@RequestMapping("listdetail")
 	public String listadd(String action,String pk,Model model) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		if("add".equals(action)){
 			return "/management/task/list_add";
@@ -89,7 +89,7 @@ public class TaskController extends BusinessCommonAction {
 	}
 	@RequestMapping("list/save")
 	public ModelAndView listsave(String action,TaskPluginVO vo,Model model) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		vo.setDr(0);
 		vo.setTs(TimeToolkit.getCurrentTs());
 		if(StringUtils.isEmpty(vo.getPrimaryKey())){
@@ -102,7 +102,7 @@ public class TaskController extends BusinessCommonAction {
 	
 	@RequestMapping("deploy")
 	public String deploy(  Model model) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<TaskdeployVO> tasklist = (List<TaskdeployVO>) dataBaseService.queryByClause(TaskdeployVO.class, " dr=0 ");
 		model.addAttribute("data", tasklist);
@@ -111,7 +111,7 @@ public class TaskController extends BusinessCommonAction {
 	
 	@RequestMapping("deploy/detail")
 	public String detail(String action,String pk,Model model) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		if("add".equals(action)){
 			model.addAttribute("action", "add");
@@ -130,7 +130,7 @@ public class TaskController extends BusinessCommonAction {
 	
 	@RequestMapping("deploy/save")
 	public ModelAndView deploysave(String action,String pk_taskplugin,TaskdeployVO vo,Model model) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		vo.setDr(0);
 		vo.setTs(TimeToolkit.getCurrentTs());

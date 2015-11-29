@@ -1,6 +1,6 @@
 package cheng.pipp.sys.conf;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.ModuleModel;
 import cheng.pipp.ui.itf.IVOTreeDataByID;
 import com.application.exception.BusinessException;
@@ -25,7 +25,7 @@ public class DataDicTreeData  implements IVOTreeDataByID {
 	
 	public SuperModel[] getTreeVO(   ) throws BusinessException {
 		try {
-			IDataBaseService queryservice = (IDataBaseService) ApplicationContextHelper.getService(IDataBaseService.class);
+			IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
 			Collection list = queryservice.queryByClause(ModuleModel.class, " dr=0 ");
 			return (SuperModel[]) list.toArray(new SuperModel[0]);
 		} catch (Exception e) {

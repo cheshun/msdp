@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import cheng.pipp.basic.util.DataTableUtil;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.itf.IButtonAction;
@@ -108,7 +108,7 @@ public class SingletableController extends BusinessCommonAction {
 
 	private String getCondition(TemplateParamVO paramvo, SuperModel supervo,
 			HttpServletRequest request) throws BusinessException {
-		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationContextHelper.getService(IQueryTemplate.class);
+		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationServiceLocator.getService(IQueryTemplate.class);
 		
 		String condition = null ;
 		if(StringUtils.isEmpty(paramvo.getActiontype())){
@@ -136,7 +136,7 @@ public class SingletableController extends BusinessCommonAction {
 	
 	@RequestMapping("/management/ui/singletable/delete")
 	public ModelAndView delete(HttpServletRequest request, DeleteActionParamVO paramvo ,Model model) throws BusinessException {
-		IDataBaseService queryservice =(IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice =(IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = paramvo.getTemplateid();
 		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
@@ -150,7 +150,7 @@ public class SingletableController extends BusinessCommonAction {
 
 	@RequestMapping("/management/ui/singletable/save")
 	public ModelAndView save(SaveActionParamVO paramvo ,HttpServletRequest request,Model model) throws BusinessException {
-		IDataBaseService queryservice =(IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice =(IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = paramvo.getTemplateid().split(",")[0];
 		paramvo.setTemplateid(pk_node);
@@ -188,7 +188,7 @@ public class SingletableController extends BusinessCommonAction {
 	
 	@RequestMapping("/management/ui/singletable/search")
 	public String search(HttpServletRequest request, SearchActionParamVO paramvo ,Model model) throws BusinessException {
-		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationContextHelper.getService(IQueryTemplate.class);
+		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationServiceLocator.getService(IQueryTemplate.class);
 		
 		String pk_role = getUserinfo(request).getPk_role();
 		String pk_node = paramvo.getTemplateid();

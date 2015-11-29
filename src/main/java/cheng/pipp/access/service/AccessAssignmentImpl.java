@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import cheng.pipp.access.model.RoleNodeModel;
 import cheng.pipp.access.model.UserModel;
 import cheng.pipp.access.model.UserRoleModel;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.ui.model.TemplateNodeRoleModel;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,7 +51,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 	
 	private boolean doassignRole(String[] pk_roles, String pk_user) throws BusinessException{
 		//如果是分配一个角色,且该用户还没有默认角色 则设置该角色为用户的默认角色。
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		//
 		
 		List<UserRoleModel> listuserrole = (List<UserRoleModel>)dataBaseService.queryByClause(UserRoleModel.class, " pk_user='"+pk_user+"' ");
@@ -151,7 +151,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 	}
 	
 	private boolean doassignNode(String[] pk_nodes, String pk_role) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<RoleNodeModel> insert = new ArrayList<RoleNodeModel>();
 		List<RoleNodeModel> update = new ArrayList<RoleNodeModel>();
@@ -236,7 +236,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 	public boolean assignTemplate(String[] pk_role, String pk_node,
 			String template) throws BusinessException {
 		 //找出该模板已经分配的角色
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<TemplateNodeRoleModel> list = (List<TemplateNodeRoleModel>)dataBaseService.queryByClause(TemplateNodeRoleModel.class, " pk_node='"+pk_node+"' and pk_temple='"+template+"'") ;
 		if(pk_role==null && list.size()==0){

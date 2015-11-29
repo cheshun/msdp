@@ -22,7 +22,7 @@ import cheng.pipp.access.model.RoleModel;
 import cheng.pipp.basic.model.RefModel;
 import cheng.pipp.basic.vo.JsonData;
 import cheng.pipp.basic.vo.RefDataVO;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.util.TreeDataUtil;
 import cheng.pipp.ui.util.TreeUtil;
@@ -46,7 +46,7 @@ public class ResourceController extends BusinessCommonAction {
 	@RequestMapping(value="/management/access/resource/index")
 	public String list(TemplateParamVO vo, HttpServletRequest request,Model model) throws BusinessException {
 		//通过pk_data(参照的主键)获取信息
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		RefModel ref = (RefModel)queryservice.queryByPK(RefModel.class, vo.getPk_data());
 		SuperModel refm = (SuperModel) ClassUtil.initClass(ref.getModelclass());
 		//获取用户的角色id 用户的id
@@ -68,7 +68,7 @@ public class ResourceController extends BusinessCommonAction {
 		//接收资源主键pk_data，资源类型主键（pk_parent）
 		
 		//获取所有角色
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String filename="/management/_dev/authenticate/accessassignment_"+paramvo.getPk_data() ;
 		//获取所有的角色
@@ -96,7 +96,7 @@ public class ResourceController extends BusinessCommonAction {
 		System.out.println("pk_resource:"+paramvo.getPk_data());
 		System.out.println("pk_resourcetype:"+paramvo.getPk_parent());
 		System.out.println("pk_role:"+value);
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<ResourceRoleModel> list = (List<ResourceRoleModel>)dataBaseService.queryByClause(ResourceRoleModel.class, " pk_role='"+value+"' and pk_resource='"+paramvo.getPk_parent()+"'  and pk_resourcetype='"+paramvo.getPk_data()+"'");
 		if(list==null || list.size()==0){

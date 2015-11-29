@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-	   xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	
 	<!--  启动SpringMVC的注解功能，它会自动注册HandlerMapping、  HandlerAdapter、ExceptionResolver的相关实例 -->
     <mvc:annotation-driven />
     <mvc:default-servlet-handler />
-    <!-- DispatcherServlet会过滤所有的请求，这样请求静态资源时会出问题，加上该配置后，请求resources下面的静态资源时，url不会被过滤 -->
+    <!-- DispatcherServlet会过滤所有的请／求，这样请求静态资源时会出问题，加上该配置后，请求resources下面的静态资源时，url不会被过滤 -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
-    <!-- 扫描添加了@Controller等注解的类 -->
-    <context:component-scan base-package="cheng.pipp" />
-
-    <!--  ViewResolver 视图解析器，对处理器返回的ModelAndView进行解析， 返回到相应的视图页面，  -->
+    <!--  ViewResolver 视图解析器，对处理器返回的ModelAndView进行解析， 返回到相应的视图页面-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
@@ -26,22 +21,26 @@
         <property name="maxUploadSize" value="10485760000"></property>
         <property name="maxInMemorySize" value="40960"></property>
     </bean>
-	<!-- <bean id="springMethodInterceptor" class="cheng.pipp.framework.interceptor.MethodAuthorityInterceptor"></bean>
-	<bean id="springMethodInterceptor2" class="cheng.pipp.framework.interceptor.MethodAuthorityInterceptor2" />  
-	<aop:config>
-	<aop:aspect id="TestAspect" ref="springMethodInterceptor2"> 
-		切入点
-		<aop:pointcut id="webController" expression="execution(public * cheng.pipp.*.web.*.*(..))"/>
-		<aop:pointcut id="managementController" expression="execution(public * cheng.pipp.web.management.*.*(..))"/>
-		在该切入点使用自定义拦截器
-		<aop:advisor pointcut-ref="webController" advice-ref="springMethodInterceptor"/>
-		<aop:advisor pointcut-ref="managementController" advice-ref="springMethodInterceptor"/>
-		<aop:before pointcut-ref="webController" method="doBefore"/>  
-        <aop:after pointcut-ref="webController" method="doAfter"/>  
-        <aop:around pointcut-ref="webController" method="doAround"/>  
-        <aop:after-throwing pointcut-ref="webController" method="doThrowing" throwing="ex"/>  
-	</aop:aspect>
-	</aop:config> -->
-	
+
+
+
+
+    <!-- <bean id="springMethodInterceptor" class="cheng.pipp.framework.interceptor.MethodAuthorityInterceptor"></bean>
+    <bean id="springMethodInterceptor2" class="cheng.pipp.framework.interceptor.MethodAuthorityInterceptor2" />
+    <aop:config>
+    <aop:aspect id="TestAspect" ref="springMethodInterceptor2">
+        切入点
+        <aop:pointcut id="webController" expression="execution(public * cheng.pipp.*.web.*.*(..))"/>
+        <aop:pointcut id="managementController" expression="execution(public * cheng.pipp.web.management.*.*(..))"/>
+        在该切入点使用自定义拦截器
+        <aop:advisor pointcut-ref="webController" advice-ref="springMethodInterceptor"/>
+        <aop:advisor pointcut-ref="managementController" advice-ref="springMethodInterceptor"/>
+        <aop:before pointcut-ref="webController" method="doBefore"/>
+        <aop:after pointcut-ref="webController" method="doAfter"/>
+        <aop:around pointcut-ref="webController" method="doAround"/>
+        <aop:after-throwing pointcut-ref="webController" method="doThrowing" throwing="ex"/>
+    </aop:aspect>
+    </aop:config> -->
+
 
 </beans>  

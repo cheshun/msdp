@@ -8,7 +8,7 @@ import com.application.module.jdbc.processor.BeanListProcessor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.ui.model.QueryConditionTemplateModel;
 import cheng.pipp.ui.model.QueryTemplateModel;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
@@ -70,7 +70,7 @@ public class QueryTemplateService implements IQueryTemplate {
 	
 	@SuppressWarnings("unchecked")
 	private List<QueryConditionTemplateModel> getData(String sql) throws BusinessException{
-		IDataBaseService queryseervice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryseervice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<QueryConditionTemplateModel> l = (List<QueryConditionTemplateModel>) queryseervice.queryBySql(sql, new BeanListProcessor(QueryConditionTemplateModel.class));
 		return l;
@@ -93,7 +93,7 @@ public class QueryTemplateService implements IQueryTemplate {
 
 	
 	public boolean copy(TemplateParamVO vo, QueryTemplateModel modelvo) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		QueryTemplateModel tempmodelvo = (QueryTemplateModel) dataBaseService.queryByPK(QueryTemplateModel.class, vo.getPk_data());
 		List<QueryConditionTemplateModel> list = (List<QueryConditionTemplateModel>)dataBaseService.queryByClause(QueryConditionTemplateModel.class, "pk_querytemplate ='"+tempmodelvo.getPrimaryKey()+"'");
@@ -112,7 +112,7 @@ public class QueryTemplateService implements IQueryTemplate {
 			list.get(i).setPrimaryKey(null);
 			list.get(i).setPk_querytemplate(pk_querytemplate);;
 		}
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		dataBaseService.insertVOList(list);
 	}

@@ -3,7 +3,7 @@ package cheng.pipp.ui.conf;
 import java.util.List;
 
 import arch.util.lang.SuperModel;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.itf.IVOTreeDataByID;
 import com.application.exception.BusinessException;
@@ -28,7 +28,7 @@ public class ButtonTreeManageData implements IVOTreeDataByID {
 
 	
 	public SuperModel[] getTreeVO(   ) throws BusinessException {
-		 IDataBaseService queryseervice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		 IDataBaseService queryseervice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		List<NodeModel> list = (List<NodeModel>) queryseervice.queryByClause(NodeModel.class, " dr=0 ");
 			return list.toArray(new NodeModel[0]);

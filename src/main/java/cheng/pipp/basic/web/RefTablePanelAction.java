@@ -9,7 +9,7 @@ import cheng.pipp.basic.vo.JsonData;
 import cheng.pipp.basic.vo.RefDataVO;
 import cheng.pipp.basic.vo.RefVO;
 import cheng.pipp.framework.config.MsdpUserSessionVO;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
@@ -40,7 +40,7 @@ public class RefTablePanelAction  extends BusinessCommonAction {
 		if(u==null){
 			
 		}
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		
 		this.refmodel = refmodel ;

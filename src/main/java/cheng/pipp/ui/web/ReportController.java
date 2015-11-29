@@ -2,7 +2,7 @@ package cheng.pipp.ui.web;
 
 import arch.util.lang.ClassUtil;
 import arch.util.lang.PageVO;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.itf.IReportController;
@@ -38,7 +38,7 @@ public class ReportController extends BusinessCommonAction {
 	
 	@RequestMapping("/management/ui/report/index")
 	public String index(HttpServletRequest request, TemplateParamVO paramvo ,PageVO pagevo,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		TableTemplateVO tabletemplatevo = new TableTemplateVO();
 		//用户角色
 		paramvo.setTemplateid(paramvo.getTemplateid().split(",")[0]);
@@ -75,7 +75,7 @@ public class ReportController extends BusinessCommonAction {
 	@RequestMapping("/management/ui/report/query")
 	public String query(HttpServletRequest request, TemplateParamVO paramvo ,PageVO pagevo,Model model) throws BusinessException {
 		//获取查询模板
-		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationContextHelper.getService(IQueryTemplate.class);
+		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationServiceLocator.getService(IQueryTemplate.class);
 		String pk_role = getUserinfo(request).getPk_role();
 		String pk_node = paramvo.getTemplateid();
 		List<QueryConditionTemplateModel> querylist = iqueryTemplate.getQueryTemplate(pk_node, pk_role);

@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.model.ButtonModel;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
@@ -20,7 +20,7 @@ public class TemplateButtonController  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/buttonmananger/index")
 	public String index(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_parent = vo.getPk_data();
 		@SuppressWarnings("unchecked")
@@ -41,7 +41,7 @@ public class TemplateButtonController  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/buttonmananger/edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		ButtonModel u = (ButtonModel)queryservice.queryByPK(ButtonModel.class, vo.getPk_data());
 		model.addAttribute("item", u);
@@ -50,7 +50,7 @@ public class TemplateButtonController  extends BusinessCommonAction {
 	}
 	@RequestMapping(value="/management/ui/template/buttonmananger/save")
 	public ModelAndView save(ButtonModel button,TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		if(StringUtils.isNotEmpty(vo.getPk_parent())){
 			button.setPk_node(vo.getPk_parent());

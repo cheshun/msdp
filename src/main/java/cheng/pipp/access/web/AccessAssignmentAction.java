@@ -6,7 +6,7 @@ import cheng.pipp.access.model.RoleModel;
 import cheng.pipp.access.model.RoleNodeModel;
 import cheng.pipp.access.model.UserRoleModel;
 import cheng.pipp.access.service.IAccessAssignment;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.ui.util.TreeDataUtil;
@@ -33,7 +33,7 @@ public class AccessAssignmentAction  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/access/assignment/role/index")
 	public String initAssignmentPage(HttpServletRequest request, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		String filename="/management/_dev/authenticate/accessassignment_"+paramvo.getPk_data() ;
 		List<RoleModel> rlist = queryservice.queryByClause(RoleModel.class, " dr=0 ");
@@ -85,7 +85,7 @@ public class AccessAssignmentAction  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/access/assignment/rolesave")
 	public ModelAndView saveAssignmentPage(HttpServletRequest request,String value, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		IAccessAssignment accessAssignment =(IAccessAssignment)ApplicationContextHelper.getService(IAccessAssignment.class);
+		IAccessAssignment accessAssignment =(IAccessAssignment)ApplicationServiceLocator.getService(IAccessAssignment.class);
 		
 		accessAssignment.assignRole(value, paramvo.getPk_data());
 		
@@ -96,7 +96,7 @@ public class AccessAssignmentAction  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/access/assignment/node/index")
 	public String initAssignmentnodePage(HttpServletRequest request, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		String filename="/management/_dev/authenticate/accessassignment_"+paramvo.getPk_data() ;
 //		String filename="/management/_dev/authenticate/accessassignment" ;

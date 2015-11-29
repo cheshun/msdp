@@ -14,7 +14,6 @@ import cheng.channel.util.ChannelSourceUtil;
 import cheng.channel.util.DatabaseHelper;
 import cheng.channel.vo.ChannelVO;
 import cheng.channel.vo.RegisterSourceVO;
-import cheng.pipp.framework.context.ApplicationContextHelper;
 import com.application.common.context.ApplicationServiceLocator;
 import com.application.module.jdbc.itf.IDataBaseService;
 import arch.util.lang.SuperModel;
@@ -38,7 +37,7 @@ public class ChannelReportConf extends AbstractReportConf {
 
     @Override
     public List<SuperModel> getData(String[] sql, PageVO pagevo, List<SuperModel> channelvolist) {
-    	DataSource querydataSource =  ApplicationContextHelper.getDataSource("querydataSource");
+    	DataSource querydataSource =  ApplicationServiceLocator.getDataSource("querydataSource");
 		Connection conn =null;
 		try {
 			 

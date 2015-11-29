@@ -2,7 +2,7 @@ package cheng.pipp.sys.conf;
 
 import java.util.List;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.ModuleModel;
 import cheng.pipp.ui.itf.IVOTreeDataByID;
 import com.application.exception.BusinessException;
@@ -25,7 +25,7 @@ public class SysModulesManagerData implements IVOTreeDataByID{
 
 	
 	public SuperModel[] getTreeVO(   ) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 				
 		List<ModuleModel> list = (List<ModuleModel>) queryservice.queryByClause(ModuleModel.class, " dr=0 ");
 			return list.toArray(new ModuleModel[0]);

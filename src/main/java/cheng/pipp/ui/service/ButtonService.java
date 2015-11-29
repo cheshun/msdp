@@ -10,7 +10,7 @@ import com.application.module.jdbc.processor.BeanListProcessor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.ui.model.ButtonModel;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,7 +60,7 @@ public class ButtonService implements IButtonService{
 		return sb.toString();
 	}
 	private List<ButtonModel> getData(String sql) throws BusinessException {
-		IDataBaseService queryseervice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryseervice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		BeanListProcessor itemprocessor = new BeanListProcessor(ButtonModel.class);
 		List<ButtonModel> list =(List<ButtonModel>) queryseervice.queryBySql(sql, itemprocessor);
@@ -71,7 +71,7 @@ public class ButtonService implements IButtonService{
 	
 	public List<ButtonModel> addTempletButton(String pk_node,
 			String[] buttoncodes) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<ButtonModel> list = new ArrayList<ButtonModel>();
 		for(int i=0;i<buttoncodes.length;i++){

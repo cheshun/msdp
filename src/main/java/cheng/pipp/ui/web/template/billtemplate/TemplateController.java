@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.model.UITempletModel;
 import cheng.pipp.ui.service.ITemplateService;
@@ -25,7 +25,7 @@ public class TemplateController  extends BusinessCommonAction {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/management/ui/billtemplate/index")
 	public String index(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = vo.getPk_data();
 		List<UITempletModel> list = (List<UITempletModel>) queryservice.queryByClause(UITempletModel.class, " pk_node='"+pk_node+"'");
@@ -41,7 +41,7 @@ public class TemplateController  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/billtemplate/edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		UITempletModel u = (UITempletModel)queryservice.queryByPK(UITempletModel.class, vo.getPk_data());
 		model.addAttribute("item", u);
@@ -50,7 +50,7 @@ public class TemplateController  extends BusinessCommonAction {
 	}
 	@RequestMapping(value="/management/ui/template/billtemplate/save")
 	public ModelAndView save(UITempletModel template , TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		if(StringUtils.isNotEmpty(vo.getPk_parent())){
 			template.setPk_node(vo.getPk_parent());

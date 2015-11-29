@@ -9,7 +9,7 @@ import com.application.module.jdbc.itf.IDataBaseService;
 import org.springframework.stereotype.Component;
 
 import cheng.pipp.basic.model.RefModel;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.DataDictItemModel;
 import cheng.pipp.sys.model.DataDictModel;
 import cheng.pipp.sys.model.ModuleModel;
@@ -54,7 +54,7 @@ public class RefService implements IRefService {
 		refmodel.setIsaccesscontrol(UFBoolean.FALSE);
 		//设置表名
 		refmodel.setDatatablename(datadict.getDatatablecode());
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		refmodel.setReftype(module.getModule_code()+"_"+datadict.getDatatablecode()+"_ref");
 		List<RefModel>  tdata =dataBaseService.queryByClause(RefModel.class, "reftype='" + module.getModule_code() + "_" + datadict.getDatatablecode() + "_ref" + "'");
 		if(tdata==null || tdata.size()==0 ){

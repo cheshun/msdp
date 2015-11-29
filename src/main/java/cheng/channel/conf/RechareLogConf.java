@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import cheng.lib.util.DataTypeUtil;
 import cheng.channel.util.DatabaseHelper;
 import cheng.channel.vo.RechareInfoVO;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 
 public class RechareLogConf extends AbstractReportConf   {
 	protected Logger logger = LoggerFactory.getLogger(RechareLogConf.class);
@@ -25,7 +25,7 @@ public class RechareLogConf extends AbstractReportConf   {
 
 	public List<SuperModel> getData(String[] sql, PageVO pagevo,
 			List<SuperModel> userlist) {
-		DataSource querydataSource =  ApplicationContextHelper.getDataSource("querydataSource");
+		DataSource querydataSource =  ApplicationServiceLocator.getDataSource("querydataSource");
 		Connection conn =null;
 		try {
 			conn = querydataSource.getConnection();

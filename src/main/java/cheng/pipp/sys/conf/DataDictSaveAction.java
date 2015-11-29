@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.DataDictItemModel;
 import cheng.pipp.sys.model.DataDictModel;
 import cheng.pipp.sys.model.ModuleModel;
@@ -22,7 +22,7 @@ public class DataDictSaveAction implements IButtonAction{
 	
 	public SuperModel beforeSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request)  throws BusinessException{
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		DataDictModel datadict = (DataDictModel)supervo;
 		datadict.setPk_module(paramvo.getPk_parent());
 		ModuleModel modules = (ModuleModel)dataBaseService.queryByPK(ModuleModel.class, datadict.getPk_module());
@@ -35,7 +35,7 @@ public class DataDictSaveAction implements IButtonAction{
 	
 	public SuperModel afterSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		DataDictModel datadict = (DataDictModel)supervo;
 		NodeModel node = (NodeModel)dataBaseService.queryByPK(NodeModel.class, datadict.getPk_node());

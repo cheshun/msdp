@@ -9,7 +9,7 @@ import com.application.module.jdbc.processor.BeanListProcessor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.ui.model.UIItemTempletModel;
 import cheng.pipp.ui.model.UITempletModel;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
@@ -114,7 +114,7 @@ public class TemplateService implements ITemplateService{
 	}
 	
 	public boolean copy(UITempletModel modelvo, TemplateParamVO vo) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		UITempletModel tempmodelvo = (UITempletModel) dataBaseService.queryByPK(UITempletModel.class, vo.getPk_data());
 		List<UIItemTempletModel> list = (List<UIItemTempletModel>)dataBaseService.queryByClause(UIItemTempletModel.class, "pk_templet ='"+tempmodelvo.getPk_templet()+"'");
@@ -127,7 +127,7 @@ public class TemplateService implements ITemplateService{
 		return true;
 	}
 	private void copybody(String pk_templet,List<UIItemTempletModel> list) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		for(int i=0;i<list.size();i++){
 			list.get(i).setPrimaryKey(null);

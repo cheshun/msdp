@@ -8,7 +8,7 @@ import com.application.module.jdbc.itf.IDataBaseService;
 import arch.util.lang.UFBoolean;
 import org.springframework.stereotype.Component;
 
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.itf.ITableService;
 import cheng.pipp.sys.model.DataDictItemModel;
 import cheng.pipp.sys.model.DataDictModel;

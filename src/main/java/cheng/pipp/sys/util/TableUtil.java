@@ -1,7 +1,7 @@
 package cheng.pipp.sys.util;
 
 import cheng.lib.lang.IDataType;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.DataDictItemModel;
 import cheng.pipp.sys.model.DataDictModel;
 import cheng.pipp.sys.model.ModuleModel;
@@ -20,7 +20,7 @@ public class TableUtil {
 		if(tablename.indexOf("_")==-1){
 			tablename = modules.getModule_code()+"_"+tablename;
 		}
-		IDataBaseService query = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService query = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		if(query.isTableExist(tablename)){
 			return getUpdateTableSQL(tablename,list);
 		}
@@ -31,7 +31,7 @@ public class TableUtil {
 	private static String getUpdateTableSQL(String tablename,
 			List<DataDictItemModel> list) {
 		StringBuffer sql = new StringBuffer("ALTER TABLE `"+tablename+"` ");
-		IDataBaseService query = (IDataBaseService)ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService query = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		for(int i=0;i<list.size();i++){
 			DataDictItemModel item = list.get(i);

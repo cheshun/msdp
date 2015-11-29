@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cheng.pipp.access.model.RoleModel;
 import cheng.pipp.access.model.UserModel;
-import cheng.pipp.framework.context.ApplicationContextHelper;
+import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 
@@ -24,7 +24,7 @@ public class RoleController extends BusinessCommonAction {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/management/access/role/index")
 	public String list(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService) ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
 
 		//加载角色卡片模板 
 		RoleModel r = (RoleModel) queryservice.queryByPK(RoleModel.class, vo.getPk_data());
@@ -44,7 +44,7 @@ public class RoleController extends BusinessCommonAction {
 
 	@RequestMapping(value = "/management/access/role/edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService) ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
 
 		RoleModel role = (RoleModel) queryservice.queryByPK(RoleModel.class, vo.getPk_data());
 		model.addAttribute("item", role);
@@ -55,7 +55,7 @@ public class RoleController extends BusinessCommonAction {
 	@RequestMapping(value = "/management/access/role/save")
 	public ModelAndView save(RoleModel role, TemplateParamVO vo, Model model) throws BusinessException {
 
-		IDataBaseService dataBaseService = (IDataBaseService) ApplicationContextHelper.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
 		if (StringUtils.isNotEmpty(vo.getPk_parent())) {
 			role.setPk_parent_role(vo.getPk_parent());
 		}
