@@ -50,6 +50,6 @@
 			</div>
 		</div>
 	</div>
-	<div id="footer"><fmt:message key="ui.copyrights" /></div>
+	<div id="footer">http://www.chengyingsheng.com</div>
 </body>
 </html>

@@ -13,47 +13,29 @@
 
 	<context:component-scan base-package="cheng,com" />
 	<context:annotation-config />
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="ignoreResourceNotFound" value="true" />
-		<property name="locations" value="classpath*:/jdbc.properties" />
-	</bean>
-	
+	<!-- 采用jndi 方式-->
+	<!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+		<!--<property name="ignoreResourceNotFound" value="true" />-->
+		<!--<property name="locations" value="classpath*:/jdbc.properties" />-->
+	<!--</bean>-->
+	<!-- -->
 
 	<bean id="dynamicDataSource" class="com.application.config.datasource.DynamicDataSource" >
      <!-- 通过key-value的形式来关联数据源 -->
 		<property name="targetDataSources">
 			<map key-type="java.lang.String">
 				<entry value-ref="dataSource" key="dataSource"></entry>
-				<entry value-ref="querydataSource" key="querydataSource"></entry>
 			</map>
 		</property>
 		<property name="defaultTargetDataSource" ref="dataSource" >
 		</property>
-	</bean> 
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-		<!-- Connection Pooling Info -->
-		<property name="maxActive" value="${dbcp.maxActive}" />
-		<property name="maxIdle" value="${dbcp.maxIdle}" />
-		<property name="defaultAutoCommit" value="false" />
-		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
-		<property name="minEvictableIdleTimeMillis" value="3600000" />
 	</bean>
-	<bean id="querydataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
-		<property name="url" value="${queryjdbc.url}" />
-		<property name="username" value="${queryjdbc.username}" />
-		<property name="password" value="${queryjdbc.password}" />
-		<!-- Connection Pooling Info -->
-		<property name="maxActive" value="${dbcp.maxActive}" />
-		<property name="maxIdle" value="${dbcp.maxIdle}" />
-		<property name="defaultAutoCommit" value="false" />
-		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
-		<property name="minEvictableIdleTimeMillis" value="3600000" />
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:comp/env/msdpdatasource</value>
+		</property>
 	</bean>
+
 
 	<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
