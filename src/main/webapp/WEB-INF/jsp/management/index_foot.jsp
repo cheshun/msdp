@@ -44,6 +44,9 @@
 							<p>
 								<label>备注:</label><span class="unit">${user.user_note }</span>
 							</p>
+							<p>
+								<label>测试标签:</label><span class="unit"><web:showDictName execution_formula="jd" uniquekey="0001"/></span>
+							</p>
 						</div>
 					</div>
 				</div>

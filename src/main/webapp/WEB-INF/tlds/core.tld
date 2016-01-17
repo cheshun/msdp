@@ -9,9 +9,9 @@
 	<description>页面上的标签工具类</description>
 
 	<tag>
-		<name>ShowDictName</name>
+		<name>showDictName</name>
 		<tag-class>cheng.pipp.ui.web.widget.ShowDictNameTag</tag-class>
-		<description>slect输出标签</description>
+		<description>根据指定唯一标示获取字段信息</description>
 		<attribute>
 			<name>execution_formula</name>
 			<required>true</required>

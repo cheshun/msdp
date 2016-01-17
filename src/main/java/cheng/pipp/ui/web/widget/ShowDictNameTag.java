@@ -12,9 +12,11 @@ public class ShowDictNameTag extends TagSupport {
     private String execution_formula ;
     private String  uniquekey ;
     public int doStartTag() throws JspException {
-        String dictionaryName = "112112121";
+        String dictionaryName = ""+execution_formula+uniquekey;
+        System.out.print(execution_formula);
         try {
             pageContext.getOut().print(dictionaryName);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
