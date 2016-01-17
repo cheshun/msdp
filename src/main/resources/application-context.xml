@@ -14,11 +14,6 @@
 	<context:component-scan base-package="cheng,com" />
 	<context:annotation-config />
 	<!-- 采用jndi 方式-->
-	<!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-		<!--<property name="ignoreResourceNotFound" value="true" />-->
-		<!--<property name="locations" value="classpath*:/jdbc.properties" />-->
-	<!--</bean>-->
-	<!-- -->
 
 	<bean id="dynamicDataSource" class="com.application.config.datasource.DynamicDataSource" >
      <!-- 通过key-value的形式来关联数据源 -->
