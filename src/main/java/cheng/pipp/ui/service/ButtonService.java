@@ -78,7 +78,7 @@ public class ButtonService implements IButtonService{
 			ButtonModel b = createButton(pk_node,i,buttoncodes[i]);
 			list.add(b);
 		}
-		dataBaseService.insertVOList(list);
+		dataBaseService.insert(list);
 		return list;
 	}
 

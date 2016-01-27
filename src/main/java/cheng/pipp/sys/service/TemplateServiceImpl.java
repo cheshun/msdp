@@ -37,7 +37,7 @@ public class TemplateServiceImpl implements ISysTemplateService {
 			for(DataDictItemModel dataDictItemModel :list){
 				dataDictItemModel.setIsBilltemplatesyn(UFBoolean.TRUE);
 			}
-			dataBaseService.updateVOList(list);
+			dataBaseService.update(list);
 			return true;
 		}
 		public boolean createQueryTemplate(String pk_module, String pk_datadict)
@@ -48,7 +48,7 @@ public class TemplateServiceImpl implements ISysTemplateService {
 			for(DataDictItemModel dataDictItemModel :list){
 				dataDictItemModel.setIsQueryTemplatesyn(UFBoolean.TRUE);
 			}
-			dataBaseService.updateVOList(list);
+			dataBaseService.update(list);
 			return true;
 		}
 	 
@@ -80,7 +80,7 @@ public class TemplateServiceImpl implements ISysTemplateService {
 				u.setPk_node(datadict.getPk_node());
 				u.setTemplatetypecode("SYSTEM");
 				u.setTemplatename(datadict.getDatatablename()+"默认模板");;
-				String pk = dataBaseService.insertVO(u);
+				String pk = dataBaseService.insert(u);
 				return new String[]{pk};
 			}else{
 				String [] s = new String [list.size()];
@@ -99,7 +99,7 @@ public class TemplateServiceImpl implements ISysTemplateService {
 				u.setPk_node(datadict.getPk_node());
 				u.setTemplatetypecode("SYSTEM");
 				u.setTempletuiname(datadict.getDatatablename()+"默认模板");
-				String pk = dataBaseService.insertVO(u);
+				String pk = dataBaseService.insert(u);
 				return new String[]{pk};
 			}else{
 				String [] s = new String [list.size()];
@@ -143,7 +143,7 @@ public class TemplateServiceImpl implements ISysTemplateService {
 					listtemplate.add(u);
 				}
 			}
-			dataBaseService.insertVOList(listtemplate);
+			dataBaseService.insert(listtemplate);
 		}else{
 			List<UIItemTempletModel> listtemplate = new ArrayList<UIItemTempletModel>();
 			for(int j=0;j<pk_billtemplate.length;j++){
@@ -175,7 +175,7 @@ public class TemplateServiceImpl implements ISysTemplateService {
 					listtemplate.add(u);
 				}
 			}
-			dataBaseService.insertVOList(listtemplate);
+			dataBaseService.insert(listtemplate);
 		}
 	}
 	/**
@@ -207,7 +207,7 @@ public class TemplateServiceImpl implements ISysTemplateService {
 			query.setDr(0);
 			query.setRemark(datadict.getDatatableremark());
 			query.setTemplatetypecode("SYSTEM");
-			String pk = dataBaseService.insertVO(query);
+			String pk = dataBaseService.insert(query);
 			return new String[]{pk};
 		}else{
 			String [] s = new String [list.size()];
@@ -252,7 +252,7 @@ public class TemplateServiceImpl implements ISysTemplateService {
 				li.add(queryitem);
 			}
 		}
-		dataBaseService.insertVOList(li);
+		dataBaseService.insert(li);
 	}
 	
 	

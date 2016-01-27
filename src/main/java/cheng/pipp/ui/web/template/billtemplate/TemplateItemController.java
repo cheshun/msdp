@@ -114,9 +114,9 @@ public class TemplateItemController  extends BusinessCommonAction {
 			item.setPk_templet(vo.getPk_parent());
 		}
 		if(StringUtils.isNotEmpty(item.getPrimaryKey())){
-			queryservice.updateVO(item);
+			queryservice.update(item);
 		}else{
-			queryservice.insertVO(item);
+			queryservice.insert(item);
 		}
 		return ajaxDoneSuccess("保存成功");
 	}

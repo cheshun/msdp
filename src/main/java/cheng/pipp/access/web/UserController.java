@@ -65,10 +65,10 @@ public class UserController extends BusinessCommonAction {
 			if(!old.getUser_password().equals(user.getUser_password())){
 				user.setUser_password(en.encode(user.getUser_password()));
 			}
-			dataBaseService.updateVO(user);
+			dataBaseService.update(user);
 		} else {
 			user.setUser_password(en.encode(user.getUser_password()));
-			dataBaseService.insertVO(user);
+			dataBaseService.insert(user);
 		}
 		en=null;
 		return ajaxDoneSuccess("保存成功");

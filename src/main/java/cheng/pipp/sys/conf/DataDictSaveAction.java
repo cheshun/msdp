@@ -45,7 +45,7 @@ public class DataDictSaveAction implements IButtonAction{
 		if(AddActionParamVO.actiontype_add.equals(paramvo.getActiontype())){
 			//初始化 对应类型的必须字段
 			List<DataDictItemModel> list = TableUtil.initBusiFields(datadict);
-			dataBaseService.insertVOList(list);
+			dataBaseService.insert(list);
 			return supervo;
 		}
 		return supervo;

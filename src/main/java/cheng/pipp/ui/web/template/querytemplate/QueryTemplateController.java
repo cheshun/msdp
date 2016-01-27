@@ -54,12 +54,12 @@ public class QueryTemplateController  extends BusinessCommonAction {
 	@RequestMapping(value="/management/ui/template/querytemplate/save")
 	public ModelAndView save(QueryTemplateModel template , TemplateParamVO vo, Model model) throws BusinessException {
 		if(StringUtils.isNotEmpty(template.getPrimaryKey())){
-			queryservice.updateVO(template);
+			queryservice.update(template);
 		}else{
 			if(StringUtils.isNotEmpty(vo.getPk_parent())){
 				template.setPk_node(vo.getPk_parent());
 			}
-			queryservice.insertVO(template);
+			queryservice.insert(template);
 		}
 		return ajaxDoneSuccess("保存成功");
 	}

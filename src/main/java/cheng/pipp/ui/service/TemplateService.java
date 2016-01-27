@@ -122,7 +122,7 @@ public class TemplateService implements ITemplateService{
 		tempmodelvo.setTempletuicaption(modelvo.getTempletuicaption());
 		tempmodelvo.setTempletuiname(modelvo.getTempletuiname());
 		tempmodelvo.setPrimaryKey(null);
-		String pk_templet = dataBaseService.insertVO(tempmodelvo);
+		String pk_templet = dataBaseService.insert(tempmodelvo);
 		copybody(pk_templet,list);
 		return true;
 	}
@@ -133,6 +133,6 @@ public class TemplateService implements ITemplateService{
 			list.get(i).setPrimaryKey(null);
 			list.get(i).setPk_templet(pk_templet);
 		}
-		dataBaseService.insertVOList(list);
+		dataBaseService.insert(list);
 	}
 }

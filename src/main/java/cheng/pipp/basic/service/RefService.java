@@ -58,7 +58,7 @@ public class RefService implements IRefService {
 		refmodel.setReftype(module.getModule_code()+"_"+datadict.getDatatablecode()+"_ref");
 		List<RefModel>  tdata =dataBaseService.queryByClause(RefModel.class, "reftype='" + module.getModule_code() + "_" + datadict.getDatatablecode() + "_ref" + "'");
 		if(tdata==null || tdata.size()==0 ){
-			dataBaseService.insertVO(refmodel);
+			dataBaseService.insert(refmodel);
 			return refmodel.getReftype();
 		}
 		return tdata.get(0).getReftype();

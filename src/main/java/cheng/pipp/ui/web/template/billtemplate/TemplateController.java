@@ -56,12 +56,12 @@ public class TemplateController  extends BusinessCommonAction {
 			template.setPk_node(vo.getPk_parent());
 		}
 		if(StringUtils.isNotEmpty(template.getPrimaryKey())){
-			queryservice.updateVO(template);
+			queryservice.update(template);
 		}else{
 			if(StringUtils.isNotEmpty(vo.getPk_parent())){
 				template.setPk_node(vo.getPk_parent());
 			}
-			queryservice.insertVO(template);
+			queryservice.insert(template);
 		}
 		return ajaxDoneSuccess("保存成功");
 	}

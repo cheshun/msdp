@@ -60,9 +60,9 @@ public class RoleController extends BusinessCommonAction {
 			role.setPk_parent_role(vo.getPk_parent());
 		}
 		if (StringUtils.isNotEmpty(role.getPrimaryKey())) {
-			dataBaseService.updateVO(role);
+			dataBaseService.update(role);
 		} else {
-			dataBaseService.insertVO(role);
+			dataBaseService.insert(role);
 		}
 		return ajaxDoneSuccess("保存成功");
 	}

@@ -175,9 +175,9 @@ public class SingletableController extends BusinessCommonAction {
 			}
 		}
 		if(StringUtils.isEmpty(supervo.getPrimaryKey())){
-			queryservice.insertVO(supervo);
+			queryservice.insert(supervo);
 		}else{
-			queryservice.updateVO(supervo);
+			queryservice.update(supervo);
 		}
 		if(buttonaction!=null){
 			supervo = buttonaction.afterSaveAction(supervo, paramvo, request);

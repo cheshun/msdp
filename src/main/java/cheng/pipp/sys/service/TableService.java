@@ -32,11 +32,11 @@ public class TableService implements ITableService {
 		list = (List<DataDictItemModel>)dataBaseService.queryByClause(DataDictItemModel.class, "pk_datadict='"+datadict.getPrimaryKey()+"' and isTablesyn='"+ UFBoolean.FALSE+"'");
 		IDataBaseService persistence = ApplicationServiceLocator.getService(IDataBaseService.class);
 		String sql = TableUtil.synchronousTable(modules,datadict, list);
-		int i = persistence.updateBySql(sql);
+		int i = persistence.update(sql);
 		for(DataDictItemModel itemModel :list){
 			itemModel.setIsTablesyn(UFBoolean.TRUE);
 		}
-		persistence.updateVOList(list);
+		persistence.update(list);
 		return true;
 	}
 

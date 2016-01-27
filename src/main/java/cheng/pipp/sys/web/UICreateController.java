@@ -109,7 +109,7 @@ public class UICreateController  extends BusinessCommonAction {
 			c.setPk_module(modules.getPrimaryKey());
 			c.setTablename(datadict.getDatatablecode());
 			c.setIscache(UFBoolean.TRUE);
-			queryservice.insertVO(c);
+			queryservice.insert(c);
 		}
 		if("Y".equals(obj.get("isbilltemplate"))){
 			SysTemplateService.createBillTemplate(datadict.getPk_module(), datadict.getPrimaryKey());
@@ -121,7 +121,7 @@ public class UICreateController  extends BusinessCommonAction {
 		String classmodelname = SuperVOUtil.createVO(modules.getModule_code(),datadict,list);
 		if(StringUtils.isNotEmpty(classmodelname)){
 			node.setModelclass(classmodelname);
-			queryservice.updateVO(node);
+			queryservice.update(node);
 		}
 		return ajaxDoneSuccess("保存成功");
 	}

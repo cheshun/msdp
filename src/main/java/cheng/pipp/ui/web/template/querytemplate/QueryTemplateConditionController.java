@@ -49,9 +49,9 @@ public class QueryTemplateConditionController  extends BusinessCommonAction {
 			item.setAttributeValue(item.getParentPKFieldName(), vo.getPk_parent());
 		}
 		if(StringUtils.isNotEmpty(item.getPrimaryKey())){
-			queryservice.updateVO(item);
+			queryservice.update(item);
 		}else{
-			queryservice.insertVO(item);
+			queryservice.insert(item);
 		}
 		return ajaxDoneSuccess("保存成功");
 	}

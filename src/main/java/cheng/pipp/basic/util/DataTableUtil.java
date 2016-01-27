@@ -14,7 +14,6 @@ import cheng.pipp.ui.vo.ComboxData;
 import cheng.pipp.ui.vo.uitemplate.TableInfo;
 import cheng.pipp.ui.vo.uitemplate.TableTemplateVO;
 import com.application.exception.BusinessException;
-import com.application.module.jdbc.JdbcPersistenceManager;
 import com.application.module.jdbc.itf.IDataBaseService;
 import arch.util.lang.SuperModel;
 
@@ -202,7 +201,6 @@ public class DataTableUtil {
 		Object obj = BeanHelper.getProperty(supervo, json.getCode());
 		//参照类型 通过该类型查找参照信息 需要指出数据库操作
 		IDataBaseService query = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
-		JdbcPersistenceManager b = new JdbcPersistenceManager();
 		String reftype = item.getReftype();
 		try {
 			List<RefModel> reflist = (List<RefModel>)query.queryByClause(RefModel.class, RefModel.RefType+"='"+reftype+"'");

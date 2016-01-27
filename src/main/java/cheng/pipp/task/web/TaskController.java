@@ -93,9 +93,9 @@ public class TaskController extends BusinessCommonAction {
 		vo.setDr(0);
 		vo.setTs(TimeToolkit.getCurrentTs());
 		if(StringUtils.isEmpty(vo.getPrimaryKey())){
-			dataBaseService.insertVO(vo);
+			dataBaseService.insert(vo);
 		}else{
-			dataBaseService.updateVO(vo);
+			dataBaseService.update(vo);
 		}
 		return ajaxDoneSuccess("保存成功");
 	}
@@ -135,9 +135,9 @@ public class TaskController extends BusinessCommonAction {
 		vo.setDr(0);
 		vo.setTs(TimeToolkit.getCurrentTs());
 		if(StringUtils.isEmpty(vo.getPrimaryKey())){
-			String pk = dataBaseService.insertVO(vo);
+			String pk = dataBaseService.insert(vo);
 		}else{
-			dataBaseService.updateVO(vo);
+			dataBaseService.update(vo);
 //			taskService.refreshTask(vo.getPrimaryKey());
 		}
 		return ajaxDoneSuccess("保存成功");

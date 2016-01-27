@@ -105,7 +105,7 @@ public class ResourceController extends BusinessCommonAction {
 			r.setPk_resource(paramvo.getPk_data());
 			r.setPk_role(value);
 			r.setPk_resourcetype(paramvo.getPk_parent());
-			dataBaseService.insertVO(r);
+			dataBaseService.insert(r);
 		}
 		return ajaxDoneSuccess("分配成功");
 	

@@ -102,7 +102,7 @@ public class QueryTemplateService implements IQueryTemplate {
 		tempmodelvo.setName(modelvo.getName());
 		tempmodelvo.setCode(modelvo.getCode());
 		tempmodelvo.setPrimaryKey(null);
-		String pk_templet = dataBaseService.insertVO(tempmodelvo);
+		String pk_templet = dataBaseService.insert(tempmodelvo);
 		copybody(pk_templet,list);
 		return true;
 	}
@@ -114,6 +114,6 @@ public class QueryTemplateService implements IQueryTemplate {
 		}
 		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
-		dataBaseService.insertVOList(list);
+		dataBaseService.insert(list);
 	}
 }

@@ -56,9 +56,9 @@ public class TemplateButtonController  extends BusinessCommonAction {
 			button.setPk_node(vo.getPk_parent());
 		}
 		if(StringUtils.isNotEmpty(button.getPrimaryKey())){
-			queryservice.updateVO(button);
+			queryservice.update(button);
 		}else{
-			queryservice.insertVO(button);
+			queryservice.insert(button);
 		}
 		return ajaxDoneSuccess("保存成功");
 	}
