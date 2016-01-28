@@ -13,24 +13,47 @@
 
 	<context:component-scan base-package="cheng,com" />
 	<context:annotation-config />
-	<!-- 采用jndi 方式-->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations" value="classpath*:/jdbc.properties" />
+	</bean>
+
 
 	<bean id="dynamicDataSource" class="com.application.config.datasource.DynamicDataSource" >
-     <!-- 通过key-value的形式来关联数据源 -->
+		<!-- 通过key-value的形式来关联数据源 -->
 		<property name="targetDataSources">
 			<map key-type="java.lang.String">
 				<entry value-ref="dataSource" key="dataSource"></entry>
+				<entry value-ref="querydataSource" key="querydataSource"></entry>
 			</map>
 		</property>
 		<property name="defaultTargetDataSource" ref="dataSource" >
 		</property>
 	</bean>
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName">
-			<value>java:comp/env/msdpdatasource</value>
-		</property>
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<!-- Connection Pooling Info -->
+		<property name="maxActive" value="${dbcp.maxActive}" />
+		<property name="maxIdle" value="${dbcp.maxIdle}" />
+		<property name="defaultAutoCommit" value="false" />
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
 	</bean>
-
+	<bean id="querydataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${queryjdbc.url}" />
+		<property name="username" value="${queryjdbc.username}" />
+		<property name="password" value="${queryjdbc.password}" />
+		<!-- Connection Pooling Info -->
+		<property name="maxActive" value="${dbcp.maxActive}" />
+		<property name="maxIdle" value="${dbcp.maxIdle}" />
+		<property name="defaultAutoCommit" value="false" />
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
+	</bean>
 
 	<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
@@ -38,25 +61,11 @@
 	<!-- 将所有具有@Transactional注解的Bean自动配置为声明式事务支持 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<!--<bean id="cacheInterceptor" class="cheng.jdbc.cache.interceptor.CacheInterceptor" ></bean>-->
+	<!--<aop:config>-->
+	<!--<aop:pointcut id="loginPoint" expression="execution(public * cheng.jdbc.service.*.*(..)) "/>-->
+	<!--<aop:advisor pointcut-ref="loginPoint" advice-ref="cacheInterceptor"/>-->
+	<!--</aop:config>-->
 
-	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供-->
-	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-		<property name="brokerURL" value="tcp://localhost:61616"/>
-	</bean>
-
-	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
-		<property name="connectionFactory" ref="targetConnectionFactory"/>
-		<property name="maxConnections" value="10"/>
-	</bean>
-
-	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
-		<property name="targetConnectionFactory" ref="pooledConnectionFactory"/>
-	</bean>
-
-	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
-	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
-		<property name="connectionFactory" ref="connectionFactory"/>
-	</bean>
 
 </beans> 
