@@ -15,7 +15,7 @@
         <dependency>
             <groupId>com.cheng</groupId>
             <artifactId>webcommon</artifactId>
-            <version>SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -28,11 +28,17 @@
             <artifactId>netty-all</artifactId>
             <version>4.0.21.Final</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-core</artifactId>
-            <version>5.7.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.activemq</groupId>-->
+            <!--<artifactId>activemq-core</artifactId>-->
+            <!--<version>5.7.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>commons-beanutils</groupId>-->
+            <!--<artifactId>commons-beanutils</artifactId>-->
+            <!--<version>1.8.0</version>-->
+        <!--</dependency>-->
+
     </dependencies>
     <build>
         <plugins>
