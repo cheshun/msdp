@@ -31,7 +31,7 @@ import cheng.pipp.ui.vo.param.TemplateParamVO;
 
 @Controller("management.UICreateController")
 @RequestMapping("/management/sys/")
-public class UICreateController  extends BusinessCommonAction {
+public class UICreateAction extends BusinessCommonAction {
 	 
 	@Resource
 	ISysTemplateService SysTemplateService;

@@ -29,7 +29,7 @@ import java.util.List;
  */
 @Controller("management.taskController")
 @RequestMapping("/management/task/")
-public class TaskController extends BusinessCommonAction {
+public class TaskAction extends BusinessCommonAction {
 	
 	@Resource
 	ITemplateService itemplateService ;

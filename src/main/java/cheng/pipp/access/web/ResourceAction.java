@@ -30,7 +30,7 @@ import cheng.pipp.ui.vo.TreeNodeVO;
 import cheng.pipp.ui.vo.TreeVO;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 @Controller
-public class ResourceController extends BusinessCommonAction {
+public class ResourceAction extends BusinessCommonAction {
 
 	/**
 	 * 查询选中资源的数据，

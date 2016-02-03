@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-public class LoginController extends BusinessCommonAction {
+public class LoginAction extends BusinessCommonAction {
 	
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,HttpServletResponse response,Model model) throws BusinessException {

@@ -28,7 +28,7 @@ import java.util.List;
  *
  */
 @Controller("management.indexController")
-public class IndexController extends BusinessCommonAction {
+public class IndexAction extends BusinessCommonAction {
 
     @Resource
     IDataBaseService queryservice ;

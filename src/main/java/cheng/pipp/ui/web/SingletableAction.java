@@ -41,7 +41,7 @@ import cheng.pipp.ui.vo.param.TemplateParamVO;
 import cheng.pipp.ui.vo.querytemplate.QueryParamVO;
 import cheng.pipp.ui.vo.uitemplate.TableTemplateVO;
 @Controller
-public class SingletableController extends BusinessCommonAction {
+public class SingletableAction extends BusinessCommonAction {
 	@Resource
 	IDataBaseService queryservice ;
 	@Resource

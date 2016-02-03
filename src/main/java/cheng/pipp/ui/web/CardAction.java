@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-public class CardController extends BusinessCommonAction {
+public class CardAction extends BusinessCommonAction {
 	
 	@RequestMapping("/management/ui/card/add")
 	public String add(HttpServletRequest request, AddActionParamVO paramvo ,Model model) throws BusinessException {

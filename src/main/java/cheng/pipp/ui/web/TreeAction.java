@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
 @Controller
-public class TreeController  extends BusinessCommonAction {
+public class TreeAction extends BusinessCommonAction {
 	@Resource
 	IDataBaseService queryservice ;
 	

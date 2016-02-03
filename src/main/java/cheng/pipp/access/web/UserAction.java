@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 @Controller
-public class UserController extends BusinessCommonAction {
+public class UserAction extends BusinessCommonAction {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/management/access/user/index")

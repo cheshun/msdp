@@ -118,3 +118,11 @@ $(function(){
 			<div id="sidebar">
 				<div class="toggleCollapse"><h2>菜单</h2><div>collapse</div></div>
 				<div class="accordion" fillSpace="sideBar">
+					<div class="accordionHeader">
+						<h2><span>Folder</span>固定页签</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder">
+							<li><a href="management/ui/multicard/index" target="navTab" rel="pagination1">主子表</a></li>
+						</ul>
+					</div>

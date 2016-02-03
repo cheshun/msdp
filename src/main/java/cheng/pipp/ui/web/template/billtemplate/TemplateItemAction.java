@@ -20,7 +20,7 @@ import cheng.pipp.ui.vo.uitemplate.BillTableTemplateVO;
 import cheng.pipp.ui.vo.uitemplate.BillTemplateVO;
 import cheng.pipp.ui.vo.uitemplate.TabVO;
 @Controller("management.TemplateItemController")
-public class TemplateItemController  extends BusinessCommonAction {
+public class TemplateItemAction extends BusinessCommonAction {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/management/ui/template/billtemplate/item")

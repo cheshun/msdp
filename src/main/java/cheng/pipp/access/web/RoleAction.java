@@ -19,7 +19,7 @@ import cheng.pipp.ui.vo.param.TemplateParamVO;
 
  
 @Controller("management.roleController")
-public class RoleController extends BusinessCommonAction {
+public class RoleAction extends BusinessCommonAction {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/management/access/role/index")

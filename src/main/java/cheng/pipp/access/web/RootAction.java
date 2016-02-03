@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class RootController extends BusinessCommonAction {
+public class RootAction extends BusinessCommonAction {
 
 /*	
 	@RequestMapping("")

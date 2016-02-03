@@ -16,7 +16,7 @@ import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.model.ButtonModel;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 @Controller("management.TemplateButtonController")
-public class TemplateButtonController  extends BusinessCommonAction {
+public class TemplateButtonAction extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/buttonmananger/index")
 	public String index(TemplateParamVO vo, Model model) throws BusinessException {

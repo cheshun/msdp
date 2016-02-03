@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-public class ReportController extends BusinessCommonAction {
+public class ReportAction extends BusinessCommonAction {
 
 	@Resource IQueryTemplateService iqueryTemplateService;
 	

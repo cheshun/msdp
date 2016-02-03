@@ -17,7 +17,7 @@ import cheng.pipp.ui.model.QueryTemplateModel;
 import cheng.pipp.ui.service.IQueryTemplateService;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 @Controller
-public class QueryTemplateController  extends BusinessCommonAction {
+public class QueryTemplateAction extends BusinessCommonAction {
 	@Resource
 	IDataBaseService queryservice ;
 	

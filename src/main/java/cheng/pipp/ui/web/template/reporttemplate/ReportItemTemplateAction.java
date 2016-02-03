@@ -16,7 +16,7 @@ import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.model.ReportItemTemplateModel;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 @Controller
-public class ReportItemTemplateController  extends BusinessCommonAction {
+public class ReportItemTemplateAction extends BusinessCommonAction {
 	@Resource
 	IDataBaseService queryservice ;
 	

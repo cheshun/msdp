@@ -5,6 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller("management.SysActionController")
 @RequestMapping("/management/sys/")
-public class SysActionController  extends BusinessCommonAction {
+public class SysActionAction extends BusinessCommonAction {
 
 }

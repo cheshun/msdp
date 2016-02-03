@@ -18,7 +18,7 @@ import cheng.pipp.ui.model.UITempletModel;
 import cheng.pipp.ui.itf.ITemplateService;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 @Controller
-public class TemplateController  extends BusinessCommonAction {
+public class TemplateAction extends BusinessCommonAction {
 
 	@Resource
 	ITemplateService templateService ;

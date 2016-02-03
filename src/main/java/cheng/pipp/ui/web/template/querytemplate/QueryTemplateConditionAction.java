@@ -16,7 +16,7 @@ import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.model.QueryConditionTemplateModel;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 @Controller
-public class QueryTemplateConditionController  extends BusinessCommonAction {
+public class QueryTemplateConditionAction extends BusinessCommonAction {
 	@Resource
 	IDataBaseService queryservice ;
 	
