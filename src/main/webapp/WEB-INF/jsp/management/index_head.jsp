@@ -96,8 +96,8 @@ $(function(){
 			<div class="headerNav">
 				<a class="logo" href="javascript:void(0)">Logo</a>
 				<ul class="nav">
-					<%-- <li><a href="<c:url value='/'/>">修改密码</a></li> --%>
-					<li><a href="<c:url value='/logout'/>">退出</a></li>
+					<li><a target="_blank" href="/druid/login.html">系统监控</a></li>
+					<li><a href="/logout">退出</a></li>
 				</ul>
 				<ul class="themeList" id="themeList">
 					<li theme="default" style="display:none"><div class="selected">blue</div></li>

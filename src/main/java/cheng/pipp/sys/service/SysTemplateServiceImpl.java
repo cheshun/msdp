@@ -23,7 +23,9 @@ import cheng.pipp.ui.model.UITempletModel;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class) public class TemplateServiceImpl implements ISysTemplateService {
+@Component
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+public class SysTemplateServiceImpl implements ISysTemplateService {
     @Resource IDataBaseService dataBaseService;
 
     public boolean createBillTemplate(String pk_module, String pk_datadict) throws BusinessException {
