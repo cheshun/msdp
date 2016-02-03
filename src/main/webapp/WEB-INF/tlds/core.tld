@@ -10,7 +10,7 @@
 
 	<tag>
 		<name>showDictName</name>
-		<tag-class>cheng.pipp.ui.web.widget.ShowDictNameTag</tag-class>
+		<tag-class>cheng.msdp.ui.web.widget.ShowDictNameTag</tag-class>
 		<description>根据指定唯一标示获取字段信息</description>
 		<attribute>
 			<name>execution_formula</name>

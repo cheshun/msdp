@@ -3,12 +3,12 @@ package cheng.channel.conf;
 import arch.util.lang.ClassUtil;
 import arch.util.lang.PageVO;
 import arch.util.lang.SuperModel;
-import cheng.pipp.access.model.ResourceRoleModel;
-import cheng.pipp.basic.model.RefModel;
+import cheng.msdp.access.model.ResourceRoleModel;
+import cheng.msdp.basic.model.RefModel;
 import cheng.channel.vo.RegisterSourceVO;
 import cheng.pipp.framework.context.ApplicationClientEnvironment;
-import cheng.pipp.ui.itf.IReportController;
-import cheng.pipp.ui.vo.querytemplate.QueryParamVO;
+import cheng.msdp.ui.itf.IReportController;
+import cheng.msdp.ui.vo.querytemplate.QueryParamVO;
 
 import com.application.common.context.ApplicationServiceLocator;
 import com.application.module.jdbc.itf.IDataBaseService;

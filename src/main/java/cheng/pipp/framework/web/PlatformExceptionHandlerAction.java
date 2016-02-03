@@ -1,22 +1,11 @@
 package cheng.pipp.framework.web;
 
-import cheng.lib.util.RequestUtil;
 import com.application.action.AbstractCommonAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 @Controller("management.BaseController")
 public class PlatformExceptionHandlerAction extends AbstractCommonAction {
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());

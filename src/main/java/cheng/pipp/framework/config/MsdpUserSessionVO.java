@@ -1,6 +1,6 @@
 package cheng.pipp.framework.config;
 
-import cheng.pipp.access.model.UserModel;
+import cheng.msdp.access.model.UserModel;
 import com.application.common.vo.UserSessionVO;
 
 /**

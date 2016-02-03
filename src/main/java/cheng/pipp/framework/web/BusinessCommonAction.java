@@ -1,6 +1,6 @@
 package cheng.pipp.framework.web;
 
-import cheng.pipp.access.model.UserModel;
+import cheng.msdp.access.model.UserModel;
 import cheng.pipp.framework.config.MsdpUserSessionVO;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

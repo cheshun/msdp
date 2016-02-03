@@ -1,6 +1,6 @@
 package cheng.pipp.framework.context;
 
-import cheng.pipp.sys.model.CacheTableModel;
+import cheng.msdp.sys.model.CacheTableModel;
 import com.application.common.context.ApplicationServiceLocator;
 import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;

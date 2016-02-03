@@ -1,6 +1,6 @@
 package cheng.wechat.conf;
 
-import cheng.pipp.ui.tree.AbstractIdTreeData;
+import cheng.msdp.ui.tree.AbstractIdTreeData;
 import cheng.wechat.model.AccountModel;
 
 /**

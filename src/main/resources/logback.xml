@@ -15,7 +15,7 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] \(%class.java:%line\) %msg%n</pattern>
 		</encoder>
 	</appender>
-	<appender name="cheng" class="cheng.pipp.log.ChengLog"></appender>
+	<appender name="cheng" class="cheng.msdp.log.ChengLog"></appender>
 	 ERROR级别
 	<appender name="E" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 是否追加内容 -->
