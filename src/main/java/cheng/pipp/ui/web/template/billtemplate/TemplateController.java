@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.model.UITempletModel;
-import cheng.pipp.ui.service.ITemplateService;
+import cheng.pipp.ui.itf.ITemplateService;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 @Controller
 public class TemplateController  extends BusinessCommonAction {
@@ -25,10 +25,10 @@ public class TemplateController  extends BusinessCommonAction {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/management/ui/billtemplate/index")
 	public String index(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = vo.getPk_data();
-		List<UITempletModel> list = (List<UITempletModel>) queryservice.queryByClause(UITempletModel.class, " pk_node='"+pk_node+"'");
+		List<UITempletModel> list = queryservice.queryByClause(UITempletModel.class, " pk_node='"+pk_node+"'");
 		model.addAttribute("param", vo);
 		model.addAttribute("data", list);
 		return "/management/_dev/template/billtemplate/template";
@@ -41,16 +41,16 @@ public class TemplateController  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/billtemplate/edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
-		UITempletModel u = (UITempletModel)queryservice.queryByPK(UITempletModel.class, vo.getPk_data());
+		UITempletModel u = queryservice.queryByPK(UITempletModel.class, vo.getPk_data());
 		model.addAttribute("item", u);
 		model.addAttribute("param", vo);
 		return "/management/_dev/template/billtemplate/edit_template";
 	}
 	@RequestMapping(value="/management/ui/template/billtemplate/save")
 	public ModelAndView save(UITempletModel template , TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		if(StringUtils.isNotEmpty(vo.getPk_parent())){
 			template.setPk_node(vo.getPk_parent());

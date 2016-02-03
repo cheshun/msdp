@@ -11,7 +11,33 @@
  		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<!-- DispatcherServlet会过滤所有的请求，这样请求静态资源时会出问题，加上该配置后，请求resources下面的静态资源时，url不会被过滤 -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<!-- 扫描添加了@Controller等注解的类 -->
+	<!--<context:component-scan base-package="cheng,com" />-->
+	<!--<context:component-scan base-package="cheng,com" >-->
+	<!--<context:include-filter  type="annotation"  expression="org.springframework.stereotype.Controller" />-->
+	<!--</context:component-scan>-->
+	<!--  ViewResolver 视图解析器，对处理器返回的ModelAndView进行解析， 返回到相应的视图页面，  -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- 文件解析器 -->
+	<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"></property>
+		<property name="maxUploadSize" value="10485760000"></property>
+		<property name="maxInMemorySize" value="40960"></property>
+	</bean>
+
+
 	<context:component-scan base-package="cheng,com" />
+	<!--<context:component-scan base-package="cheng,com" >-->
+		<!--<context:exclude-filter type="annotation"  expression="org.springframework.stereotype.Controller" />-->
+	<!--</context:component-scan>-->
 	<context:annotation-config />
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="ignoreResourceNotFound" value="true" />
@@ -42,6 +68,7 @@
 		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
 		<property name="minEvictableIdleTimeMillis" value="3600000" />
 	</bean>
+
 	<bean id="querydataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${queryjdbc.url}" />
@@ -54,7 +81,7 @@
 		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
 		<property name="minEvictableIdleTimeMillis" value="3600000" />
 	</bean>
-
+	<!--<aop:aspectj-autoproxy />-->
 	<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>

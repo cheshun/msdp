@@ -53,10 +53,10 @@ public class ReportTableUtil {
 	 * @return 
 	 */
 	public static List<TableDataVO> initdate(List<ReportItemTemplateModel> itemlist, List<JsonData> head,List<SuperModel> refdata){
-		List<TableDataVO> refvaluelist = new ArrayList<TableDataVO>();
+		List<TableDataVO> refvaluelist = new ArrayList<>();
 		Map<String,ReportItemTemplateModel> map = createMap(itemlist);
 		for(int i =0;i<refdata.size();i++){
-			SuperModel supervo = (SuperModel) refdata.get(i);
+			SuperModel supervo =  refdata.get(i);
 			TableDataVO TableDataVO = initdata(map,supervo,head);
 			refvaluelist.add(TableDataVO);
 		}
@@ -68,7 +68,7 @@ public class ReportTableUtil {
 	 * @return
 	 */
 	private static Map<String,ReportItemTemplateModel> createMap(List<ReportItemTemplateModel> itemlist) {
-		Map<String,ReportItemTemplateModel> m = new HashMap<String,ReportItemTemplateModel>();
+		Map<String,ReportItemTemplateModel> m = new HashMap<>();
 		for(int i=0;i<itemlist.size();i++){
 			m.put(itemlist.get(i).getItemcode(), itemlist.get(i));
 		}

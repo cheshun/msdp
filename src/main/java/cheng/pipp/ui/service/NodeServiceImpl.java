@@ -1,5 +1,6 @@
 package cheng.pipp.ui.service;
 
+import cheng.pipp.ui.itf.INodeService;
 import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.sys.model.NodeModel;
 
@@ -13,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 @Component
 @Transactional(propagation= Propagation.REQUIRED, rollbackFor=Exception.class)
-public class NodeService implements INodeService {
+public class NodeServiceImpl implements INodeService {
 	
 	public List<NodeModel> getNodesByUser(String pk_user)
 			throws BusinessException {

@@ -20,8 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
 @Component
-@Transactional(propagation= Propagation.REQUIRED, rollbackFor=Exception.class)
-public class TableService implements ITableService {
+@Transactional(propagation= Propagation.REQUIRED, rollbackFor=Exception.class) public class TableServiceImpl implements ITableService {
 
 	@Resource
 	IDataBaseService dataBaseService ;
@@ -29,7 +28,7 @@ public class TableService implements ITableService {
 
 	public boolean synchronousTable(ModuleModel modules ,DataDictModel datadict,
 			List<DataDictItemModel> list) throws BusinessException {
-		list = (List<DataDictItemModel>)dataBaseService.queryByClause(DataDictItemModel.class, "pk_datadict='"+datadict.getPrimaryKey()+"' and isTablesyn='"+ UFBoolean.FALSE+"'");
+	    list = dataBaseService.queryByClause(DataDictItemModel.class, "pk_datadict='" + datadict.getPrimaryKey() + "' and isTablesyn='" + UFBoolean.FALSE + "'");
 		IDataBaseService persistence = ApplicationServiceLocator.getService(IDataBaseService.class);
 		String sql = TableUtil.synchronousTable(modules,datadict, list);
 		int i = persistence.update(sql);

@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.sys.itf.ISysTemplateService;
 import cheng.pipp.sys.itf.ITableService;
@@ -27,7 +26,7 @@ import cheng.pipp.sys.model.ModuleModel;
 import cheng.pipp.sys.model.NodeModel;
 import cheng.pipp.sys.util.SuperVOUtil;
 import cheng.pipp.ui.itf.IRefService;
-import cheng.pipp.ui.service.IButtonService;
+import cheng.pipp.ui.itf.IButtonService;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 
 @Controller("management.UICreateController")
@@ -50,10 +49,10 @@ public class UICreateController  extends BusinessCommonAction {
 	 */
 	@RequestMapping(value="ui/compselect")
 	public String compselect(HttpServletRequest request, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		 IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		//数据表主键
 		String pk_datadict = paramvo.getPk_data();
-		DataDictModel datadictModel = (DataDictModel)queryservice.queryByPK(DataDictModel.class, pk_datadict);
+		DataDictModel datadictModel = queryservice.queryByPK(DataDictModel.class, pk_datadict);
 		//回写
 		String pk_node = datadictModel.getPk_node();
 		//加载没有创建的按钮
@@ -77,10 +76,10 @@ public class UICreateController  extends BusinessCommonAction {
 			
 		Map<String,Object> obj = getParamFromReq(request);
 		//获取选中的表主键 找到 表字段 
-		DataDictModel datadict = (DataDictModel)queryservice.queryByPK(DataDictModel.class, paramvo.getPk_data());
-		List<DataDictItemModel> list = (List<DataDictItemModel>)queryservice.queryByClause(DataDictItemModel.class, "pk_datadict='"+datadict.getPrimaryKey()+"'");
-		ModuleModel modules = (ModuleModel)queryservice.queryByPK(ModuleModel.class, datadict.getPk_module());
-		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, datadict.getPk_node());
+		DataDictModel datadict =  queryservice.queryByPK(DataDictModel.class, paramvo.getPk_data());
+		List<DataDictItemModel> list =  queryservice.queryByClause(DataDictItemModel.class, "pk_datadict='"+datadict.getPrimaryKey()+"'");
+		ModuleModel modules = queryservice.queryByPK(ModuleModel.class, datadict.getPk_module());
+		NodeModel node =  queryservice.queryByPK(NodeModel.class, datadict.getPk_node());
 		//根据表字段信息生产相应的模板
 		if("Y".equals(obj.get("iscreatetable"))){
 			//判断数据库表是否存在
@@ -101,7 +100,7 @@ public class UICreateController  extends BusinessCommonAction {
 			}
 		}
 		if("Y".equals(obj.get("isref"))){
-			IRefService ref = (IRefService)ApplicationServiceLocator.getService(IRefService.class);
+			IRefService ref =  ApplicationServiceLocator.getService(IRefService.class);
 			ref.createRef(modules, datadict, list);
 		}
 		if("Y".equals(obj.get("iscache"))){

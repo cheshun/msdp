@@ -2,6 +2,7 @@ package cheng.pipp.ui.service;
 
 import java.util.List;
 
+import cheng.pipp.ui.itf.ITemplateService;
 import com.application.common.context.ApplicationServiceLocator;
 import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
@@ -9,7 +10,6 @@ import com.application.module.jdbc.processor.BeanListProcessor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
-import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.ui.model.UIItemTempletModel;
 import cheng.pipp.ui.model.UITempletModel;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional(propagation= Propagation.REQUIRED, rollbackFor=Exception.class)
-public class TemplateService implements ITemplateService{
+public class TemplateServiceImpl implements ITemplateService {
 	
 	
 	public List<UIItemTempletModel> getUserCardTemplet(String pk_user,String pk_role,

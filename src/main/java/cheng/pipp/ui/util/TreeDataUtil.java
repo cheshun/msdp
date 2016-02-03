@@ -28,7 +28,6 @@ public class TreeDataUtil {
 	}
 	public List<TreeNodeVO> initMenuTree(SuperModel[] treeVO, String idFieldName,
 			String parentIDFieldName, String showFieldName) {
-		List<TreeNodeVO> nodelist = new ArrayList<TreeNodeVO>();
 		TreeNodeVO[] treenodes = new TreeNodeVO[treeVO.length];
 		for (int i = 0; i < treeVO.length; i++) {
 			TreeNodeVO treenode = new TreeNodeVO();
@@ -47,9 +46,7 @@ public class TreeDataUtil {
 			treenode.setTreeData(node);
 			treenodes[i] = treenode;
 		}
-
-		nodelist = createTree(treenodes);
-		return nodelist;
+		return createTree(treenodes);
 	}
 	
 	private List<TreeNodeVO> createTree(TreeNodeVO[] treenodes) {
@@ -99,8 +96,8 @@ public class TreeDataUtil {
 	
 	
 	private List<NodeModel> getChildnodes(String pk_node) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
-		List<NodeModel> chilren = (List<NodeModel>) queryservice.queryByClause(NodeModel.class, " pk_parent_node ='"+pk_node+"' ");
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
+		List<NodeModel> chilren = queryservice.queryByClause(NodeModel.class, " pk_parent_node ='"+pk_node+"' ");
 		if(chilren!=null && !chilren.isEmpty()){
 			for(int i =0;i<chilren.size();i++){
 				chilren.get(i).setChilren(getChildnodes(chilren.get(i).getPk_node()));
@@ -124,7 +121,6 @@ public class TreeDataUtil {
 	public List<TreeNodeVO> initTreeList(SuperModel[] treeVO, String idFieldName,
 			String parentIDFieldName, String showFieldName,
 			String treeNodeUIType, TemplateParamVO paramvo) {
-		List<TreeNodeVO> nodelist = new ArrayList<TreeNodeVO>();
 		TreeNodeVO[] treenodes = new TreeNodeVO[treeVO.length];
 		for (int i = 0; i < treeVO.length; i++) {
 			TreeNodeVO treenode = new TreeNodeVO();
@@ -144,9 +140,7 @@ public class TreeDataUtil {
 			treenodes[i] = treenode;
 		}
 
-		nodelist = createTree(treenodes, paramvo, treeNodeUIType);
-
-		return nodelist;
+		return createTree(treenodes, paramvo, treeNodeUIType);
 	}
 
 	private List<TreeNodeVO> createTree(TreeNodeVO[] treenodes,

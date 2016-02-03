@@ -5,7 +5,7 @@ import cheng.pipp.access.model.UserModel;
 import com.application.common.context.ApplicationServiceLocator;
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.sys.model.NodeModel;
-import cheng.pipp.ui.service.INodeService;
+import cheng.pipp.ui.itf.INodeService;
 import cheng.pipp.ui.util.TreeDataUtil;
 import cheng.pipp.ui.util.TreeUtil;
 import cheng.pipp.ui.vo.TreeNodeVO;
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import java.util.Date;
@@ -28,11 +29,12 @@ import java.util.List;
  */
 @Controller("management.indexController")
 public class IndexController extends BusinessCommonAction {
-	
-	
+
+    @Resource
+    IDataBaseService queryservice ;
 	@RequestMapping("/management")
 	public String index(HttpServletRequest request,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+//		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		//通过用户的id或者用户的角色 得到 用户的所有节点 
 		UserModel user= getUserinfo(request);

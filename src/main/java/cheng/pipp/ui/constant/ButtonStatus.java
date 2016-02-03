@@ -22,19 +22,6 @@ public enum ButtonStatus {
 		this.msg = msg;
 	}
 
-//	public static ButtonStatus valueOf(String code) {
-//		ButtonStatus[] arr = values();
-//		int len = arr.length;
-//
-//		for(int i = 0; i < len; ++i) {
-//			ButtonStatus item = arr[i];
-//			if(item.code.equals(code)) {
-//				return item;
-//			}
-//		}
-//
-//		return null;
-//	}
 
 	public static String getStatusLable(String code) {
 		ButtonStatus[] arr$ = values();

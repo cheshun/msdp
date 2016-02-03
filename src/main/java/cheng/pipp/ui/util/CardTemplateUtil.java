@@ -64,14 +64,14 @@ public class CardTemplateUtil {
 	 * @param oStrArr
 	 */
 	private static void setRefValue(UIItemTempletModel item, String oStrArr) {
-		IDataBaseService queryBS = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryBS = ApplicationServiceLocator.getService(IDataBaseService.class);
 		String reftype = item.getReftype();
 		try {
-			List<RefModel> reflist = (List<RefModel>)queryBS.queryByClause(RefModel.class, RefModel.RefType+"='"+reftype+"'");
+			List<RefModel> reflist =  queryBS.queryByClause(RefModel.class, RefModel.RefType+"='"+reftype+"'");
 			RefModel ref = reflist.get(0);
 			String modelclass = ref.getModelclass();
 			SuperModel model =(SuperModel) ClassUtil.initClass(modelclass);
-			SuperModel tarsupervo = (SuperModel)queryBS.queryByPK(model.getClass(), oStrArr);
+			SuperModel tarsupervo = queryBS.queryByPK(model.getClass(), oStrArr);
 			Object o = tarsupervo.getAttributeValue(ref.getShowfield());
 			if(o!=null){
 				List<ComboxData> temp = new ArrayList<ComboxData>(1);

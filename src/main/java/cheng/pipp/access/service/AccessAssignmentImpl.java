@@ -51,10 +51,10 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 	
 	private boolean doassignRole(String[] pk_roles, String pk_user) throws BusinessException{
 		//如果是分配一个角色,且该用户还没有默认角色 则设置该角色为用户的默认角色。
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService = ApplicationServiceLocator.getService(IDataBaseService.class);
 		//
 		
-		List<UserRoleModel> listuserrole = (List<UserRoleModel>)dataBaseService.queryByClause(UserRoleModel.class, " pk_user='"+pk_user+"' ");
+		List<UserRoleModel> listuserrole = dataBaseService.queryByClause(UserRoleModel.class, " pk_user='"+pk_user+"' ");
 		if(pk_roles==null  && listuserrole.size()==0){
 			return false ;
 		}

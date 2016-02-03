@@ -9,7 +9,7 @@ import cheng.pipp.ui.itf.IReportController;
 import cheng.pipp.ui.model.QueryConditionTemplateModel;
 import cheng.pipp.ui.model.ReportItemTemplateModel;
 import cheng.pipp.ui.model.ReportTemplateModel;
-import cheng.pipp.ui.service.IQueryTemplate;
+import cheng.pipp.ui.service.IQueryTemplateService;
 import cheng.pipp.ui.util.ParamUtil;
 import cheng.pipp.ui.util.QueryTemplateUtil;
 import cheng.pipp.ui.util.ReportTableUtil;
@@ -33,8 +33,7 @@ import java.util.List;
 @Controller
 public class ReportController extends BusinessCommonAction {
 
-	@Resource
-	IQueryTemplate iqueryTemplate ;
+	@Resource IQueryTemplateService iqueryTemplateService;
 	
 	@RequestMapping("/management/ui/report/index")
 	public String index(HttpServletRequest request, TemplateParamVO paramvo ,PageVO pagevo,Model model) throws BusinessException {
@@ -75,10 +74,10 @@ public class ReportController extends BusinessCommonAction {
 	@RequestMapping("/management/ui/report/query")
 	public String query(HttpServletRequest request, TemplateParamVO paramvo ,PageVO pagevo,Model model) throws BusinessException {
 		//获取查询模板
-		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationServiceLocator.getService(IQueryTemplate.class);
+		IQueryTemplateService iqueryTemplateService =(IQueryTemplateService)ApplicationServiceLocator.getService(IQueryTemplateService.class);
 		String pk_role = getUserinfo(request).getPk_role();
 		String pk_node = paramvo.getTemplateid();
-		List<QueryConditionTemplateModel> querylist = iqueryTemplate.getQueryTemplate(pk_node, pk_role);
+		List<QueryConditionTemplateModel> querylist = iqueryTemplateService.getQueryTemplate(pk_node, pk_role);
 		QueryTemplateUtil.initQueryTemplate(querylist);
 		model.addAttribute("querylist", querylist);
 		paramvo.setActiontype("search");

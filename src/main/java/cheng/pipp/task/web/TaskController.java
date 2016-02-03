@@ -7,7 +7,7 @@ import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.task.model.TaskPluginVO;
 import cheng.pipp.task.model.TaskdeployVO;
 import cheng.pipp.ui.model.UIItemTempletModel;
-import cheng.pipp.ui.service.ITemplateService;
+import cheng.pipp.ui.itf.ITemplateService;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;

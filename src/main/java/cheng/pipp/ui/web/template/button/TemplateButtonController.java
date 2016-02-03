@@ -20,11 +20,11 @@ public class TemplateButtonController  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/buttonmananger/index")
 	public String index(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_parent = vo.getPk_data();
 		@SuppressWarnings("unchecked")
-		List<ButtonModel> list = (List<ButtonModel>) queryservice.queryByClause(ButtonModel.class, " pk_node='" + pk_parent + "' ");
+		List<ButtonModel> list =   queryservice.queryByClause(ButtonModel.class, " pk_node='" + pk_parent + "' ");
 		for( ButtonModel buttonModel :list){
 			buttonModel.setBtn_status(ButtonStatus.getStatusLable(buttonModel.getBtn_status()));
 		}
@@ -41,16 +41,16 @@ public class TemplateButtonController  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/buttonmananger/edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
-		ButtonModel u = (ButtonModel)queryservice.queryByPK(ButtonModel.class, vo.getPk_data());
+		ButtonModel u = queryservice.queryByPK(ButtonModel.class, vo.getPk_data());
 		model.addAttribute("item", u);
 		model.addAttribute("param", vo);
 		return "/management/_dev/template/buttonmananger/edit";
 	}
 	@RequestMapping(value="/management/ui/template/buttonmananger/save")
 	public ModelAndView save(ButtonModel button,TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		if(StringUtils.isNotEmpty(vo.getPk_parent())){
 			button.setPk_node(vo.getPk_parent());

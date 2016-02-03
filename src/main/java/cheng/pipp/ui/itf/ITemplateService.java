@@ -1,4 +1,4 @@
-package cheng.pipp.ui.service;
+package cheng.pipp.ui.itf;
 
 import cheng.pipp.ui.model.UIItemTempletModel;
 import cheng.pipp.ui.model.UITempletModel;

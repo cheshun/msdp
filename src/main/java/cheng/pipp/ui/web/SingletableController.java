@@ -29,9 +29,9 @@ import cheng.pipp.ui.itf.IButtonAction;
 import cheng.pipp.ui.model.ButtonModel;
 import cheng.pipp.ui.model.QueryConditionTemplateModel;
 import cheng.pipp.ui.model.UIItemTempletModel;
-import cheng.pipp.ui.service.IButtonService;
-import cheng.pipp.ui.service.IQueryTemplate;
-import cheng.pipp.ui.service.ITemplateService;
+import cheng.pipp.ui.itf.IButtonService;
+import cheng.pipp.ui.service.IQueryTemplateService;
+import cheng.pipp.ui.itf.ITemplateService;
 import cheng.pipp.ui.util.ParamUtil;
 import cheng.pipp.ui.util.QueryTemplateUtil;
 import cheng.pipp.ui.vo.param.DeleteActionParamVO;
@@ -108,14 +108,14 @@ public class SingletableController extends BusinessCommonAction {
 
 	private String getCondition(TemplateParamVO paramvo, SuperModel supervo,
 			HttpServletRequest request) throws BusinessException {
-		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationServiceLocator.getService(IQueryTemplate.class);
+		IQueryTemplateService iqueryTemplateService = ApplicationServiceLocator.getService(IQueryTemplateService.class);
 		
 		String condition = null ;
 		if(StringUtils.isEmpty(paramvo.getActiontype())){
 			return condition;
 		}
 		if("search".equals(paramvo.getActiontype())){
-			List<QueryConditionTemplateModel> querylist = iqueryTemplate.getQueryTemplate(paramvo.getTemplateid(),getUserinfo(request).getPk_role());
+			List<QueryConditionTemplateModel> querylist = iqueryTemplateService.getQueryTemplate(paramvo.getTemplateid(),getUserinfo(request).getPk_role());
 			List<QueryParamVO> queryparam = ParamUtil.initQueryParam(querylist,getParamFromReq(request));
 			condition = ParamUtil.getConditionStr(queryparam);
 		}else if("view".equals(paramvo.getActiontype())){
@@ -188,11 +188,11 @@ public class SingletableController extends BusinessCommonAction {
 	
 	@RequestMapping("/management/ui/singletable/search")
 	public String search(HttpServletRequest request, SearchActionParamVO paramvo ,Model model) throws BusinessException {
-		IQueryTemplate iqueryTemplate =(IQueryTemplate)ApplicationServiceLocator.getService(IQueryTemplate.class);
+		IQueryTemplateService iqueryTemplateService =(IQueryTemplateService)ApplicationServiceLocator.getService(IQueryTemplateService.class);
 		
 		String pk_role = getUserinfo(request).getPk_role();
 		String pk_node = paramvo.getTemplateid();
-		List<QueryConditionTemplateModel> querylist = iqueryTemplate.getQueryTemplate(pk_node, pk_role);
+		List<QueryConditionTemplateModel> querylist = iqueryTemplateService.getQueryTemplate(pk_node, pk_role);
 		QueryTemplateUtil.initQueryTemplate(querylist);
 		model.addAttribute("querylist", querylist);
 		paramvo.setActiontype("search");

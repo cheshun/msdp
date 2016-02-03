@@ -24,7 +24,7 @@ public class QueryTemplateConditionController  extends BusinessCommonAction {
 	@RequestMapping(value="/management/ui/template/querytemplate/item")
 	public String index(TemplateParamVO vo, Model model) throws BusinessException {
 		String pk_parent = vo.getPk_data();
-		List<QueryConditionTemplateModel> list = (List<QueryConditionTemplateModel>) queryservice
+		List<QueryConditionTemplateModel> list = queryservice
 				.queryByClause(QueryConditionTemplateModel.class, " pk_querytemplate='" + pk_parent + "'");
 		model.addAttribute("data", list);
 		model.addAttribute("param", vo);
@@ -38,7 +38,7 @@ public class QueryTemplateConditionController  extends BusinessCommonAction {
 	}
 	@RequestMapping(value="/management/ui/template/querytemplate/item_edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		QueryConditionTemplateModel u = (QueryConditionTemplateModel)queryservice.queryByPK(QueryConditionTemplateModel.class, vo.getPk_data());
+		QueryConditionTemplateModel u = queryservice.queryByPK(QueryConditionTemplateModel.class, vo.getPk_data());
 		model.addAttribute("item", u);
 		model.addAttribute("param", vo);
 		return "/management/_dev/template/querytemplate/item_edit";

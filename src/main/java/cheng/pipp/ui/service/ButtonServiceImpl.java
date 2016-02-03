@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cheng.pipp.ui.constant.ButtonStatus;
+import cheng.pipp.ui.itf.IButtonService;
 import com.application.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import com.application.module.jdbc.processor.BeanListProcessor;
@@ -17,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional(propagation= Propagation.REQUIRED, rollbackFor=Exception.class)
-public class ButtonService implements IButtonService{
+public class ButtonServiceImpl implements IButtonService {
 	
 
 	

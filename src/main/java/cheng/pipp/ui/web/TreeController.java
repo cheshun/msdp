@@ -33,7 +33,7 @@ public class TreeController  extends BusinessCommonAction {
 	public String index(HttpServletRequest request, TemplateParamVO paramvo ,PageVO pagevo,Model model) throws BusinessException {
 		
 		paramvo.setTemplateid(paramvo.getTemplateid().split(",")[0]);
-		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, paramvo.getTemplateid());
+		NodeModel node = queryservice.queryByPK(NodeModel.class, paramvo.getTemplateid());
 		String dataclass = node.getTreedata();
 		String treefilename = "/management/_frag/template/tree/"+paramvo.getTemplateid();
 		IVOTreeData treedata = (IVOTreeData) ClassUtil.initClass(dataclass);

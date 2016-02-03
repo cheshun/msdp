@@ -14,15 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cheng.pipp.framework.web.BusinessCommonAction;
 import cheng.pipp.ui.model.QueryTemplateModel;
-import cheng.pipp.ui.service.IQueryTemplate;
+import cheng.pipp.ui.service.IQueryTemplateService;
 import cheng.pipp.ui.vo.param.TemplateParamVO;
 @Controller
 public class QueryTemplateController  extends BusinessCommonAction {
 	@Resource
 	IDataBaseService queryservice ;
 	
-	@Resource
-	IQueryTemplate queryTemplate ;
+	@Resource IQueryTemplateService queryTemplate ;
 	/**
 	 * 加载查询模板
 	 * @param vo

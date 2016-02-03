@@ -45,7 +45,7 @@
  
 
 	<!-- 日志输出级别为DEBUG,开发环境 -->
-	<root level="INFO">
+	<root level="debug">
 		<appender-ref ref="stdout" />
 		<!--<appender-ref ref="E" />-->
 	</root>／

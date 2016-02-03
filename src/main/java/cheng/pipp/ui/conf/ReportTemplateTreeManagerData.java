@@ -13,8 +13,6 @@ public class ReportTemplateTreeManagerData implements IVOTreeDataByID {
 
 	
 	public String getShowFieldName() {
-		
-		
 		return "fun_name";
 	}
 
@@ -22,14 +20,11 @@ public class ReportTemplateTreeManagerData implements IVOTreeDataByID {
 	public String getTreeNodeUIType() {
 		
 		return "/management/ui/template/reporttemplate/index";
-//		return "/management/ui/singletable/index";
 	}
 
 	
 	public SuperModel[] getTreeVO(   ) throws BusinessException {
-		 IDataBaseService queryseervice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
-			
-		List<NodeModel> list = (List<NodeModel>) queryseervice.queryByClause(NodeModel.class, " dr=0 ");
+	    List<NodeModel> list = ApplicationServiceLocator.getService(IDataBaseService.class).queryByClause(NodeModel.class, " dr=0 ");
 			return list.toArray(new NodeModel[0]);
 	}
 

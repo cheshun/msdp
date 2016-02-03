@@ -26,16 +26,16 @@ public class TemplateItemController  extends BusinessCommonAction {
 	@RequestMapping(value="/management/ui/template/billtemplate/item")
 	public String index(TemplateParamVO vo, Model model)
 			throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_parent = vo.getPk_data();//模板的主键
-		UITempletModel ui = (UITempletModel)queryservice.queryByPK(UITempletModel.class, pk_parent);
+		UITempletModel ui =  queryservice.queryByPK(UITempletModel.class, pk_parent);
 		//通过模板的主键得到模板的节点
 		//得到所有子节点（页签）
-		List<NodeModel> listtab = (List<NodeModel>)queryservice.queryByClause(NodeModel.class, "pk_parent_node='"+ui.getPk_node()+"'");
+		List<NodeModel> listtab =  queryservice.queryByClause(NodeModel.class, "pk_parent_node='"+ui.getPk_node()+"'");
 		//从模板字段中按页签编码 分组
 		
-		List<UIItemTempletModel> list = (List<UIItemTempletModel>) queryservice
+		List<UIItemTempletModel> list =   queryservice
 				.queryByClause(UIItemTempletModel.class, " pk_templet='" + pk_parent + "'");
 		
 		BillTableTemplateVO tabldata = initTableData(listtab,list);
@@ -99,16 +99,16 @@ public class TemplateItemController  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/billtemplate/item_edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
-		UIItemTempletModel u = (UIItemTempletModel)queryservice.queryByPK(UIItemTempletModel.class, vo.getPk_data());
+		UIItemTempletModel u = queryservice.queryByPK(UIItemTempletModel.class, vo.getPk_data());
 		model.addAttribute("item", u);
 		model.addAttribute("param", vo);
 		return "/management/_dev/template/billtemplate/edit_templateitem";
 	}
 	@RequestMapping(value="/management/ui/template/billtemplate/item_save")
 	public ModelAndView save(UIItemTempletModel item,TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		if(StringUtils.isNotEmpty(vo.getPk_parent())){
 			item.setPk_templet(vo.getPk_parent());

@@ -14,7 +14,6 @@ public class RefTreeData extends AbstractIdTreeData {
 		return "module_name";
 	}
 	public String getTreeNodeUIType() {
-
 		return "/management/ui/singletable/index";
 	}
 	public Class<?> getTreeModel() {

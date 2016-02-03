@@ -52,9 +52,9 @@ public class TemplateAssignmentAction  extends BusinessCommonAction {
 		List<UITempletModel> listbill = (List<UITempletModel>) getTemplateData(UITempletModel.class,paramvo );
 		//查询 pk_data 的非默认查询模板 
 		List<QueryTemplateModel> listquery = (List<QueryTemplateModel>) getTemplateData(QueryTemplateModel.class,paramvo);
-		IDataBaseService queryseervice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryseervice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
-		List<ButtonModel> listbutton = (List<ButtonModel>)queryseervice.queryByClause(ButtonModel.class, " pk_node='"+paramvo.getPk_data()+"' and dr=0 ");
+		List<ButtonModel> listbutton =queryseervice.queryByClause(ButtonModel.class, " pk_node='"+paramvo.getPk_data()+"' and dr=0 ");
 		//查询 pk_data 的非默认报表模板 
 		model.addAttribute("listbill", listbill);
 		model.addAttribute("listquery", listquery);
@@ -65,7 +65,7 @@ public class TemplateAssignmentAction  extends BusinessCommonAction {
 	}
 	@SuppressWarnings("rawtypes")
 	public Collection getTemplateData(Class templateclass,TemplateParamVO paramvo) throws BusinessException{
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		return queryservice.queryByClause(templateclass, " dr=0 and templatetypecode !='SYSTEM' and pk_node='"+paramvo.getPk_data()+"'  ");
 	}
 	/**
@@ -79,10 +79,10 @@ public class TemplateAssignmentAction  extends BusinessCommonAction {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/management/ui/template/doassignment")
 	public String initAssignmentTree(HttpServletRequest request, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String filename="/management/_dev/authenticate/accessassignment_"+paramvo.getPk_data() ;
-		List<RoleModel> rlist = (List<RoleModel>)queryservice.queryByClause(RoleModel.class, " dr=0 ");
+		List<RoleModel> rlist = queryservice.queryByClause(RoleModel.class, " dr=0 ");
 		TreeVO tree = null;
 		if(paramvo.getTemplatetype().equals(Bill)){
 			List<TemplateNodeRoleModel> listu =  queryservice.queryByClause(TemplateNodeRoleModel.class, " pk_temple='" + paramvo.getPk_data() + "' and pk_node='" + paramvo.getPk_parent() + "' and dr=0 ");

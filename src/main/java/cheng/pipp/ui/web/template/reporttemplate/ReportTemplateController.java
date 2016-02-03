@@ -30,7 +30,7 @@ public class ReportTemplateController  extends BusinessCommonAction {
 	@RequestMapping(value="/management/ui/template/reporttemplate/index")
 	public String index(TemplateParamVO vo, Model model) throws BusinessException {
 		String pk_node = vo.getPk_data();
-		List<ReportTemplateModel> list = (List<ReportTemplateModel>) queryservice.queryByClause(ReportTemplateModel.class, " pk_node='"+pk_node+"'");
+		List<ReportTemplateModel> list = queryservice.queryByClause(ReportTemplateModel.class, " pk_node='"+pk_node+"'");
 		model.addAttribute("data", list);
 		model.addAttribute("param", vo);
 		return "/management/_dev/template/reporttemplate/index";
@@ -44,7 +44,7 @@ public class ReportTemplateController  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/ui/template/reporttemplate/edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		ReportTemplateModel u = (ReportTemplateModel)queryservice.queryByPK(ReportTemplateModel.class, vo.getPk_data());
+		ReportTemplateModel u = queryservice.queryByPK(ReportTemplateModel.class, vo.getPk_data());
 		model.addAttribute("item", u);
 		model.addAttribute("param", vo);
 		return "/management/_dev/template/reporttemplate/edit";

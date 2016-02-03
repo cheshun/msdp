@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional(propagation= Propagation.REQUIRED, rollbackFor=Exception.class)
-public class QueryTemplateService implements IQueryTemplate {
+public class QueryTemplateServiceImpl implements IQueryTemplateService {
 
 	public List<QueryConditionTemplateModel> getQueryTemplate(String pk_node,
 			String pk_role,String pk_user) throws BusinessException {

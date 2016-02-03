@@ -8,7 +8,7 @@ import com.application.itf.IService;
 
 import java.util.List;
 
-public interface IQueryTemplate extends IService {
+public interface IQueryTemplateService extends IService {
 
 	public List<QueryConditionTemplateModel> getQueryTemplate(String pk_node) throws BusinessException;
 	public List<QueryConditionTemplateModel> getQueryTemplate(String pk_node,String pk_role) throws BusinessException;

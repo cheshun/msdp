@@ -28,7 +28,7 @@ public class LoginController extends BusinessCommonAction {
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,HttpServletResponse response,Model model) throws BusinessException {
 		
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String action = getAction("page", request);
 		if("page".equals(action)){
