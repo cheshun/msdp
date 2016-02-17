@@ -6,7 +6,7 @@ import arch.util.lang.SuperModel;
 import cheng.msdp.access.model.ResourceRoleModel;
 import cheng.msdp.basic.model.RefModel;
 import cheng.channel.vo.RegisterSourceVO;
-import cheng.pipp.framework.context.ApplicationClientEnvironment;
+import cheng.msdp.framework.context.ApplicationClientEnvironment;
 import cheng.msdp.ui.itf.IReportController;
 import cheng.msdp.ui.vo.querytemplate.QueryParamVO;
 

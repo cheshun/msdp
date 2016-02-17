@@ -1,7 +1,7 @@
 package cheng.msdp.access.web;
 
 
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.web.BusinessCommonAction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

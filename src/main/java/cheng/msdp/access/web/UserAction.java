@@ -3,7 +3,7 @@ package cheng.msdp.access.web;
 import cheng.msdp.access.model.RoleModel;
 import cheng.msdp.access.model.UserModel;
 import com.application.common.context.ApplicationServiceLocator;
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.web.BusinessCommonAction;
 import cheng.msdp.ui.vo.param.TemplateParamVO;
 import com.application.exception.BusinessException;
 import com.application.funtion.encrypt.DesUtil;

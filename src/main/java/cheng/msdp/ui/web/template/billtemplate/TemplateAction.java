@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.application.common.context.ApplicationServiceLocator;
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.web.BusinessCommonAction;
 import cheng.msdp.ui.model.UITempletModel;
 import cheng.msdp.ui.itf.ITemplateService;
 import cheng.msdp.ui.vo.param.TemplateParamVO;

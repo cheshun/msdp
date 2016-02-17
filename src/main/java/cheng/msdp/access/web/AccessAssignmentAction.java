@@ -7,7 +7,7 @@ import cheng.msdp.access.model.RoleNodeModel;
 import cheng.msdp.access.model.UserRoleModel;
 import cheng.msdp.access.service.IAccessAssignment;
 import com.application.common.context.ApplicationServiceLocator;
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.web.BusinessCommonAction;
 import cheng.msdp.sys.model.NodeModel;
 import cheng.msdp.ui.util.TreeDataUtil;
 import cheng.msdp.ui.util.TreeUtil;

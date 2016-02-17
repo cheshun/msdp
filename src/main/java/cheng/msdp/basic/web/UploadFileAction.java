@@ -1,6 +1,6 @@
 package cheng.msdp.basic.web;
 
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.web.BusinessCommonAction;
 import com.application.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

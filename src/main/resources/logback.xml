@@ -15,8 +15,6 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] \(%class.java:%line\) %msg%n</pattern>
 		</encoder>
 	</appender>
-	<appender name="cheng" class="cheng.msdp.log.ChengLog"></appender>
-	 ERROR级别
 	<appender name="E" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 是否追加内容 -->
 		<Append>true</Append>
@@ -49,9 +47,5 @@
 		<appender-ref ref="stdout" />
 		<!--<appender-ref ref="E" />-->
 	</root>／
-
-	<!-- 日志输出级别为WARN，生产环境 -->
-	<!-- <root level="WARN"> <appender-ref ref="stdout"/> <appender-ref ref="E"/> 
-		</root> -->
 
 </configuration>

@@ -1,7 +1,7 @@
 package cheng.msdp.ui.web;
 
 import arch.util.lang.PageVO;
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.web.BusinessCommonAction;
 import cheng.msdp.ui.vo.param.TemplateParamVO;
 import com.application.exception.BusinessException;
 import org.springframework.stereotype.Controller;

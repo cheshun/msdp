@@ -1,13 +1,12 @@
 package cheng.msdp.access.web;
 
-
 import cheng.msdp.access.model.UserModel;
-import cheng.pipp.framework.config.MsdpUserSessionVO;
+import cheng.msdp.access.service.Itest2;
+import cheng.msdp.access.vo.MsdpUserSessionVO;
 import com.application.common.context.ApplicationServiceLocator;
-import cheng.pipp.framework.context.ClientThreadData;
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.context.ClientThreadData;
+import cheng.msdp.framework.web.BusinessCommonAction;
 import com.application.common.util.HttpRequestUtil;
-import com.application.exception.BusinessException;
 import com.application.funtion.encrypt.DesUtil;
 import com.application.module.jdbc.itf.IDataBaseService;
 import com.application.util.string.URLUtil;
@@ -18,106 +17,98 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@Controller
-public class LoginAction extends BusinessCommonAction {
-	
-	@RequestMapping("/login")
-	public String login(HttpServletRequest request,HttpServletResponse response,Model model) throws BusinessException {
-		
-		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
-		
-		String action = getAction("page", request);
-		if("page".equals(action)){
-			String pk_role = request.getParameter("pk_role");
-			DiamondServer.getInstance().getServerHandler().pushConfig("cheng", "production", pk_role+Constants.PROFILE_separator);
-			//List<RoleModel> list = (List<RoleModel>) queryservice.queryByClause(RoleModel.class, " dr = 0 ");
-			//model.addAttribute(Data, list);
-			return "login";
-		}else {
-//			String pk_role = request.getParameter("pk_role");
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			if(StringUtils.isBlank(username)){
-				return "login";
-			}
-//			if("root".equals(username)){
-//				return Redirect+"/root";
-//			}
-			if(isroot(username,password)){
-				ClientThreadData.setClientUser(getRootUser());
-				MsdpUserSessionVO msdpUserSessionVO = new MsdpUserSessionVO(getRootUser());
-				HttpRequestUtil.setUserToSession(request, response, msdpUserSessionVO);
-				String backToUrl = getBackUrl(request);
-				return  "redirect:"+ backToUrl;
-			}
-			if(StringUtils.isBlank(password)) {
-				//model.addAttribute(Data, list);
-				return "login";
-			}
+@Controller public class LoginAction extends BusinessCommonAction {
+    @Resource
+    Itest2 itest2 ;
+    @RequestMapping("/login") public String login(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
-			List<UserModel> listu =  (List<UserModel>) queryservice.queryByClause(UserModel.class, " dr=0 and user_code='"+username+"'");
-			if(listu ==null || listu.size()==0){
-				//model.addAttribute(Data, list);
-				return "login";
-			}
-			UserModel user = listu.get(0);
-			DesUtil en = new DesUtil();
-			if(user.getUser_password().equals(en.encode(password))){
-				ClientThreadData.setClientUser(user);
-				MsdpUserSessionVO msdpUserSessionVO = new MsdpUserSessionVO(user);
-				HttpRequestUtil.setUserToSession(request, response, msdpUserSessionVO);
-				String backToUrl = getBackUrl(request);
-				return  "redirect:" + backToUrl;
-			}
-			return "login";
-		}
-	}
+	IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
+//	itest2.tt();
+	String action = getAction("page", request);
+	if ("page".equals(action)) {
+	    String pk_role = request.getParameter("pk_role");
+	    DiamondServer.getInstance().getServerHandler().pushConfig("cheng", "production", pk_role + Constants.PROFILE_separator);
+	    return "login";
+	} else {
+	    String username = request.getParameter("username");
+	    String password = request.getParameter("password");
+	    if (StringUtils.isBlank(username)) {
+		return "login";
+	    }
+	    if (isroot(username, password)) {
+		ClientThreadData.setClientUser(getRootUser());
+		MsdpUserSessionVO msdpUserSessionVO = new MsdpUserSessionVO(getRootUser());
+		HttpRequestUtil.setUserToSession(request, response, msdpUserSessionVO);
+		String backToUrl = getBackUrl(request);
+		return "redirect:" + backToUrl;
+	    }
+	    if (StringUtils.isBlank(password)) {
+		return "login";
+	    }
 
-	private boolean isroot(String username, String password) {
-		if(username.equals("root") && password.equals("1qaz2wsx3edc4rfv")){
-			return true ;
-		}
-		return false ;
+	    List<UserModel> listu = queryservice.queryByClause(UserModel.class, " dr=0 and user_code='" + username + "'");
+	    if (listu == null || listu.size() == 0) {
+		//model.addAttribute(Data, list);
+		return "login";
+	    }
+	    UserModel user = listu.get(0);
+	    DesUtil en = new DesUtil();
+	    if (user.getUser_password().equals(en.encode(password))) {
+		ClientThreadData.setClientUser(user);
+		MsdpUserSessionVO msdpUserSessionVO = new MsdpUserSessionVO(user);
+		HttpRequestUtil.setUserToSession(request, response, msdpUserSessionVO);
+		String backToUrl = getBackUrl(request);
+		return "redirect:" + backToUrl;
+	    }
+	    return "login";
 	}
-	private UserModel getRootUser(){
-		UserModel u = new UserModel();
-		u.setPk_role("00000000000000000000");
-		u.setPk_user("00000000000000000000");
-		u.setUser_code("root");
-		u.setUser_name("root");
-		return u;
-	}
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
-	private String getBackUrl(HttpServletRequest request) {
-		String backToUrl = request.getParameter("backToUrl");
-		if (backToUrl == null || backToUrl.trim().length() == 0) {
-			backToUrl ="/management";
-		} else {
-			backToUrl = URLUtil.encode(backToUrl);
-		}
-		return backToUrl;
-	}
+    }
 
-	@RequestMapping("/logout")
-	public String logout(HttpServletRequest request,HttpServletResponse response) {
-		removeUserFromSession(request, response);
-		return  "redirect:login";
+    private boolean isroot(String username, String password) {
+	if (username.equals("root") && password.equals("1qaz2wsx3edc4rfv")) {
+	    return true;
 	}
+	return false;
+    }
 
-	@RequestMapping("/register")
-	public String register(HttpServletRequest request,HttpServletResponse response) {
+    private UserModel getRootUser() {
+	UserModel u = new UserModel();
+	u.setPk_role("00000000000000000000");
+	u.setPk_user("00000000000000000000");
+	u.setUser_code("root");
+	u.setUser_name("root");
+	return u;
+    }
 
-		removeUserFromSession(request,response);
-
-		return  "redirect:register";
+    /**
+     * @param request
+     * @return
+     */
+    private String getBackUrl(HttpServletRequest request) {
+	String backToUrl = request.getParameter("backToUrl");
+	if (backToUrl == null || backToUrl.trim().length() == 0) {
+	    backToUrl = "/management";
+	} else {
+	    backToUrl = URLUtil.encode(backToUrl);
 	}
-	
+	return backToUrl;
+    }
+
+    @RequestMapping("/logout") public String logout(HttpServletRequest request, HttpServletResponse response) {
+	removeUserFromSession(request, response);
+	return "redirect:login";
+    }
+
+    @RequestMapping("/register") public String register(HttpServletRequest request, HttpServletResponse response) {
+
+	removeUserFromSession(request, response);
+
+	return "redirect:register";
+    }
+
 }

@@ -1,6 +1,6 @@
 package cheng.msdp.basic.web;
 
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.web.BusinessCommonAction;
 
  
 public class RefTreePanelAction extends BusinessCommonAction {

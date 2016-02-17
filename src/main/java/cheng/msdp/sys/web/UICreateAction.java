@@ -16,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import cheng.pipp.framework.web.BusinessCommonAction;
+import cheng.msdp.framework.web.BusinessCommonAction;
 import cheng.msdp.sys.itf.ISysTemplateService;
 import cheng.msdp.sys.itf.ITableService;
 import cheng.msdp.sys.model.CacheTableModel;
