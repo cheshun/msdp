@@ -2,8 +2,8 @@ package cheng.msdp.basic.service;
 
 import java.util.List;
 
-import arch.util.lang.UFBoolean;
-import com.application.exception.BusinessException;
+import cheng.lib.lang.UFBoolean;
+import cheng.lib.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import org.springframework.stereotype.Component;
 

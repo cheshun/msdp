@@ -10,7 +10,7 @@ import cheng.msdp.ui.util.TreeDataUtil;
 import cheng.msdp.ui.util.TreeUtil;
 import cheng.msdp.ui.vo.TreeNodeVO;
 
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

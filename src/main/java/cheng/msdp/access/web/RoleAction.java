@@ -2,7 +2,7 @@ package cheng.msdp.access.web;
 
 import java.util.List;
 
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import com.application.module.jdbc.processor.BeanListProcessor;
 import org.apache.commons.lang3.StringUtils;

@@ -1,6 +1,6 @@
 package cheng.msdp.task.model;
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 /**
  * 任务插件信息 

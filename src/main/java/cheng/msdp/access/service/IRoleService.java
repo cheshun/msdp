@@ -1,7 +1,7 @@
 package cheng.msdp.access.service;
 
 import cheng.msdp.access.model.RoleModel;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.itf.IService;
 
 import java.util.List;

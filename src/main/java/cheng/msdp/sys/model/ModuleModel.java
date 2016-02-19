@@ -1,7 +1,7 @@
 package cheng.msdp.sys.model;
 
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 public class ModuleModel  extends SuperModel {
 

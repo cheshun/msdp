@@ -1,7 +1,7 @@
 package cheng.msdp.sys.itf;
 
 
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.itf.IService;
 
 public interface ISysTemplateService extends IService {

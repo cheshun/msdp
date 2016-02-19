@@ -1,7 +1,7 @@
 package cheng.wechat.model;
 
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 import javax.enterprise.inject.New;
 

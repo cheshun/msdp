@@ -1,7 +1,7 @@
 package cheng.msdp.access.service;
 
 
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.itf.IService;
 
 public interface IAccessAssignment extends IService {

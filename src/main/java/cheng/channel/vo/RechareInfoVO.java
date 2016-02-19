@@ -1,6 +1,6 @@
 package cheng.channel.vo;
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 public class RechareInfoVO extends SuperModel {
 	private int index ;

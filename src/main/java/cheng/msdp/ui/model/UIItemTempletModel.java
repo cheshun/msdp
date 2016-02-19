@@ -1,8 +1,8 @@
 package cheng.msdp.ui.model;
 
 import cheng.msdp.ui.vo.ComboxData;
-import arch.util.lang.UFBoolean;
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.UFBoolean;
+import cheng.lib.lang.SuperModel;
 
 import java.util.List;
 

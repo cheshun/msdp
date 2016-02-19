@@ -4,7 +4,7 @@ package cheng.lib.lang;
 import cheng.lib.util.BeanHelper;
 import cheng.lib.util.ClassUtil;
 import cheng.lib.util.TimeToolkit;
-import com.application.exception.ValidationException;
+import cheng.lib.exception.ValidationException;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;

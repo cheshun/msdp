@@ -4,8 +4,8 @@ import cheng.lib.lang.IDataType;
 import cheng.msdp.ui.model.QueryConditionTemplateModel;
 import cheng.msdp.ui.model.ReportItemTemplateModel;
 import cheng.msdp.ui.vo.querytemplate.QueryParamVO;
-import arch.util.lang.UFBoolean;
-import arch.util.lang.UFDate;
+import cheng.lib.lang.UFBoolean;
+import cheng.lib.lang.UFDate;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;

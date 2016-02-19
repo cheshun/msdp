@@ -1,7 +1,7 @@
 package cheng.msdp.sys.model;
 
-import arch.util.lang.UFBoolean;
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.UFBoolean;
+import cheng.lib.lang.SuperModel;
 
 import java.util.ArrayList;
 import java.util.List;

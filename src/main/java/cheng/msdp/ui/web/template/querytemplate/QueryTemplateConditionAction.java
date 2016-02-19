@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;

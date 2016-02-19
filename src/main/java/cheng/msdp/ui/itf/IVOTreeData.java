@@ -1,8 +1,8 @@
 package cheng.msdp.ui.itf;
 
 
-import arch.util.lang.SuperModel;
-import com.application.exception.BusinessException;
+import cheng.lib.lang.SuperModel;
+import cheng.lib.exception.BusinessException;
 
 public interface IVOTreeData {
 	public String getShowFieldName();

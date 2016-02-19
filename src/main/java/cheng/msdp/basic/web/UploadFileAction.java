@@ -1,7 +1,7 @@
 package cheng.msdp.basic.web;
 
 import cheng.msdp.framework.web.BusinessCommonAction;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

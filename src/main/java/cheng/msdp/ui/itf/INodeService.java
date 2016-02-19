@@ -1,7 +1,7 @@
 package cheng.msdp.ui.itf;
 
 import cheng.msdp.sys.model.NodeModel;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.itf.IService;
 
 import java.util.List;

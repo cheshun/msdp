@@ -1,7 +1,7 @@
 package cheng.channel.vo;
 
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 /**
  * Created by cheng on 2015/3/16.

@@ -4,7 +4,7 @@ import cheng.msdp.ui.itf.INodeService;
 import com.application.common.context.ApplicationServiceLocator;
 import cheng.msdp.sys.model.NodeModel;
 
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 import com.application.module.jdbc.processor.BeanListProcessor;
 import org.springframework.stereotype.Component;

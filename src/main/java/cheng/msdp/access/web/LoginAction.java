@@ -9,7 +9,7 @@ import cheng.msdp.framework.web.BusinessCommonAction;
 import com.application.common.util.HttpRequestUtil;
 import com.application.funtion.encrypt.DesUtil;
 import com.application.module.jdbc.itf.IDataBaseService;
-import com.application.util.string.URLUtil;
+import cheng.lib.util.URLUtil;
 import com.github.diamond.server.Constants;
 import com.github.diamond.server.netty.DiamondServer;
 import org.apache.commons.lang3.StringUtils;

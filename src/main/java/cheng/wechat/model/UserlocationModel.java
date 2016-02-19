@@ -1,7 +1,7 @@
 package cheng.wechat.model;
-import arch.util.lang.SuperModel;
-import arch.util.lang.UFDate;
-import arch.util.lang.UFDouble;
+import cheng.lib.lang.SuperModel;
+import cheng.lib.lang.UFDate;
+import cheng.lib.lang.UFDouble;
 import cheng.lib.lang.*;
 
 public class UserlocationModel extends SuperModel {

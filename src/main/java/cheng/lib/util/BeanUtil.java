@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
-import arch.util.lang.ClassUtil;
-import arch.util.lang.SuperModel;
+import cheng.lib.util.ClassUtil;
+import cheng.lib.lang.SuperModel;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;

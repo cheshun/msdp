@@ -7,8 +7,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import arch.util.lang.BeanUtil;
-import arch.util.lang.PageVO;
+import cheng.lib.util.BeanUtil;
+import cheng.lib.lang.PageVO;
 import cheng.lib.util.DataTypeUtil;
 import cheng.channel.util.ChannelSourceUtil;
 import cheng.channel.util.DatabaseHelper;
@@ -16,7 +16,7 @@ import cheng.channel.vo.ChannelVO;
 import cheng.channel.vo.RegisterSourceVO;
 import com.application.common.context.ApplicationServiceLocator;
 import com.application.module.jdbc.itf.IDataBaseService;
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 /**
  * Created by cheng on 2015/3/16.

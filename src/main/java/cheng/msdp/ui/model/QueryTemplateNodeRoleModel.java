@@ -1,7 +1,7 @@
 package cheng.msdp.ui.model;
 
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 public class QueryTemplateNodeRoleModel extends SuperModel {
 

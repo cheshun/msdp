@@ -3,7 +3,7 @@ package cheng.msdp.ui.service;
 import cheng.msdp.ui.model.QueryConditionTemplateModel;
 import cheng.msdp.ui.model.QueryTemplateModel;
 import cheng.msdp.ui.vo.param.TemplateParamVO;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.itf.IService;
 
 import java.util.List;

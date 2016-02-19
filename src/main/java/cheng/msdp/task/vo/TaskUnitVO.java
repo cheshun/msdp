@@ -1,7 +1,7 @@
 package cheng.msdp.task.vo;
 
 
-import arch.util.lang.UFBoolean;
+import cheng.lib.lang.UFBoolean;
 
 import java.util.HashMap;
 import java.util.Map;

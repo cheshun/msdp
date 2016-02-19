@@ -1,6 +1,6 @@
 package cheng.msdp.task.model;
-import arch.util.lang.UFBoolean;
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.UFBoolean;
+import cheng.lib.lang.SuperModel;
 
 /**
  * 任务部署信息  一个任务插件可以部署多次 。会产生多少部署信息

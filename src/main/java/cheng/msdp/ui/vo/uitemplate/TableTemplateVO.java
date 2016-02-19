@@ -1,6 +1,6 @@
 package cheng.msdp.ui.vo.uitemplate;
 
-import arch.util.lang.PageVO;
+import cheng.lib.lang.PageVO;
 import cheng.msdp.basic.vo.JsonData;
 import cheng.msdp.basic.vo.TableDataVO;
 import cheng.msdp.ui.model.ButtonModel;

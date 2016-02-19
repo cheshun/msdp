@@ -2,7 +2,7 @@ package cheng.msdp.ui.itf;
 import cheng.msdp.sys.model.DataDictItemModel;
 import cheng.msdp.sys.model.DataDictModel;
 import cheng.msdp.sys.model.ModuleModel;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.itf.IService;
 
 import java.util.List;

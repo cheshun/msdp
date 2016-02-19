@@ -1,6 +1,6 @@
 package cheng.wechat.model;
-import arch.util.lang.SuperModel;
-import arch.util.lang.UFDateTime;
+import cheng.lib.lang.SuperModel;
+import cheng.lib.lang.UFDateTime;
 import cheng.lib.lang.*;
 
 public class TokenModel extends SuperModel {

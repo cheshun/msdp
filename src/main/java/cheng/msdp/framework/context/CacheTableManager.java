@@ -2,7 +2,7 @@ package cheng.msdp.framework.context;
 
 import cheng.msdp.sys.model.CacheTableModel;
 import com.application.common.context.ApplicationServiceLocator;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
 
 import java.util.List;

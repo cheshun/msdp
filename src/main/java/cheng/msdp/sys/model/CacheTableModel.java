@@ -1,8 +1,8 @@
 package cheng.msdp.sys.model;
 
 
-import arch.util.lang.UFBoolean;
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.UFBoolean;
+import cheng.lib.lang.SuperModel;
 
 public class CacheTableModel extends SuperModel {
 

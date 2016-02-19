@@ -1,8 +1,8 @@
 package cheng.channel.conf;
 
-import arch.util.lang.ClassUtil;
-import arch.util.lang.PageVO;
-import arch.util.lang.SuperModel;
+import cheng.lib.util.ClassUtil;
+import cheng.lib.lang.PageVO;
+import cheng.lib.lang.SuperModel;
 import cheng.msdp.access.model.ResourceRoleModel;
 import cheng.msdp.basic.model.RefModel;
 import cheng.channel.vo.RegisterSourceVO;

@@ -1,8 +1,8 @@
 package cheng.msdp.ui.itf;
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 import cheng.msdp.ui.vo.param.SaveActionParamVO;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 
 import javax.servlet.http.HttpServletRequest;
 

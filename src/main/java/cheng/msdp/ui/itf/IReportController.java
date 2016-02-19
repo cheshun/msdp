@@ -1,7 +1,7 @@
 package cheng.msdp.ui.itf;
 
-import arch.util.lang.PageVO;
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.PageVO;
+import cheng.lib.lang.SuperModel;
 import cheng.msdp.ui.vo.querytemplate.QueryParamVO;
 
 import java.util.List;

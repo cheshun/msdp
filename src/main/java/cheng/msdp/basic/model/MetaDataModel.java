@@ -1,7 +1,7 @@
 package cheng.msdp.basic.model;
 
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 public class MetaDataModel extends SuperModel {
 

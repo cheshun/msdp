@@ -13,9 +13,9 @@ import cheng.msdp.sys.util.TableUtil;
 import cheng.msdp.ui.itf.IButtonAction;
 import cheng.msdp.ui.vo.param.AddActionParamVO;
 import cheng.msdp.ui.vo.param.SaveActionParamVO;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.module.jdbc.itf.IDataBaseService;
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 public class DataDictSaveAction implements IButtonAction{
 

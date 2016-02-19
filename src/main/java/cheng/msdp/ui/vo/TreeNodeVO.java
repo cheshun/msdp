@@ -1,8 +1,8 @@
 package cheng.msdp.ui.vo;
 
 
-import arch.util.lang.SuperModel;
-import arch.util.lang.UFBoolean;
+import cheng.lib.lang.SuperModel;
+import cheng.lib.lang.UFBoolean;
 
 import java.util.ArrayList;
 import java.util.List;

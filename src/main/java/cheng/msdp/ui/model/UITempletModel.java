@@ -1,7 +1,7 @@
 package cheng.msdp.ui.model;
 
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 /**
  * 界面模板信息 一个模板会有多个页签（包括表头和表体）

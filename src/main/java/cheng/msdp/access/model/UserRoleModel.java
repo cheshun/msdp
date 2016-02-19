@@ -1,7 +1,7 @@
 package cheng.msdp.access.model;
 
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 public class UserRoleModel extends SuperModel {
 	private static final long serialVersionUID = 1L;

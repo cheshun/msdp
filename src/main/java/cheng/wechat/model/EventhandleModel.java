@@ -1,6 +1,6 @@
 package cheng.wechat.model;
 
-import arch.util.lang.SuperModel;
+import cheng.lib.lang.SuperModel;
 
 public class EventhandleModel extends SuperModel {
 /**

@@ -1,8 +1,8 @@
 package cheng.msdp.basic.model;
 
 
-import arch.util.lang.SuperModel;
-import arch.util.lang.UFBoolean;
+import cheng.lib.lang.SuperModel;
+import cheng.lib.lang.UFBoolean;
 
 public class RefModel extends SuperModel {
 

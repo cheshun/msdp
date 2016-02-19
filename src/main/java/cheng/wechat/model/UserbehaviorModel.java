@@ -1,6 +1,6 @@
 package cheng.wechat.model;
-import arch.util.lang.SuperModel;
-import arch.util.lang.UFDate;
+import cheng.lib.lang.SuperModel;
+import cheng.lib.lang.UFDate;
 
 public class UserbehaviorModel extends SuperModel {
 /**

@@ -5,7 +5,7 @@ import cheng.msdp.access.model.UserModel;
 import com.application.common.context.ApplicationServiceLocator;
 import cheng.msdp.framework.web.BusinessCommonAction;
 import cheng.msdp.ui.vo.param.TemplateParamVO;
-import com.application.exception.BusinessException;
+import cheng.lib.exception.BusinessException;
 import com.application.funtion.encrypt.DesUtil;
 import com.application.module.jdbc.itf.IDataBaseService;
 import com.application.module.jdbc.processor.BeanListProcessor;
