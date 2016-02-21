@@ -1,7 +1,6 @@
 package cheng.msdp.access.web;
 
 import cheng.msdp.access.model.UserModel;
-import cheng.msdp.access.service.Itest2;
 import cheng.msdp.access.vo.MsdpUserSessionVO;
 import com.application.common.context.ApplicationServiceLocator;
 import cheng.msdp.framework.context.ClientThreadData;
@@ -23,12 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller public class LoginAction extends BusinessCommonAction {
-    @Resource
-    Itest2 itest2 ;
     @RequestMapping("/login") public String login(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
 	IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
-//	itest2.tt();
 	String action = getAction("page", request);
 	if ("page".equals(action)) {
 	    String pk_role = request.getParameter("pk_role");

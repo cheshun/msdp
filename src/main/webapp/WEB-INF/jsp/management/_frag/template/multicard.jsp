@@ -116,6 +116,22 @@
         <input type="text" size="30" />
       </p>
       <p>
+        <label>身份证到期日期：</label>
+        <input type="text" size="30" />
+      </p>
+      <p>
+        <label>其他证件及号码：</label>
+        <input type="text" size="30" />
+      </p>
+      <p>
+        <label>身份证到期日期：</label>
+        <input type="text" size="30" />
+      </p>
+      <p>
+        <label>其他证件及号码：</label>
+        <input type="text" size="30" />
+      </p>
+      <p>
         <label>曾用名称：</label>
         <input type="text" size="30" />
       </p>
@@ -147,14 +163,12 @@
           <div class="tabsHeaderContent">
             <ul>
               <li class="selected"><a href="javascript:void(0)"><span>从表1【Struts2 示例】</span></a></li>
-              <li><a href="javascript:void(0)"><span>从表2【PHP 示例 - 结尾带下标[#index#]】</span></a></li>
-              <li><a href="javascript:void(0)"><span>从表2【PHP 示例 - 结尾带下标[]】</span></a></li>
             </ul>
           </div>
         </div>
-        <div class="tabsContent" style="height: 300px;">
+        <div class="tabsContent"    layoutH="375">
           <div>
-            <table class="list nowrap itemDetail" addButton="新建从表1条目" width="100%">
+            <table class="list nowrap itemDetail" addButton="增行" width="100%">
               <thead>
               <tr>
                 <th type="text" name="items[#index#].itemString" size="12" fieldClass="required" fieldAttrs="{remote:'validate_remote.html', maxlength:10}">从字符串</th>
@@ -170,42 +184,6 @@
               </thead>
               <tbody>
               </tbody>
-            </table>
-          </div>
-          <div>
-            <table class="list nowrap itemDetail" addButton="新建从表2条目" width="100%">
-              <thead>
-              <tr>
-                <th type="text" name="items.itemString[#index#]" size="12" fieldClass="required1">从字符串</th>
-                <th type="text" name="items.itemInt[#index#]" size="12" fieldClass="digits">从整数</th>
-                <th type="text" name="items.itemFloat[#index#]" size="12" fieldClass="number">从浮点</th>
-                <th type="date" name="items.itemDate[#index#]" size="12">从日期</th>
-                <th type="date" format="yyyy-MM-dd HH:mm:ss" name="items.itemDataTime[#index#]" size="16">从日期时间</th>
-                <th type="lookup" name="items.org.orgName[#index#]" lookupGroup="items.org" lookupUrl="demo/database/dwzOrgLookup.html" lookupPk="orgNum" suggestUrl="demo/database/db_lookupSuggest.html" suggestFields="orgNum,orgName" size="12">部门名称</th>
-                <th type="enum" name="items.itemEnum[#index#]" enumUrl="demo/database/db_select.html" size="12">从枚举</th>
-                <th type="attach" name="items.attachment.fileName[#index#]" lookupGroup="items.attachment" lookupUrl="demo/database/db_attachmentLookup.html" size="12">从附件</th>
-                <th type="del" width="60">操作</th>
-              </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-          <div>
-            <table class="list nowrap itemDetail" addButton="新建从表3条目" width="100%">
-              <thead>
-              <tr>
-                <th type="text" name="items.itemString[]" size="12" fieldClass="required">从字符串</th>
-                <th type="text" name="items.itemInt[]" size="12" fieldClass="digits">从整数</th>
-                <th type="text" name="items.itemFloat[]" size="12" fieldClass="number">从浮点</th>
-                <th type="date" name="items.itemDate[]" size="12">从日期</th>
-                <th type="date" format="yyyy-MM-dd HH:mm:ss" name="items.itemDataTime[]" size="16">从日期时间</th>
-                <th type="lookup" name="items.org.orgName[]" lookupGroup="items.org" lookupUrl="demo/database/dwzOrgLookup.html" suggestUrl="demo/database/db_lookupSuggest.html" suggestFields="orgName" size="12">部门名称</th>
-                <th type="enum" name="items.itemEnum[]" enumUrl="demo/database/db_select.html" size="12">从枚举</th>
-                <th type="attach" name="items.attachment.fileName[]" lookupGroup="items.attachment" lookupUrl="demo/database/db_attachmentLookup.html" size="12">从附件</th>
-                <th type="del" width="60">操作</th>
-              </tr>
-              </thead>
-              <tbody></tbody>
             </table>
           </div>
         </div>
