@@ -23,7 +23,7 @@ public class UserAction extends BusinessCommonAction {
 	@RequestMapping(value = "/management/access/user/index")
 	public String index(TemplateParamVO vo, Model model)
 			throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		UserModel u = (UserModel)queryservice.queryByPK(UserModel.class, vo.getPk_data());
 		RoleModel role =(RoleModel)queryservice.queryByPK(RoleModel.class, u.getPk_role());
 			
@@ -45,7 +45,7 @@ public class UserAction extends BusinessCommonAction {
 	@RequestMapping(value = "/management/access/user/edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
 		
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		 IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		UserModel u =(UserModel)queryservice.queryByPK(UserModel.class, vo.getPk_data());
 		RoleModel role =(RoleModel)queryservice.queryByPK(RoleModel.class, u.getPk_role());
@@ -58,7 +58,7 @@ public class UserAction extends BusinessCommonAction {
 	@RequestMapping(value = "/management/access/user/save")
 	public ModelAndView save(UserModel user, TemplateParamVO vo,
 			Model model) throws BusinessException {
-		 IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		 IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		 DesUtil en = new DesUtil();
 		if (StringUtils.isNotEmpty(user.getPrimaryKey())) {
 			UserModel old = (UserModel) dataBaseService.queryByPK(UserModel.class, user.getPrimaryKey());

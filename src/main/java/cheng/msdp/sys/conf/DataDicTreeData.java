@@ -25,7 +25,7 @@ public class DataDicTreeData  implements IVOTreeDataByID {
 	
 	public SuperModel[] getTreeVO(   ) throws BusinessException {
 		try {
-			IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
+			IDataBaseService queryservice =   ApplicationServiceLocator.getService(IDataBaseService.class);
 			Collection list = queryservice.queryByClause(ModuleModel.class, " dr=0 ");
 			return (SuperModel[]) list.toArray(new SuperModel[0]);
 		} catch (Exception e) {

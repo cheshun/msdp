@@ -17,7 +17,7 @@ public class TabSaveAction implements IButtonAction  {
 	
 	public SuperModel beforeSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		 IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		NodeModel node = (NodeModel)supervo;
 		if(StringUtils.isEmpty(node.getPk_parent_node())){

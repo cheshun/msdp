@@ -17,11 +17,11 @@ public class NodeSaveAction implements IButtonAction {
 	
 	public SuperModel beforeSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
+		 IDataBaseService queryservice =   ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		NodeModel node = (NodeModel)supervo;
 		if(StringUtils.isNotEmpty(node.getPk_parent_node())){
-				NodeModel n = (NodeModel)queryservice.queryByPK(NodeModel.class, paramvo.getPk_data());
+				NodeModel n = queryservice.queryByPK(NodeModel.class, paramvo.getPk_data());
 				node.setFun_level(n.getFun_level()+1);
 		}
 		if(node.getFun_type().equals(NodeModel.NodeType_Node)){

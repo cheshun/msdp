@@ -200,7 +200,7 @@ public class DataTableUtil {
 			UIItemTempletModel item) {
 		Object obj = BeanHelper.getProperty(supervo, json.getCode());
 		//参照类型 通过该类型查找参照信息 需要指出数据库操作
-		IDataBaseService query = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService query =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		String reftype = item.getReftype();
 		try {
 			List<RefModel> reflist = (List<RefModel>)query.queryByClause(RefModel.class, RefModel.RefType+"='"+reftype+"'");

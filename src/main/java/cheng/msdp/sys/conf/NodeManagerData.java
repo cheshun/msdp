@@ -27,7 +27,7 @@ public class NodeManagerData implements IVOTreeDataByID {
 
 	
 	public SuperModel[] getTreeVO(   ) throws BusinessException {
-		  IDataBaseService dataBaseService = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
+		  IDataBaseService dataBaseService =   ApplicationServiceLocator.getService(IDataBaseService.class);
 				
 		List<NodeModel> list = (List<NodeModel>) dataBaseService.queryByClause(NodeModel.class, " dr=0 ");
 			return list.toArray(new NodeModel[0]);

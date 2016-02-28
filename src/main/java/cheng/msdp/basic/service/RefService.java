@@ -53,7 +53,7 @@ public class RefService implements IRefService {
 		refmodel.setIsaccesscontrol(UFBoolean.FALSE);
 		//设置表名
 		refmodel.setDatatablename(datadict.getDatatablecode());
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		refmodel.setReftype(module.getModule_code()+"_"+datadict.getDatatablecode()+"_ref");
 		List<RefModel>  tdata =dataBaseService.queryByClause(RefModel.class, "reftype='" + module.getModule_code() + "_" + datadict.getDatatablecode() + "_ref" + "'");
 		if(tdata==null || tdata.size()==0 ){

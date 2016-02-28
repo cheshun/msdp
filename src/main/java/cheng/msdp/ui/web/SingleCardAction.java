@@ -25,26 +25,26 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-public class CardAction extends BusinessCommonAction {
+public class SingleCardAction extends BusinessCommonAction {
 	
 	@RequestMapping("/management/ui/card/add")
 	public String add(HttpServletRequest request, AddActionParamVO paramvo ,Model model) throws BusinessException {
 		paramvo.setActiontype(AddActionParamVO.actiontype_add);
 		//获取节点pk  得到模板 
 		//获取按钮pk  得到actionurl
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = paramvo.getTemplateid();
 		String pk_role = getUserinfo(request).getPk_role();
-		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
+		NodeModel node = queryservice.queryByPK(NodeModel.class, pk_node);
 		SuperModel supervo =(SuperModel)  ClassUtil.initClass(node.getModelclass());
 		
 		//通过节点id 用户id或者角色 得到用户的模板
 		/**
 		 * 得到节点的默认模板 如果该用户该节点已经分配了模板则用分配的 否则用默认的
 		 */
-		ITemplateService itemplateService =(ITemplateService)ApplicationServiceLocator.getService(ITemplateService.class);
-		IButtonService ibuttonService =(IButtonService)ApplicationServiceLocator.getService(IButtonService.class);
+		ITemplateService itemplateService = ApplicationServiceLocator.getService(ITemplateService.class);
+		IButtonService ibuttonService = ApplicationServiceLocator.getService(IButtonService.class);
 		
 		List<UIItemTempletModel> itemlist = itemplateService.getUserCardTemplet(null,pk_role, pk_node,null);
 		List<ButtonModel> buttons = ibuttonService.getTempletButton(pk_role, pk_node);
@@ -65,15 +65,15 @@ public class CardAction extends BusinessCommonAction {
 	public String edit(HttpServletRequest request, EditActionParamVO paramvo ,Model model) throws BusinessException {
 		paramvo.setActiontype(EditActionParamVO.actiontype_edit);
 		
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = paramvo.getTemplateid();
-		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
+		NodeModel node = queryservice.queryByPK(NodeModel.class, pk_node);
 		SuperModel supervo =(SuperModel)  ClassUtil.initClass(node.getModelclass());
-		supervo = (SuperModel)queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
+		supervo = queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
 		//通过节点id 用户id或者角色 得到用户的模板
-		ITemplateService itemplateService =(ITemplateService)ApplicationServiceLocator.getService(ITemplateService.class);
-		IButtonService ibuttonService =(IButtonService)ApplicationServiceLocator.getService(IButtonService.class);
+		ITemplateService itemplateService =ApplicationServiceLocator.getService(ITemplateService.class);
+		IButtonService ibuttonService = ApplicationServiceLocator.getService(IButtonService.class);
 		
 		String pk_role = getUserinfo(request).getPk_role();
 		List<UIItemTempletModel> itemlist = itemplateService.getUserCardTemplet(null,pk_role, pk_node,null);
@@ -91,14 +91,14 @@ public class CardAction extends BusinessCommonAction {
 	}
 	@RequestMapping("/management/ui/card/detail")
 	public String detail(HttpServletRequest request, EditActionParamVO paramvo ,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
-		ITemplateService itemplateService =(ITemplateService)ApplicationServiceLocator.getService(ITemplateService.class);
-		IButtonService ibuttonService =(IButtonService)ApplicationServiceLocator.getService(IButtonService.class);
+		IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
+		ITemplateService itemplateService = ApplicationServiceLocator.getService(ITemplateService.class);
+		IButtonService ibuttonService = ApplicationServiceLocator.getService(IButtonService.class);
 		
 		String pk_node = paramvo.getTemplateid();
-		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
+		NodeModel node =  queryservice.queryByPK(NodeModel.class, pk_node);
 		SuperModel supervo = (SuperModel) ClassUtil.initClass(node.getModelclass());
-		supervo = (SuperModel)queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
+		supervo = queryservice.queryByPK(supervo.getClass(), paramvo.getPk_data());
 		//通过节点id 用户id或者角色 得到用户的模板
 		String pk_role = getUserinfo(request).getPk_role();
 		List<UIItemTempletModel> itemlist = itemplateService.getUserCardTemplet(null,pk_role, pk_node,null);

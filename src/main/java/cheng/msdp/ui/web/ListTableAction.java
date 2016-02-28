@@ -41,7 +41,7 @@ import cheng.msdp.ui.vo.param.TemplateParamVO;
 import cheng.msdp.ui.vo.querytemplate.QueryParamVO;
 import cheng.msdp.ui.vo.uitemplate.TableTemplateVO;
 @Controller
-public class SingletableAction extends BusinessCommonAction {
+public class ListTableAction extends BusinessCommonAction {
 	@Resource
 	IDataBaseService queryservice ;
 	@Resource
@@ -52,12 +52,11 @@ public class SingletableAction extends BusinessCommonAction {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/management/ui/singletable/index")
 	public String index(HttpServletRequest request, TemplateParamVO paramvo ,PageVO pagevo,Model model) throws BusinessException {
-		
-		TableTemplateVO tabletemplatevo = new TableTemplateVO();
+		// 接受 表格类型 单字表 多子表
 		//用户角色
 		paramvo.setTemplateid(paramvo.getTemplateid().split(",")[0]);
 		String pk_role = getUserinfo(request).getPk_role();
-		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, paramvo.getTemplateid());
+		NodeModel node = queryservice.queryByPK(NodeModel.class, paramvo.getTemplateid());
 		SuperModel supervo = (SuperModel) ClassUtil.initClass(node.getModelclass());
 		
 		/**
@@ -68,7 +67,7 @@ public class SingletableAction extends BusinessCommonAction {
 		List<UIItemTempletModel> itemlist = itemplateService.getUserTableTemplet(null,pk_role, paramvo.getTemplateid(),null);
 		List<ButtonModel> button = ibuttonService.getTempletButton(pk_role, paramvo.getTemplateid());
 		//找到该节点的直接页签
-		List<NodeModel> listtab = (List<NodeModel>)queryservice.queryByClause(NodeModel.class, "pk_parent_node='"+node.getPk_node()+"' and dr=0 ");
+		List<NodeModel> listtab = queryservice.queryByClause(NodeModel.class, "pk_parent_node='"+node.getPk_node()+"' and dr=0 ");
 		if(!listtab.isEmpty()){
 			List<ButtonModel> tabbutton = createButton(listtab,paramvo);
 			button.addAll(tabbutton);
@@ -78,9 +77,9 @@ public class SingletableAction extends BusinessCommonAction {
 		String condition = getCondition(paramvo,supervo,request);
 		initPageCondition(pagevo,condition);
 		pagevo = queryservice.queryByPage(supervo.getClass(), pagevo);
-		
-		tabletemplatevo = DataTableUtil.initTableData(pagevo, itemlist, (List<SuperModel>)pagevo.getData(), button);
-		
+
+		TableTemplateVO tabletemplatevo = DataTableUtil.initTableData(pagevo, itemlist, (List<SuperModel>)pagevo.getData(), button);
+
 		model.addAttribute("tabletemplatevo", tabletemplatevo);
 		paramvo.setPk_data("{"+supervo.getPKFieldName()+"}");
 		model.addAttribute("paramvo", paramvo);
@@ -89,7 +88,7 @@ public class SingletableAction extends BusinessCommonAction {
 	}
 
 	private List<ButtonModel> createButton(List<NodeModel> listtab, TemplateParamVO paramvo) {
-		List<ButtonModel> l = new ArrayList<ButtonModel>();
+		List<ButtonModel> l = new ArrayList<>();
 		for(int i=0;i<listtab.size();i++){
 			NodeModel node = listtab.get(i);
 			ButtonModel button = new ButtonModel();
@@ -136,10 +135,10 @@ public class SingletableAction extends BusinessCommonAction {
 	
 	@RequestMapping("/management/ui/singletable/delete")
 	public ModelAndView delete(HttpServletRequest request, DeleteActionParamVO paramvo ,Model model) throws BusinessException {
-		IDataBaseService queryservice =(IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = paramvo.getTemplateid();
-		NodeModel node = (NodeModel)queryservice.queryByPK(NodeModel.class, pk_node);
+		NodeModel node = queryservice.queryByPK(NodeModel.class, pk_node);
 		SuperModel supervo = (SuperModel) ClassUtil.initClass(node.getModelclass());
 		queryservice.deleteByPK(supervo.getClass(), paramvo.getPk_data());
 		
@@ -150,7 +149,7 @@ public class SingletableAction extends BusinessCommonAction {
 
 	@RequestMapping("/management/ui/singletable/save")
 	public ModelAndView save(SaveActionParamVO paramvo ,HttpServletRequest request,Model model) throws BusinessException {
-		IDataBaseService queryservice =(IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice = ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		String pk_node = paramvo.getTemplateid().split(",")[0];
 		paramvo.setTemplateid(pk_node);
@@ -162,7 +161,7 @@ public class SingletableAction extends BusinessCommonAction {
 
 		initBean(supervo ,values);
 		//保存之前处理要保存的数据 从按钮中取得classname
-		ButtonModel button = (ButtonModel) queryservice.queryByPK(ButtonModel.class, paramvo.getPk_button());
+		ButtonModel button = queryservice.queryByPK(ButtonModel.class, paramvo.getPk_button());
 		IButtonAction buttonaction = null ;
 		if(StringUtils.isNotEmpty(button.getActionclass())){
 			buttonaction = (IButtonAction) ClassUtil.initClass(button.getActionclass());//IButtonAction
@@ -180,7 +179,7 @@ public class SingletableAction extends BusinessCommonAction {
 			queryservice.update(supervo);
 		}
 		if(buttonaction!=null){
-			supervo = buttonaction.afterSaveAction(supervo, paramvo, request);
+			buttonaction.afterSaveAction(supervo, paramvo, request);
 		}
 		return ajaxDoneSuccess("保存成功");
 		

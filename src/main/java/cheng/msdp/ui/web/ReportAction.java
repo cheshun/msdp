@@ -37,7 +37,7 @@ public class ReportAction extends BusinessCommonAction {
 	
 	@RequestMapping("/management/ui/report/index")
 	public String index(HttpServletRequest request, TemplateParamVO paramvo ,PageVO pagevo,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		TableTemplateVO tabletemplatevo = new TableTemplateVO();
 		//用户角色
 		paramvo.setTemplateid(paramvo.getTemplateid().split(",")[0]);

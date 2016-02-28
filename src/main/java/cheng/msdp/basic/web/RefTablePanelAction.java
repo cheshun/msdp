@@ -40,7 +40,7 @@ public class RefTablePanelAction  extends BusinessCommonAction {
 		if(u==null){
 			
 		}
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		
 		this.refmodel = refmodel ;

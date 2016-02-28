@@ -70,7 +70,7 @@ public class QueryTemplateServiceImpl implements IQueryTemplateService {
 	
 	@SuppressWarnings("unchecked")
 	private List<QueryConditionTemplateModel> getData(String sql) throws BusinessException{
-		IDataBaseService queryseervice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryseervice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<QueryConditionTemplateModel> l = (List<QueryConditionTemplateModel>) queryseervice.queryBySql(sql, new BeanListProcessor(QueryConditionTemplateModel.class));
 		return l;
@@ -93,7 +93,7 @@ public class QueryTemplateServiceImpl implements IQueryTemplateService {
 
 	
 	public boolean copy(TemplateParamVO vo, QueryTemplateModel modelvo) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		QueryTemplateModel tempmodelvo = (QueryTemplateModel) dataBaseService.queryByPK(QueryTemplateModel.class, vo.getPk_data());
 		List<QueryConditionTemplateModel> list = (List<QueryConditionTemplateModel>)dataBaseService.queryByClause(QueryConditionTemplateModel.class, "pk_querytemplate ='"+tempmodelvo.getPrimaryKey()+"'");
@@ -112,7 +112,7 @@ public class QueryTemplateServiceImpl implements IQueryTemplateService {
 			list.get(i).setPrimaryKey(null);
 			list.get(i).setPk_querytemplate(pk_querytemplate);;
 		}
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		dataBaseService.insert(list);
 	}

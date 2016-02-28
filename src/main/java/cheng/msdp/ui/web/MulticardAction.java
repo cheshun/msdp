@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public class MulticardAction extends BusinessCommonAction {
     @RequestMapping("/management/ui/multicard/index")
     public String index(HttpServletRequest request, TemplateParamVO paramvo ,PageVO pagevo,Model model) throws BusinessException {
-
+            //接受
 	return "/management/_frag/template/multicard";
     }
 }

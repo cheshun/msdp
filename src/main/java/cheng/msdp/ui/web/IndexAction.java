@@ -34,17 +34,16 @@ public class IndexAction extends BusinessCommonAction {
     IDataBaseService queryservice ;
 	@RequestMapping("/management")
 	public String index(HttpServletRequest request,Model model) throws BusinessException {
-//		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
-		
+
 		//通过用户的id或者用户的角色 得到 用户的所有节点 
 		UserModel user= getUserinfo(request);
 		String indexpagepath = "/WEB-INF/jsp/management/index_"+user.getPrimaryKey() ;
 		//角色为空怎为管理员 得到所有节点
 		List<NodeModel> listnode = null ;
 		if("00000000000000000000".equals(user.getPk_role())){
-			listnode = (List<NodeModel>) queryservice.queryByClause(NodeModel.class, " dr=0 and fun_type!='tab' ");// and fun_type='node'
+			listnode =  queryservice.queryByClause(NodeModel.class, " dr=0 and fun_type!='tab' ");// and fun_type='node'
 		}else{
-			INodeService inodeservice =(INodeService)ApplicationServiceLocator.getService(INodeService.class);
+			INodeService inodeservice = ApplicationServiceLocator.getService(INodeService.class);
 			listnode = inodeservice.getNodesByRole(user.getPk_role());
 		}
 		List<TreeNodeVO> node = TreeDataUtil.getIntance().initMenuTree(listnode.toArray(new NodeModel[0]), "pk_node", "pk_parent_node", "fun_name");

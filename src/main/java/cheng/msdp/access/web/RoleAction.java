@@ -24,7 +24,7 @@ public class RoleAction extends BusinessCommonAction {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/management/access/role/index")
 	public String list(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =   ApplicationServiceLocator.getService(IDataBaseService.class);
 
 		//加载角色卡片模板 
 		RoleModel r = (RoleModel) queryservice.queryByPK(RoleModel.class, vo.getPk_data());
@@ -44,7 +44,7 @@ public class RoleAction extends BusinessCommonAction {
 
 	@RequestMapping(value = "/management/access/role/edit")
 	public String edit(TemplateParamVO vo, Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =   ApplicationServiceLocator.getService(IDataBaseService.class);
 
 		RoleModel role = (RoleModel) queryservice.queryByPK(RoleModel.class, vo.getPk_data());
 		model.addAttribute("item", role);
@@ -55,7 +55,7 @@ public class RoleAction extends BusinessCommonAction {
 	@RequestMapping(value = "/management/access/role/save")
 	public ModelAndView save(RoleModel role, TemplateParamVO vo, Model model) throws BusinessException {
 
-		IDataBaseService dataBaseService = (IDataBaseService) ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =   ApplicationServiceLocator.getService(IDataBaseService.class);
 		if (StringUtils.isNotEmpty(vo.getPk_parent())) {
 			role.setPk_parent_role(vo.getPk_parent());
 		}

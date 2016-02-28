@@ -32,7 +32,7 @@ public class AccessAssignmentAction  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/access/assignment/role/index")
 	public String initAssignmentPage(HttpServletRequest request, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		String filename="/management/_dev/authenticate/accessassignment_"+paramvo.getPk_data() ;
 		List<RoleModel> rlist = queryservice.queryByClause(RoleModel.class, " dr=0 ");
@@ -95,7 +95,7 @@ public class AccessAssignmentAction  extends BusinessCommonAction {
 	
 	@RequestMapping(value="/management/access/assignment/node/index")
 	public String initAssignmentnodePage(HttpServletRequest request, TemplateParamVO paramvo ,Model model) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		 IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 			
 		String filename="/management/_dev/authenticate/accessassignment_"+paramvo.getPk_data() ;
 //		String filename="/management/_dev/authenticate/accessassignment" ;

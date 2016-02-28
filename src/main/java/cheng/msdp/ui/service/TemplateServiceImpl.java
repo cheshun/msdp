@@ -114,7 +114,7 @@ public class TemplateServiceImpl implements ITemplateService {
 	}
 	
 	public boolean copy(UITempletModel modelvo, TemplateParamVO vo) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		UITempletModel tempmodelvo = (UITempletModel) dataBaseService.queryByPK(UITempletModel.class, vo.getPk_data());
 		List<UIItemTempletModel> list = (List<UIItemTempletModel>)dataBaseService.queryByClause(UIItemTempletModel.class, "pk_templet ='"+tempmodelvo.getPk_templet()+"'");
@@ -127,7 +127,7 @@ public class TemplateServiceImpl implements ITemplateService {
 		return true;
 	}
 	private void copybody(String pk_templet,List<UIItemTempletModel> list) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		for(int i=0;i<list.size();i++){
 			list.get(i).setPrimaryKey(null);

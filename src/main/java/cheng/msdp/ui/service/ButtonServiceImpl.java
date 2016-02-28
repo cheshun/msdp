@@ -61,7 +61,7 @@ public class ButtonServiceImpl implements IButtonService {
 		return sb.toString();
 	}
 	private List<ButtonModel> getData(String sql) throws BusinessException {
-		IDataBaseService queryseervice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService queryseervice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		BeanListProcessor itemprocessor = new BeanListProcessor(ButtonModel.class);
 		List<ButtonModel> list =(List<ButtonModel>) queryseervice.queryBySql(sql, itemprocessor);
@@ -72,7 +72,7 @@ public class ButtonServiceImpl implements IButtonService {
 	
 	public List<ButtonModel> addTempletButton(String pk_node,
 			String[] buttoncodes) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<ButtonModel> list = new ArrayList<ButtonModel>();
 		for(int i=0;i<buttoncodes.length;i++){

@@ -26,7 +26,7 @@ public class ResourceTreeDataManager implements IVOTreeDataByID{
 
 	
 	public SuperModel[] getTreeVO() throws BusinessException {
-		IDataBaseService queryservice = (IDataBaseService) ApplicationServiceLocator.getBean(IDataBaseService.class);
+		IDataBaseService queryservice =   ApplicationServiceLocator.getBean(IDataBaseService.class);
 		StringBuffer sb = new StringBuffer();
 		sb.append(" SELECT r.pk_module ,r.pk_ref  ,r.refname refname FROM sm_ref r ");
 		sb.append(" WHERE r.dr=0 AND r.isaccesscontrol='Y' ");

@@ -22,7 +22,7 @@ public class DataDictSaveAction implements IButtonAction{
 	
 	public SuperModel beforeSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request)  throws BusinessException{
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		DataDictModel datadict = (DataDictModel)supervo;
 		datadict.setPk_module(paramvo.getPk_parent());
 		ModuleModel modules = (ModuleModel)dataBaseService.queryByPK(ModuleModel.class, datadict.getPk_module());
@@ -35,7 +35,7 @@ public class DataDictSaveAction implements IButtonAction{
 	
 	public SuperModel afterSaveAction(SuperModel supervo, SaveActionParamVO paramvo,
 			HttpServletRequest request) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		DataDictModel datadict = (DataDictModel)supervo;
 		NodeModel node = (NodeModel)dataBaseService.queryByPK(NodeModel.class, datadict.getPk_node());

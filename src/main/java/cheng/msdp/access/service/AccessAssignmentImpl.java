@@ -151,7 +151,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 	}
 	
 	private boolean doassignNode(String[] pk_nodes, String pk_role) throws BusinessException {
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<RoleNodeModel> insert = new ArrayList<RoleNodeModel>();
 		List<RoleNodeModel> update = new ArrayList<RoleNodeModel>();
@@ -236,7 +236,7 @@ public class AccessAssignmentImpl implements IAccessAssignment {
 	public boolean assignTemplate(String[] pk_role, String pk_node,
 			String template) throws BusinessException {
 		 //找出该模板已经分配的角色
-		IDataBaseService dataBaseService = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService dataBaseService =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		List<TemplateNodeRoleModel> list = (List<TemplateNodeRoleModel>)dataBaseService.queryByClause(TemplateNodeRoleModel.class, " pk_node='"+pk_node+"' and pk_temple='"+template+"'") ;
 		if(pk_role==null && list.size()==0){

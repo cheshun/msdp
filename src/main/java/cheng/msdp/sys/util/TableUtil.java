@@ -20,7 +20,7 @@ public class TableUtil {
 		if(tablename.indexOf("_")==-1){
 			tablename = modules.getModule_code()+"_"+tablename;
 		}
-		IDataBaseService query = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService query =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		if(query.isTableExist(tablename)){
 			return getUpdateTableSQL(tablename,list);
 		}
@@ -31,7 +31,7 @@ public class TableUtil {
 	private static String getUpdateTableSQL(String tablename,
 			List<DataDictItemModel> list) {
 		StringBuffer sql = new StringBuffer("ALTER TABLE `"+tablename+"` ");
-		IDataBaseService query = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		IDataBaseService query =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
 		for(int i=0;i<list.size();i++){
 			DataDictItemModel item = list.get(i);

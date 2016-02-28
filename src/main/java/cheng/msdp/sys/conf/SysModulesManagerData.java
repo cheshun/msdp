@@ -25,7 +25,7 @@ public class SysModulesManagerData implements IVOTreeDataByID{
 
 	
 	public SuperModel[] getTreeVO(   ) throws BusinessException {
-		 IDataBaseService queryservice = (IDataBaseService)ApplicationServiceLocator.getService(IDataBaseService.class);
+		 IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 				
 		List<ModuleModel> list = (List<ModuleModel>) queryservice.queryByClause(ModuleModel.class, " dr=0 ");
 			return list.toArray(new ModuleModel[0]);
