@@ -5,11 +5,13 @@ package cheng.msdp.ui.trade.business;
  */
 
 import cheng.lib.lang.AggregatedValueObject;
+import cheng.lib.lang.SuperVO;
+
+import java.util.ArrayList;
 
 /**
  * 默认的业务动作实现。 创建日期：(2004-1-3 14:46:52)
  *
- * @author：樊冠军
  */
 public class BusinessAction extends DefaultBusinessAction {
 
@@ -57,46 +59,6 @@ public class BusinessAction extends DefaultBusinessAction {
     public AggregatedValueObject edit(AggregatedValueObject billVO, java.lang.String billType, java.lang.String billDate, java.lang.Object userObj) throws java.lang.Exception {
 	return billVO = (AggregatedValueObject) PfUtilClient.processActionNoSendMessage(getUI(), IPFACTION.EDIT, billType, billDate, billVO, userObj, null, null);
     }
-
-    /**
-     * 根据返回的数据进行匹配数据。 创建日期：(2004-2-27 22:08:03)
-     *
-     * @param retVo
-     *            AggregatedValueObject
-     * @param oldVo
-     *            AggregatedValueObject
-     */
-    private AggregatedValueObject fillUIData(AggregatedValueObject retVo, AggregatedValueObject oldVo) throws Exception {
-	if (oldVo instanceof IExAggVO) {
-	    IExAggVO exAggVo = (IExAggVO) oldVo;
-	    IExAggVO exNewAggVo = (IExAggVO) retVo;
-	    exAggVo.setParentVO(exNewAggVo.getParentVO());
-	    for (int i = 0; i < exAggVo.getTableCodes().length; i++) {
-		Vector v = new Vector();
-		String tableCode = exAggVo.getTableCodes()[i];
-		SuperVO[] items = (SuperVO[]) exAggVo.getTableVO(tableCode);
-		SuperVO[] newitems = (SuperVO[]) exNewAggVo.getTableVO(tableCode);
-		if (items != null)
-		    fillUITotalVO(items, newitems);
-
-		// //SuperVO[] vos = null;
-		// //if (v.size() > 0)
-		// //{
-		// //vos =
-		// //(SuperVO[])
-		// java.lang.reflect.Array.newInstance(v.get(0).getClass(),
-		// v.size());
-		// //v.copyInto(vos);
-		// //}
-		// exNewAggVo.setTableVO(tableCode, items);
-	    }
-	    return oldVo;
-	}
-	if (retVo.getChildrenVO() == null || retVo.getChildrenVO().length == 0)
-	    retVo.setChildrenVO(oldVo.getChildrenVO());
-	return retVo;
-    }
-
     /**
      * 获得UI。 创建日期：(2004-1-15 13:55:07)
      */
@@ -122,14 +84,15 @@ public class BusinessAction extends DefaultBusinessAction {
      * 根据条件进行数据查询
      */
     public SuperVO[] queryHeadAllData(Class headVoClass, String strBillType, String strWhere) throws Exception {
-	BilltypeVO billVo = PfUIDataCache.getBillTypeInfo(strBillType);
-	if (billVo.getWherestring() != null && billVo.getWherestring().length() != 0) {
-	    if (strWhere != null)
-		strWhere = strWhere + " and (" + billVo.getWherestring() + ")";
-	    else
-		strWhere = billVo.getWherestring();
-	}
-	return HYPubBO_Client.queryByCondition(headVoClass, strWhere);
+//	BilltypeVO billVo = PfUIDataCache.getBillTypeInfo(strBillType);
+//	if (billVo.getWherestring() != null && billVo.getWherestring().length() != 0) {
+//	    if (strWhere != null)
+//		strWhere = strWhere + " and (" + billVo.getWherestring() + ")";
+//	    else
+//		strWhere = billVo.getWherestring();
+//	}
+//	return HYPubBO_Client.queryByCondition(headVoClass, strWhere);
+	return null ;
     }
 
     /**
@@ -140,12 +103,13 @@ public class BusinessAction extends DefaultBusinessAction {
 	setBillStatus(billVO);
 
 	String strBeforeUIClass = null;
-	if (userObj != null && userObj instanceof IUIBeforeProcAction)
-	    strBeforeUIClass = userObj.getClass().getName();
+//	if (userObj != null && userObj instanceof IUIBeforeProcAction)
+//	    strBeforeUIClass = userObj.getClass().getName();
 
-	ArrayList retAry = (ArrayList) PfUtilClient.processAction(getUI(), IPFACTION.SAVE, billType, billDate, billVO, userObj, strBeforeUIClass, checkVo);
+
+	ArrayList retAry = (ArrayList) PfUtilClient.processAction(getUI(), IPFACTION.SAVE, billType, billDate, billVO, userObj);
 	AggregatedValueObject retVo = (AggregatedValueObject) retAry.get(1);
-	return fillUIData(retVo, checkVo);
+	return retVo;
     }
 
     /**
@@ -155,12 +119,12 @@ public class BusinessAction extends DefaultBusinessAction {
 	setBillStatus(billVO);
 
 	String strBeforeUIClass = null;
-	if (userObj != null && userObj instanceof IUIBeforeProcAction)
-	    strBeforeUIClass = userObj.getClass().getName();
+//	if (userObj != null && userObj instanceof IUIBeforeProcAction)
+//	    strBeforeUIClass = userObj.getClass().getName();
 
-	ArrayList retAry = (ArrayList) PfUtilClient.processAction(getUI(), IPFACTION.COMMIT, billType, billDate, billVO, userObj, strBeforeUIClass, checkVo);
+	ArrayList retAry = (ArrayList) PfUtilClient.processAction(getUI(), IPFACTION.COMMIT, billType, billDate, billVO, userObj);
 	AggregatedValueObject retVo = (AggregatedValueObject) retAry.get(1);
-	return fillUIData(retVo, checkVo);
+	return retVo;
     }
 
     /**
@@ -170,14 +134,14 @@ public class BusinessAction extends DefaultBusinessAction {
      *            AggregatedValueObject
      */
     protected void setBillStatus(AggregatedValueObject billvo) {
-	Integer billstatus = (Integer) billvo.getParentVO().getAttributeValue(getUI().getBillField().getField_BillStatus());
+//	Integer billstatus = (Integer) billvo.getParentVO().getAttributeValue(getUI().getBillField().getField_BillStatus());
 
-	if (billstatus == null || billstatus.intValue() == IBillStatus.NOPASS) {
-	    billvo.getParentVO().setAttributeValue(getUI().getBillField().getField_CheckMan(), null);
-	    billvo.getParentVO().setAttributeValue(getUI().getBillField().getField_CheckDate(), null);
-	    billvo.getParentVO().setAttributeValue(getUI().getBillField().getField_CheckNote(), null);
-	    billvo.getParentVO().setAttributeValue(getUI().getBillField().getField_BillStatus(), new Integer(IBillStatus.FREE));
-	}
+//	if (billstatus == null || billstatus.intValue() == IBillStatus.NOPASS) {
+//	    billvo.getParentVO().setAttributeValue(getUI().getBillField().getField_CheckMan(), null);
+//	    billvo.getParentVO().setAttributeValue(getUI().getBillField().getField_CheckDate(), null);
+//	    billvo.getParentVO().setAttributeValue(getUI().getBillField().getField_CheckNote(), null);
+//	    billvo.getParentVO().setAttributeValue(getUI().getBillField().getField_BillStatus(), new Integer(IBillStatus.FREE));
+//	}
 
     }
 

@@ -5,8 +5,6 @@ import cheng.lib.lang.BilltypeVO;
 
 /**
  * 基础数据的业务处理。 创建日期：(2004-1-14 13:46:21)
- *
- * @author：樊冠军1
  */
 public class BdBusinessAction extends DefaultBusinessAction {
 

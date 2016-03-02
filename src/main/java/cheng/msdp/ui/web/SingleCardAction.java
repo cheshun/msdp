@@ -30,7 +30,7 @@ public class SingleCardAction extends BusinessCommonAction {
 	@RequestMapping("/management/ui/card/add")
 	public String add(HttpServletRequest request, AddActionParamVO paramvo ,Model model) throws BusinessException {
 		paramvo.setActiontype(AddActionParamVO.actiontype_add);
-		//获取节点pk  得到模板 
+		//获取节点pk  得到模板
 		//获取按钮pk  得到actionurl
 		IDataBaseService queryservice =  ApplicationServiceLocator.getService(IDataBaseService.class);
 		
@@ -57,9 +57,11 @@ public class SingleCardAction extends BusinessCommonAction {
 		
 		model.addAttribute("cardtemplatevo", cardtemplatevo);
 		model.addAttribute("paramvo", paramvo);
-		
-		return "/management/_frag/template/card";
-		
+		if("single".equals(paramvo.getCardtype())){
+		    return "/management/_frag/template/card";
+		}else{
+		    return "/management/_frag/template/multicard";
+		}
 	}
 	@RequestMapping("/management/ui/card/edit")
 	public String edit(HttpServletRequest request, EditActionParamVO paramvo ,Model model) throws BusinessException {

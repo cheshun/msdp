@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%><%@ include file="/include.inc.jsp"%>
 <c:import url="../pager/pagerForm.jsp"></c:import>
 
-<form method="post" rel="pagerForm" action="<c:url value='/management/ui/singletable/index'/>" onsubmit="return navTabSearch(this)">
+<form method="post" rel="pagerForm" action="management/ui/singletable/index" onsubmit="return navTabSearch(this)">
 </form>
 
 <div class="pageContent">

@@ -13,7 +13,7 @@
 			</c:forEach>
 		</ul>
 	</div>
-	<form method="post" action="<c:url value='/management/ui/singletable/save?navTabId=${paramvo.templateid}&callbackType=closeCurrent'/>" class="pageForm required-validate" onsubmit="return validateCallback(this,dialogAjaxDone);">
+	<form method="post" action="<c:url value='/management/ui/businessprocess/save?navTabId=${paramvo.templateid}&callbackType=closeCurrent'/>" class="pageForm required-validate" onsubmit="return validateCallback(this,dialogAjaxDone);">
 		<input type="hidden" name="templateid" value="${paramvo.templateid}" />
 		<input type="hidden" name="pk_button" value="${paramvo.pk_button }" />
 		<input type="hidden" name="pk_data" value="${paramvo.pk_data}" />

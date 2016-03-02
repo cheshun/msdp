@@ -8,6 +8,7 @@ public class BaseActionParamVO {
 	private String pk_button ;
 	private String templatetype;
 	private String actiontype ;
+    	private String cardtype ="single";
 	public String getTemplateid() {
 		return templateid;
 	}
@@ -45,4 +46,12 @@ public class BaseActionParamVO {
 	public void setTemplatetype(String templatetype) {
 		this.templatetype = templatetype;
 	}
+
+    public String getCardtype() {
+	return cardtype;
+    }
+
+    public void setCardtype(String cardtype) {
+	this.cardtype = cardtype;
+    }
 }
