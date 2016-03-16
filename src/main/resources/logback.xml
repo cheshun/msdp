@@ -6,7 +6,7 @@
 	<contextName>msdp</contextName>
 
 	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
-	<!--<property name="LOG_HOME" value="/logs" />-->
+	<property name="USER_HOME" value="/Users/cheng" />
 
 	<!-- 输入到控制台 -->
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -15,11 +15,11 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] \(%class.java:%line\) %msg%n</pattern>
 		</encoder>
 	</appender>
-	<appender name="E" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="ERROR_LOGGER" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 是否追加内容 -->
 		<Append>true</Append>
 		<!-- 指定file -->
-		<File>cheng_error.log</File>
+		<File>/${USER_HOME}/error.log</File>
 		<encoder>
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%thread] \(%class.java:%line\) %msg%n</pattern>
 		</encoder>
@@ -43,9 +43,9 @@
  
 
 	<!-- 日志输出级别为DEBUG,开发环境 -->
-	<root level="debug">
-		<appender-ref ref="stdout" />
-		<!--<appender-ref ref="E" />-->
-	</root>／
+	<root level="INFO">
+		<!--<appender-ref ref="stdout" />-->
+		<appender-ref ref="ERROR_LOGGER" />
+	</root>
 
 </configuration>

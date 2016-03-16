@@ -38,11 +38,11 @@
         <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
         <init-param>
             <param-name>loginUsername</param-name>
-            <param-value>htzmonitor</param-value>
+            <param-value>cheng</param-value>
         </init-param>
         <init-param>
             <param-name>loginPassword</param-name>
-            <param-value>huitouzi2dd014</param-value>
+            <param-value>123456</param-value>
         </init-param>
     </servlet>
 
